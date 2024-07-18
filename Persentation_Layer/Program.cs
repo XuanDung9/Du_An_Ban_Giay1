@@ -13,7 +13,7 @@ namespace Persentation_Layer
             ApplicationConfiguration.Initialize();
             Application.Run(new Main());
             // test 
-            //okok
+            //okokok
         }
     }
 }
