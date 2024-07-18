@@ -12,6 +12,7 @@ namespace Persentation_Layer
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
             Application.Run(new Main());
+            // test 
         }
     }
 }
