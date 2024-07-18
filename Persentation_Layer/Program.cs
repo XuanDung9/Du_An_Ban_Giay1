@@ -13,7 +13,8 @@ namespace Persentation_Layer
             ApplicationConfiguration.Initialize();
             Application.Run(new Main());
             // test 
-            //okoko
+            //ok
+            //1
         }
     }
 }
