@@ -1,3 +1,6 @@
+using A_Persentation_Layer;
+using A_Persentation_Layer.Frm.Frm_Dialog;
+
 namespace Persentation_Layer
 {
     internal static class Program
@@ -11,7 +14,7 @@ namespace Persentation_Layer
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new Main());
+            Application.Run(new DangNhap_form());
             // test 
             //ok
             //1
