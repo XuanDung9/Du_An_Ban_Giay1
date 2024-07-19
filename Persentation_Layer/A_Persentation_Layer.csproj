@@ -9,8 +9,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <Folder Include="Form\Form_Dialog\" />
-    <Folder Include="Form\Form_US\" />
+    <Folder Include="Frm\Frm_US\" />
     <Folder Include="Resources\" />
   </ItemGroup>
 
@@ -26,6 +25,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Bussiness_Layer\B_Bussiness_Layer.csproj" />
   </ItemGroup>
 
 </Project>

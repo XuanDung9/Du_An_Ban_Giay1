@@ -9,11 +9,13 @@ public partial class DBContext : DbContext
 {
     public DBContext()
     {
+        // test 
     }
 
     public DBContext(DbContextOptions<DBContext> options)
         : base(options)
     {
+        //tap tanh
     }
 
     public virtual DbSet<Chatlieu> Chatlieus { get; set; }
