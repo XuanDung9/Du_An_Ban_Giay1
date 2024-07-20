@@ -28,6 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(DangNhap_form));
             pictureBox1 = new PictureBox();
             label1 = new Label();
             label3 = new Label();
@@ -40,11 +41,17 @@
             // 
             // pictureBox1
             // 
-            pictureBox1.Location = new Point(5, 4);
+            pictureBox1.BackgroundImage = (Image)resources.GetObject("pictureBox1.BackgroundImage");
+            pictureBox1.ErrorImage = Properties.Resources.Giay_Banner;
+            pictureBox1.Image = (Image)resources.GetObject("pictureBox1.Image");
+            pictureBox1.InitialImage = (Image)resources.GetObject("pictureBox1.InitialImage");
+            pictureBox1.Location = new Point(21, 12);
             pictureBox1.Name = "pictureBox1";
-            pictureBox1.Size = new Size(333, 447);
+            pictureBox1.Size = new Size(295, 417);
+            pictureBox1.SizeMode = PictureBoxSizeMode.StretchImage;
             pictureBox1.TabIndex = 0;
             pictureBox1.TabStop = false;
+            pictureBox1.Click += pictureBox1_Click;
             // 
             // label1
             // 
@@ -82,6 +89,7 @@
             txt_taiKhoan.Name = "txt_taiKhoan";
             txt_taiKhoan.Size = new Size(356, 27);
             txt_taiKhoan.TabIndex = 5;
+            txt_taiKhoan.TextChanged += txt_taiKhoan_TextChanged;
             // 
             // txt_matKhau
             // 
@@ -105,6 +113,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(800, 450);
             Controls.Add(btn_dangNhap);
             Controls.Add(txt_matKhau);
@@ -114,6 +123,7 @@
             Controls.Add(label1);
             Controls.Add(pictureBox1);
             Name = "DangNhap_form";
+            StartPosition = FormStartPosition.CenterScreen;
             Text = "DangNhap";
             ((System.ComponentModel.ISupportInitialize)pictureBox1).EndInit();
             ResumeLayout(false);

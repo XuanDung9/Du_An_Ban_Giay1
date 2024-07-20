@@ -73,5 +73,15 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 DangNhap();
             }
         }
+
+        private void txt_taiKhoan_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
