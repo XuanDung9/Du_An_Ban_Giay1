@@ -46,9 +46,8 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             if (XacThucUser(txt_taiKhoan.Text, txt_matKhau.Text, _lstTaiKhoan))
             {
                 MessageBox.Show($"Đăng nhập thành công! \n Xin chào '{HoTen}'");
-                Main main = new Main();
-                main.Show();
-                this.Hide();
+                this.DialogResult = DialogResult.OK;
+
             }
             else
             {

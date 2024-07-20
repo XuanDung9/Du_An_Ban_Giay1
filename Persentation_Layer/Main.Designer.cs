@@ -198,18 +198,19 @@
             // 
             pn_main.Location = new Point(278, 12);
             pn_main.Name = "pn_main";
-            pn_main.Size = new Size(1097, 817);
+            pn_main.Size = new Size(1323, 949);
             pn_main.TabIndex = 2;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1376, 827);
+            ClientSize = new Size(1613, 973);
             Controls.Add(pn_main);
             Controls.Add(pn_menu);
             Name = "Main";
             Text = "Main";
+            Load += Main_Load_1;
             pn_menu.ResumeLayout(false);
             panel3.ResumeLayout(false);
             panel3.PerformLayout();

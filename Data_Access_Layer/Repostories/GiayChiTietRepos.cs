@@ -32,7 +32,7 @@ namespace C_Data_Access_Layer.Repostories
             }
             if (string.Equals(searchType, SearchType.maChatLieu))
             {
-                return _db.Giaychitiets.Where(c => c.Machatlieu.ToString().Contains(txtSearch)).ToList();
+                return _db.Giaychitiets.Where(c => c.Machatlieu.ToString().Contains(txtSearch)).ToList();   
             }
             if (string.Equals(searchType, SearchType.maMauSac))
             {
