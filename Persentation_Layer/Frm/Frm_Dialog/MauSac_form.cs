@@ -1,7 +1,5 @@
-﻿using B_Bussiness_Layer.Services;
+﻿using C_Data_Access_Layer.Models.ModelRefer;
 using C_Data_Access_Layer.Models;
-using C_Data_Access_Layer.Models.ModelRefer;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -11,20 +9,25 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using B_Bussiness_Layer.Services;
 
 namespace A_Persentation_Layer.Frm.Frm_Dialog
 {
-    public partial class ChatLieu_form : Form
+    public partial class MauSac_form : Form
     {
-        ChatLieuService _service;
-        List<Chatlieu> _lstChatLieu;
+        MauSacService _service = new MauSacService();
+        List<Mausac> lst_MauSac = new List<Mausac>();
         int idClicked;
         int maTaiKhoan;
-        public ChatLieu_form()
+        public MauSac_form()
         {
-            _service = new ChatLieuService();
-            _lstChatLieu = new List<Chatlieu>();
             InitializeComponent();
+        }
+        public void ClearTextBox()
+        {
+            txtMoTa.Text = "";
+            txtTen.Text = "";
+            txtTimKiem.Text = "";
         }
         public bool CheckData()
         {
@@ -34,7 +37,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             }
             return true;
         }
-        private void ChatLieu_form_Load(object sender, EventArgs e)
+        private void MauSac_form_Load(object sender, EventArgs e)
         {
             LoadData(null, null);
             SerchType_CBB();
@@ -43,10 +46,10 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
             cbbTimKiem.Items.Clear();
             cbbTimKiem.Items.Add(SearchType.All);
-            cbbTimKiem.Items.Add(SearchType.tenChatLieu);
-            cbbTimKiem.Items.Add(SearchType.moTaChatLieu);
-            cbbTimKiem.Items.Add(SearchType.trangThaiChatLieu);
-            cbbTimKiem.Items.Add(SearchType.idNguoiThemChatLieu);
+            cbbTimKiem.Items.Add(SearchType.tenMauSac);
+            cbbTimKiem.Items.Add(SearchType.moTaMauSac);
+            cbbTimKiem.Items.Add(SearchType.trangThaiMauSac);
+            cbbTimKiem.Items.Add(SearchType.idNguoiThemMauSac);
             cbbTimKiem.SelectedIndex = 0; // mặc định thằng ko được chọn là all
         }
         private void LoadData(string? txtTimKiem, string? SearchType)
@@ -58,20 +61,18 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             dgv_Objects.Columns[2].Name = "Mô tả";
             dgv_Objects.Columns[3].Name = "id người tạo";
             dgv_Objects.Columns[4].Name = "Trạng thái";
-            _lstChatLieu = _service.GetAll(txtTimKiem, SearchType);
-            foreach (var item in _lstChatLieu)
+            lst_MauSac = _service.GetAll(txtTimKiem, SearchType);
+            foreach (var item in lst_MauSac)
             {
-                int stt = _lstChatLieu.IndexOf(item) + 1;
+                int stt = lst_MauSac.IndexOf(item) + 1;
 
-                dgv_Objects.Rows.Add(stt, item.Tenchatlieu, item.Mota, item.Mataikhoan, (item.Trangthai == true ? "Còn kinh doanh" : "Ngưng kinh doanh"));
+                dgv_Objects.Rows.Add(stt, item.Tenmausac, item.Mota, item.Mataikhoan, (item.Trangthai == true ? "Còn kinh doanh" : "Ngưng kinh doanh"));
             }
         }
-
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             LoadData(txtTimKiem.Text, cbbTimKiem.Text);
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             bool result;
@@ -82,7 +83,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 if (confirmResult == DialogResult.OK)
                 {
                     // check đã có trong csdl chưa 
-                    var existingObj = _service.GetAll(null, null).FirstOrDefault(p => p.Tenchatlieu == txtTen.Text && p.Mota == txtMoTa.Text);
+                    var existingObj = _service.GetAll(null, null).FirstOrDefault(p => p.Tenmausac == txtTen.Text && p.Mota == txtMoTa.Text);
                     if (existingObj != null)
                     {
                         MessageBox.Show("Chất liệu đã tồn tại");
@@ -90,9 +91,9 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                     }
                     else
                     {
-                        result = _service.Them(new Chatlieu()
+                        result = _service.Them(new Mausac()
                         {
-                            Tenchatlieu = txtTen.Text,
+                            Tenmausac = txtTen.Text,
                             Mota = txtMoTa.Text,
                             Mataikhoan = XacThucDangNhap.Instance.IdTaiKhoan,
                             Trangthai = true
@@ -128,9 +129,9 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 var confirmResult = MessageBox.Show("Xác nhận 'SỬA' chất liệu", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
-                    var result = _service.Sua(idClicked, new Chatlieu()
+                    var result = _service.Sua(idClicked, new Mausac()
                     {
-                        Tenchatlieu = txtTen.Text,
+                        Tenmausac = txtTen.Text,
                         Mota = txtMoTa.Text,
                     });
                     if (result)
@@ -202,47 +203,44 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 ClearTextBox();
             }
         }
+
         private void dgv_Objects_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
 
             // Kiểm tra xem chỉ số hàng có hợp lệ không
-            if (index < 0 || index >= _lstChatLieu.Count)
+            if (index < 0 || index >= lst_MauSac.Count)
             {
                 ClearTextBox();
                 return;
             }
 
             // Lấy đối tượng Chatlieu tương ứng với hàng đã click
-            var objCellClick = _lstChatLieu[index];
+            var objCellClick = lst_MauSac[index];
 
             // Cập nhật dữ liệu lên các trường văn bản
-            idClicked = objCellClick.Machatlieu;
-            txtTen.Text = objCellClick.Tenchatlieu;
+            idClicked = objCellClick.Mamausac;
+            txtTen.Text = objCellClick.Tenmausac;
             txtMoTa.Text = objCellClick.Mota;
-        }
-        public void ClearTextBox()
-        {
-            txtMoTa.Text = "";
-            txtTen.Text = "";
-            txtTimKiem.Text = "";
         }
 
         private void dgv_Objects_CellClick_1(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
 
-            if (index < 0 || index >= _lstChatLieu.Count)
+            // Kiểm tra xem chỉ số hàng có hợp lệ không
+            if (index < 0 || index >= lst_MauSac.Count)
             {
                 ClearTextBox();
                 return;
             }
 
-            var objCellClick = _lstChatLieu[index];
+            // Lấy đối tượng Chatlieu tương ứng với hàng đã click
+            var objCellClick = lst_MauSac[index];
 
-            idClicked = objCellClick.Machatlieu;
-
-            txtTen.Text = objCellClick.Tenchatlieu;
+            // Cập nhật dữ liệu lên các trường văn bản
+            idClicked = objCellClick.Mamausac;
+            txtTen.Text = objCellClick.Tenmausac;
             txtMoTa.Text = objCellClick.Mota;
         }
     }

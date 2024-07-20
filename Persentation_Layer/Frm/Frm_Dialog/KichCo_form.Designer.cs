@@ -1,6 +1,6 @@
 ﻿namespace A_Persentation_Layer.Frm.Frm_Dialog
 {
-    partial class ChatLieu_form
+    partial class KichCo_form
     {
         /// <summary>
         /// Required designer variable.
@@ -31,14 +31,14 @@
             txtTimKiem = new TextBox();
             cbbTimKiem = new ComboBox();
             btnTimKiem = new Button();
+            txtTen = new TextBox();
+            txtMoTa = new TextBox();
             label1 = new Label();
+            label2 = new Label();
             groupBox1 = new GroupBox();
             btnKhoa_MoKhoa = new Button();
             btnSua = new Button();
             btnThem = new Button();
-            txtTen = new TextBox();
-            label2 = new Label();
-            txtMoTa = new TextBox();
             dgv_Objects = new DataGridView();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_Objects).BeginInit();
@@ -50,45 +50,68 @@
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.PlaceholderText = "Tìm kiếm ...";
             txtTimKiem.Size = new Size(220, 27);
-            txtTimKiem.TabIndex = 0;
+            txtTimKiem.TabIndex = 1;
             // 
             // cbbTimKiem
             // 
             cbbTimKiem.FormattingEnabled = true;
-            cbbTimKiem.Location = new Point(278, 12);
+            cbbTimKiem.Location = new Point(281, 12);
             cbbTimKiem.Name = "cbbTimKiem";
             cbbTimKiem.Size = new Size(137, 28);
-            cbbTimKiem.TabIndex = 1;
+            cbbTimKiem.TabIndex = 2;
             // 
             // btnTimKiem
             // 
             btnTimKiem.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTimKiem.Location = new Point(478, 11);
+            btnTimKiem.Location = new Point(481, 12);
             btnTimKiem.Name = "btnTimKiem";
             btnTimKiem.Size = new Size(131, 36);
-            btnTimKiem.TabIndex = 2;
+            btnTimKiem.TabIndex = 3;
             btnTimKiem.Text = "Search";
             btnTimKiem.UseVisualStyleBackColor = true;
-            btnTimKiem.Click += btnTimKiem_Click;
+            // 
+            // txtTen
+            // 
+            txtTen.Location = new Point(95, 71);
+            txtTen.Name = "txtTen";
+            txtTen.Size = new Size(269, 27);
+            txtTen.TabIndex = 6;
+            // 
+            // txtMoTa
+            // 
+            txtMoTa.Location = new Point(95, 133);
+            txtMoTa.Multiline = true;
+            txtMoTa.Name = "txtMoTa";
+            txtMoTa.Size = new Size(269, 167);
+            txtMoTa.TabIndex = 9;
             // 
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(12, 82);
+            label1.Location = new Point(12, 78);
             label1.Name = "label1";
             label1.Size = new Size(39, 20);
-            label1.TabIndex = 3;
+            label1.TabIndex = 10;
             label1.Text = "Tên :";
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(12, 123);
+            label2.Name = "label2";
+            label2.Size = new Size(55, 20);
+            label2.TabIndex = 11;
+            label2.Text = "Mô tả :";
             // 
             // groupBox1
             // 
             groupBox1.Controls.Add(btnKhoa_MoKhoa);
             groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnThem);
-            groupBox1.Location = new Point(440, 75);
+            groupBox1.Location = new Point(435, 71);
             groupBox1.Name = "groupBox1";
             groupBox1.Size = new Size(193, 217);
-            groupBox1.TabIndex = 4;
+            groupBox1.TabIndex = 12;
             groupBox1.TabStop = false;
             groupBox1.Text = "Chức năng ";
             // 
@@ -125,58 +148,34 @@
             btnThem.UseVisualStyleBackColor = true;
             btnThem.Click += btnThem_Click;
             // 
-            // txtTen
-            // 
-            txtTen.Location = new Point(68, 75);
-            txtTen.Name = "txtTen";
-            txtTen.Size = new Size(269, 27);
-            txtTen.TabIndex = 5;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(12, 128);
-            label2.Name = "label2";
-            label2.Size = new Size(55, 20);
-            label2.TabIndex = 6;
-            label2.Text = "Mô tả :";
-            // 
-            // txtMoTa
-            // 
-            txtMoTa.Location = new Point(68, 125);
-            txtMoTa.Multiline = true;
-            txtMoTa.Name = "txtMoTa";
-            txtMoTa.Size = new Size(269, 167);
-            txtMoTa.TabIndex = 8;
-            // 
             // dgv_Objects
             // 
             dgv_Objects.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_Objects.Location = new Point(12, 324);
+            dgv_Objects.Location = new Point(0, 342);
             dgv_Objects.Name = "dgv_Objects";
             dgv_Objects.RowHeadersWidth = 51;
             dgv_Objects.RowTemplate.Height = 29;
             dgv_Objects.Size = new Size(628, 188);
-            dgv_Objects.TabIndex = 9;
-            dgv_Objects.CellClick += dgv_Objects_CellClick_1;
+            dgv_Objects.TabIndex = 13;
+            dgv_Objects.CellClick += dgv_Objects_CellClick;
             // 
-            // ChatLieu_form
+            // KichCo_form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             ClientSize = new Size(640, 524);
             Controls.Add(dgv_Objects);
-            Controls.Add(txtMoTa);
-            Controls.Add(label2);
-            Controls.Add(txtTen);
             Controls.Add(groupBox1);
+            Controls.Add(label2);
             Controls.Add(label1);
+            Controls.Add(txtMoTa);
+            Controls.Add(txtTen);
             Controls.Add(btnTimKiem);
             Controls.Add(cbbTimKiem);
             Controls.Add(txtTimKiem);
-            Name = "ChatLieu_form";
-            Text = "ChatLieu_form";
-            Load += ChatLieu_form_Load;
+            Name = "KichCo_form";
+            Text = "KichCo_form";
+            Load += KichCo_form_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgv_Objects).EndInit();
             ResumeLayout(false);
@@ -188,14 +187,14 @@
         private TextBox txtTimKiem;
         private ComboBox cbbTimKiem;
         private Button btnTimKiem;
-        private Label label1;
-        private GroupBox groupBox1;
         private TextBox txtTen;
+        private TextBox txtMoTa;
+        private Label label1;
         private Label label2;
+        private GroupBox groupBox1;
         private Button btnKhoa_MoKhoa;
         private Button btnSua;
         private Button btnThem;
-        private TextBox txtMoTa;
         private DataGridView dgv_Objects;
     }
 }

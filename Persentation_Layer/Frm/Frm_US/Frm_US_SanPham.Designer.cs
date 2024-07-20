@@ -29,11 +29,11 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            dgvSP = new DataGridView();
             panel2 = new Panel();
             btnTimKiem = new Button();
             cbbTimKiem = new ComboBox();
             txtTimKiem = new TextBox();
+            dgvSP = new DataGridView();
             groupBox2 = new GroupBox();
             btnLamMoi = new Button();
             btnKhoa_MoKhoa = new Button();
@@ -66,8 +66,8 @@
             txtSoLuong = new TextBox();
             txtGia = new TextBox();
             groupBox1.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSP).BeginInit();
             panel2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSP).BeginInit();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbKichCo).BeginInit();
@@ -88,20 +88,6 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Sản phẩm";
-            // 
-            // dgvSP
-            // 
-            dgvSP.AllowUserToDeleteRows = false;
-            dgvSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            dgvSP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSP.Dock = DockStyle.Fill;
-            dgvSP.Location = new Point(3, 23);
-            dgvSP.Margin = new Padding(4);
-            dgvSP.Name = "dgvSP";
-            dgvSP.RowHeadersWidth = 51;
-            dgvSP.RowTemplate.Height = 25;
-            dgvSP.Size = new Size(918, 903);
-            dgvSP.TabIndex = 3;
             // 
             // panel2
             // 
@@ -151,6 +137,20 @@
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.Size = new Size(433, 31);
             txtTimKiem.TabIndex = 7;
+            // 
+            // dgvSP
+            // 
+            dgvSP.AllowUserToDeleteRows = false;
+            dgvSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvSP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSP.Dock = DockStyle.Fill;
+            dgvSP.Location = new Point(3, 23);
+            dgvSP.Margin = new Padding(4);
+            dgvSP.Name = "dgvSP";
+            dgvSP.RowHeadersWidth = 51;
+            dgvSP.RowTemplate.Height = 25;
+            dgvSP.Size = new Size(918, 903);
+            dgvSP.TabIndex = 3;
             // 
             // groupBox2
             // 
@@ -281,6 +281,7 @@
             ptbKichCo.SizeMode = PictureBoxSizeMode.Zoom;
             ptbKichCo.TabIndex = 73;
             ptbKichCo.TabStop = false;
+            ptbKichCo.Click += ptbKichCo_Click;
             // 
             // ptbMauSac
             // 
@@ -292,6 +293,7 @@
             ptbMauSac.SizeMode = PictureBoxSizeMode.Zoom;
             ptbMauSac.TabIndex = 72;
             ptbMauSac.TabStop = false;
+            ptbMauSac.Click += ptbMauSac_Click;
             // 
             // ptbChatLieu
             // 
@@ -315,6 +317,7 @@
             ptbThemThuongHieu.SizeMode = PictureBoxSizeMode.Zoom;
             ptbThemThuongHieu.TabIndex = 70;
             ptbThemThuongHieu.TabStop = false;
+            ptbThemThuongHieu.Click += ptbThemThuongHieu_Click;
             // 
             // ptbKieuDang
             // 
@@ -326,6 +329,7 @@
             ptbKieuDang.SizeMode = PictureBoxSizeMode.Zoom;
             ptbKieuDang.TabIndex = 69;
             ptbKieuDang.TabStop = false;
+            ptbKieuDang.Click += ptbKieuDang_Click;
             // 
             // ptbGiay
             // 
@@ -538,9 +542,9 @@
             Name = "Frm_US_SanPham";
             Size = new Size(1258, 832);
             groupBox1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvSP).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvSP).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();

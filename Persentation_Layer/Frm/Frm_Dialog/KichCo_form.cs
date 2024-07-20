@@ -1,7 +1,6 @@
 ﻿using B_Bussiness_Layer.Services;
 using C_Data_Access_Layer.Models;
 using C_Data_Access_Layer.Models.ModelRefer;
-using Microsoft.EntityFrameworkCore.ChangeTracking.Internal;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -14,17 +13,23 @@ using System.Windows.Forms;
 
 namespace A_Persentation_Layer.Frm.Frm_Dialog
 {
-    public partial class ChatLieu_form : Form
+    public partial class KichCo_form : Form
     {
-        ChatLieuService _service;
-        List<Chatlieu> _lstChatLieu;
+        KichCoService _service;
+        List<Kichco> _lstKichCo;
         int idClicked;
         int maTaiKhoan;
-        public ChatLieu_form()
+        public KichCo_form()
         {
-            _service = new ChatLieuService();
-            _lstChatLieu = new List<Chatlieu>();
+            _service = new KichCoService();
+            _lstKichCo = new List<Kichco>();
             InitializeComponent();
+        }
+        public void ClearTextBox()
+        {
+            txtMoTa.Text = "";
+            txtTen.Text = "";
+            txtTimKiem.Text = "";
         }
         public bool CheckData()
         {
@@ -34,7 +39,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             }
             return true;
         }
-        private void ChatLieu_form_Load(object sender, EventArgs e)
+        private void KichCo_form_Load(object sender, EventArgs e)
         {
             LoadData(null, null);
             SerchType_CBB();
@@ -43,10 +48,10 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
             cbbTimKiem.Items.Clear();
             cbbTimKiem.Items.Add(SearchType.All);
-            cbbTimKiem.Items.Add(SearchType.tenChatLieu);
-            cbbTimKiem.Items.Add(SearchType.moTaChatLieu);
-            cbbTimKiem.Items.Add(SearchType.trangThaiChatLieu);
-            cbbTimKiem.Items.Add(SearchType.idNguoiThemChatLieu);
+            cbbTimKiem.Items.Add(SearchType.tenKichCo);
+            cbbTimKiem.Items.Add(SearchType.moTaKichCo);
+            cbbTimKiem.Items.Add(SearchType.trangThaiKichCo);
+            cbbTimKiem.Items.Add(SearchType.idNguoiThemKichCo);
             cbbTimKiem.SelectedIndex = 0; // mặc định thằng ko được chọn là all
         }
         private void LoadData(string? txtTimKiem, string? SearchType)
@@ -58,15 +63,14 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             dgv_Objects.Columns[2].Name = "Mô tả";
             dgv_Objects.Columns[3].Name = "id người tạo";
             dgv_Objects.Columns[4].Name = "Trạng thái";
-            _lstChatLieu = _service.GetAll(txtTimKiem, SearchType);
-            foreach (var item in _lstChatLieu)
+            _lstKichCo = _service.GetAll(txtTimKiem, SearchType);
+            foreach (var item in _lstKichCo)
             {
-                int stt = _lstChatLieu.IndexOf(item) + 1;
+                int stt = _lstKichCo.IndexOf(item) + 1;
 
-                dgv_Objects.Rows.Add(stt, item.Tenchatlieu, item.Mota, item.Mataikhoan, (item.Trangthai == true ? "Còn kinh doanh" : "Ngưng kinh doanh"));
+                dgv_Objects.Rows.Add(stt, item.Tenkichco, item.Mota, item.Mataikhoan, (item.Trangthai == true ? "Còn kinh doanh" : "Ngưng kinh doanh"));
             }
         }
-
         private void btnTimKiem_Click(object sender, EventArgs e)
         {
             LoadData(txtTimKiem.Text, cbbTimKiem.Text);
@@ -82,7 +86,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 if (confirmResult == DialogResult.OK)
                 {
                     // check đã có trong csdl chưa 
-                    var existingObj = _service.GetAll(null, null).FirstOrDefault(p => p.Tenchatlieu == txtTen.Text && p.Mota == txtMoTa.Text);
+                    var existingObj = _service.GetAll(null, null).FirstOrDefault(p => p.Tenkichco == txtTen.Text && p.Mota == txtMoTa.Text);
                     if (existingObj != null)
                     {
                         MessageBox.Show("Chất liệu đã tồn tại");
@@ -90,9 +94,9 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                     }
                     else
                     {
-                        result = _service.Them(new Chatlieu()
+                        result = _service.Them(new Kichco()
                         {
-                            Tenchatlieu = txtTen.Text,
+                            Tenkichco = txtTen.Text,
                             Mota = txtMoTa.Text,
                             Mataikhoan = XacThucDangNhap.Instance.IdTaiKhoan,
                             Trangthai = true
@@ -128,9 +132,9 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 var confirmResult = MessageBox.Show("Xác nhận 'SỬA' chất liệu", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
-                    var result = _service.Sua(idClicked, new Chatlieu()
+                    var result = _service.Sua(idClicked, new Kichco()
                     {
-                        Tenchatlieu = txtTen.Text,
+                        Tenkichco = txtTen.Text,
                         Mota = txtMoTa.Text,
                     });
                     if (result)
@@ -202,47 +206,24 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 ClearTextBox();
             }
         }
+
         private void dgv_Objects_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
 
             // Kiểm tra xem chỉ số hàng có hợp lệ không
-            if (index < 0 || index >= _lstChatLieu.Count)
+            if (index < 0 || index >= _lstKichCo.Count)
             {
                 ClearTextBox();
                 return;
             }
 
             // Lấy đối tượng Chatlieu tương ứng với hàng đã click
-            var objCellClick = _lstChatLieu[index];
+            var objCellClick = _lstKichCo[index];
 
             // Cập nhật dữ liệu lên các trường văn bản
-            idClicked = objCellClick.Machatlieu;
-            txtTen.Text = objCellClick.Tenchatlieu;
-            txtMoTa.Text = objCellClick.Mota;
-        }
-        public void ClearTextBox()
-        {
-            txtMoTa.Text = "";
-            txtTen.Text = "";
-            txtTimKiem.Text = "";
-        }
-
-        private void dgv_Objects_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = e.RowIndex;
-
-            if (index < 0 || index >= _lstChatLieu.Count)
-            {
-                ClearTextBox();
-                return;
-            }
-
-            var objCellClick = _lstChatLieu[index];
-
-            idClicked = objCellClick.Machatlieu;
-
-            txtTen.Text = objCellClick.Tenchatlieu;
+            idClicked = objCellClick.Makichco;
+            txtTen.Text = objCellClick.Tenkichco;
             txtMoTa.Text = objCellClick.Mota;
         }
     }

@@ -33,5 +33,29 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
 
         }
+
+        private void ptbKichCo_Click(object sender, EventArgs e)
+        {
+            KichCo_form frm_kichCo = new KichCo_form();
+            frm_kichCo.ShowDialog();
+        }
+
+        private void ptbThemThuongHieu_Click(object sender, EventArgs e)
+        {
+            ThuongHieu_form frm_thuongHieu = new ThuongHieu_form();
+            frm_thuongHieu.ShowDialog();
+        }
+
+        private void ptbKieuDang_Click(object sender, EventArgs e)
+        {
+            KieuDang_form kieuDang_Form = new KieuDang_form();
+            kieuDang_Form.ShowDialog();
+        }
+
+        private void ptbMauSac_Click(object sender, EventArgs e)
+        {
+            MauSac_form mauSac_frm = new MauSac_form();
+            mauSac_frm.ShowDialog();    
+        }
     }
 }

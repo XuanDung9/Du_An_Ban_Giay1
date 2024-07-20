@@ -30,8 +30,6 @@ namespace C_Data_Access_Layer.Models.ModelRefer
         public const string maThuongHieu = "Mã thương hiệu";
         public const string tenThuongHieu = "Tên thương hiệu";
         public const string moTaThuongHieu = "Mô tả thương hiệu";
-        public const string sdtThuongHieu = "Số điện thoại thương hiệu";
-        public const string emailThuongHieu = "Email thương hiệu";
         public const string trangThaiThuongHieu = "Trạng thái Thương hiệu";
         public const string idNguoiThemThuongHieu = "ID Người thêm thương hiệu";
 
