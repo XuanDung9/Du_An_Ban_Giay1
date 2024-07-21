@@ -69,6 +69,7 @@
             btnTimKiem.TabIndex = 3;
             btnTimKiem.Text = "Search";
             btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click_1;
             // 
             // txtTen
             // 

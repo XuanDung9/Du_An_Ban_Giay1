@@ -71,7 +71,7 @@
             pn_menu.Controls.Add(btn_banHang);
             pn_menu.Controls.Add(panel3);
             pn_menu.Controls.Add(pictureBox1);
-            pn_menu.Location = new Point(0, 1);
+            pn_menu.Location = new Point(26, 12);
             pn_menu.Name = "pn_menu";
             pn_menu.Size = new Size(246, 828);
             pn_menu.TabIndex = 1;
@@ -198,14 +198,14 @@
             // 
             pn_main.Location = new Point(278, 12);
             pn_main.Name = "pn_main";
-            pn_main.Size = new Size(1323, 949);
+            pn_main.Size = new Size(1323, 828);
             pn_main.TabIndex = 2;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1613, 973);
+            ClientSize = new Size(1613, 867);
             Controls.Add(pn_main);
             Controls.Add(pn_menu);
             Name = "Main";

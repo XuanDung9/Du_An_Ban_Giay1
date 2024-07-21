@@ -71,11 +71,33 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 dgv_Objects.Rows.Add(stt, item.Tenkieudang, item.Mota, item.Mataikhoan, (item.Trangthai == true ? "Còn kinh doanh" : "Ngưng kinh doanh"));
             }
         }
-        private void btnTimKiem_Click_1(object sender, EventArgs e)
+
+        private void dgv_Objects_CellClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+
+            // Kiểm tra xem chỉ số hàng có hợp lệ không
+            if (index < 0 || index >= _lstKieuDang.Count)
+            {
+                ClearTextBox();
+                return;
+            }
+
+            // Lấy đối tượng Chatlieu tương ứng với hàng đã click
+            var objCellClick = _lstKieuDang[index];
+
+            // Cập nhật dữ liệu lên các trường văn bản
+            idClicked = objCellClick.Makieudang;
+            txtTen.Text = objCellClick.Tenkieudang;
+            txtMoTa.Text = objCellClick.Mota;
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
         {
             LoadData(txtTimKiem.Text, cbbTimKiem.Text);
         }
-        private void btnThem_Click(object sender, EventArgs e)
+
+        private void btnThem_Click_1(object sender, EventArgs e)
         {
             bool result;
             // check dữ liệu đầu vào 
@@ -124,7 +146,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             ClearTextBox();
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        private void btnSua_Click_1(object sender, EventArgs e)
         {
             if (CheckData())
             {
@@ -158,7 +180,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             ClearTextBox();
         }
 
-        private void btnKhoa_MoKhoa_Click(object sender, EventArgs e)
+        private void btnKhoa_MoKhoa_Click_1(object sender, EventArgs e)
         {
             if (_service.GetByID(idClicked).Trangthai == true)
             {
@@ -204,46 +226,6 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 }
                 ClearTextBox();
             }
-        }
-
-        private void dgv_Objects_CellClick(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = e.RowIndex;
-
-            // Kiểm tra xem chỉ số hàng có hợp lệ không
-            if (index < 0 || index >= _lstKieuDang.Count)
-            {
-                ClearTextBox();
-                return;
-            }
-
-            // Lấy đối tượng Chatlieu tương ứng với hàng đã click
-            var objCellClick = _lstKieuDang[index];
-
-            // Cập nhật dữ liệu lên các trường văn bản
-            idClicked = objCellClick.Makieudang;
-            txtTen.Text = objCellClick.Tenkieudang;
-            txtMoTa.Text = objCellClick.Mota;
-        }
-
-        private void dgv_Objects_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = e.RowIndex;
-
-            // Kiểm tra xem chỉ số hàng có hợp lệ không
-            if (index < 0 || index >= _lstKieuDang.Count)
-            {
-                ClearTextBox();
-                return;
-            }
-
-            // Lấy đối tượng Chatlieu tương ứng với hàng đã click
-            var objCellClick = _lstKieuDang[index];
-
-            // Cập nhật dữ liệu lên các trường văn bản
-            idClicked = objCellClick.Makieudang;
-            txtTen.Text = objCellClick.Tenkieudang;
-            txtMoTa.Text = objCellClick.Mota;
         }
     }
 }

@@ -28,12 +28,13 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Frm_US_SanPham));
             groupBox1 = new GroupBox();
+            dgvSP = new DataGridView();
             panel2 = new Panel();
             btnTimKiem = new Button();
             cbbTimKiem = new ComboBox();
             txtTimKiem = new TextBox();
-            dgvSP = new DataGridView();
             groupBox2 = new GroupBox();
             btnLamMoi = new Button();
             btnKhoa_MoKhoa = new Button();
@@ -66,8 +67,8 @@
             txtSoLuong = new TextBox();
             txtGia = new TextBox();
             groupBox1.SuspendLayout();
-            panel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvSP).BeginInit();
+            panel2.SuspendLayout();
             groupBox2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)ptbKichCo).BeginInit();
@@ -80,14 +81,25 @@
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(panel2);
             groupBox1.Controls.Add(dgvSP);
+            groupBox1.Controls.Add(panel2);
             groupBox1.Location = new Point(3, 3);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(924, 929);
+            groupBox1.Size = new Size(924, 902);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Sản phẩm";
+            // 
+            // dgvSP
+            // 
+            dgvSP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvSP.Location = new Point(6, 103);
+            dgvSP.Name = "dgvSP";
+            dgvSP.RowHeadersWidth = 51;
+            dgvSP.RowTemplate.Height = 29;
+            dgvSP.Size = new Size(912, 531);
+            dgvSP.TabIndex = 3;
+            dgvSP.CellClick += dgvSP_CellClick_1;
             // 
             // panel2
             // 
@@ -117,6 +129,7 @@
             btnTimKiem.TabIndex = 9;
             btnTimKiem.Text = "Tìm kiếm";
             btnTimKiem.UseVisualStyleBackColor = false;
+            btnTimKiem.Click += btnTimKiem_Click_1;
             // 
             // cbbTimKiem
             // 
@@ -137,20 +150,6 @@
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.Size = new Size(433, 31);
             txtTimKiem.TabIndex = 7;
-            // 
-            // dgvSP
-            // 
-            dgvSP.AllowUserToDeleteRows = false;
-            dgvSP.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            dgvSP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSP.Dock = DockStyle.Fill;
-            dgvSP.Location = new Point(3, 23);
-            dgvSP.Margin = new Padding(4);
-            dgvSP.Name = "dgvSP";
-            dgvSP.RowHeadersWidth = 51;
-            dgvSP.RowTemplate.Height = 25;
-            dgvSP.Size = new Size(918, 903);
-            dgvSP.TabIndex = 3;
             // 
             // groupBox2
             // 
@@ -200,6 +199,7 @@
             btnKhoa_MoKhoa.TabIndex = 11;
             btnKhoa_MoKhoa.Text = "Khóa/Mở khóa";
             btnKhoa_MoKhoa.UseVisualStyleBackColor = false;
+            btnKhoa_MoKhoa.Click += btnKhoa_MoKhoa_Click;
             // 
             // btnSua
             // 
@@ -218,6 +218,7 @@
             btnSua.TabIndex = 12;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = false;
+            btnSua.Click += btnSua_Click_1;
             // 
             // btnThem
             // 
@@ -236,6 +237,7 @@
             btnThem.TabIndex = 13;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = false;
+            btnThem.Click += btnThem_Click_1;
             // 
             // groupBox3
             // 
@@ -274,6 +276,7 @@
             // ptbKichCo
             // 
             ptbKichCo.Cursor = Cursors.Hand;
+            ptbKichCo.Image = (Image)resources.GetObject("ptbKichCo.Image");
             ptbKichCo.Location = new Point(264, 581);
             ptbKichCo.Margin = new Padding(4);
             ptbKichCo.Name = "ptbKichCo";
@@ -286,6 +289,7 @@
             // ptbMauSac
             // 
             ptbMauSac.Cursor = Cursors.Hand;
+            ptbMauSac.Image = (Image)resources.GetObject("ptbMauSac.Image");
             ptbMauSac.Location = new Point(264, 520);
             ptbMauSac.Margin = new Padding(4);
             ptbMauSac.Name = "ptbMauSac";
@@ -298,6 +302,7 @@
             // ptbChatLieu
             // 
             ptbChatLieu.Cursor = Cursors.Hand;
+            ptbChatLieu.Image = (Image)resources.GetObject("ptbChatLieu.Image");
             ptbChatLieu.Location = new Point(264, 456);
             ptbChatLieu.Margin = new Padding(4);
             ptbChatLieu.Name = "ptbChatLieu";
@@ -310,6 +315,7 @@
             // ptbThemThuongHieu
             // 
             ptbThemThuongHieu.Cursor = Cursors.Hand;
+            ptbThemThuongHieu.Image = (Image)resources.GetObject("ptbThemThuongHieu.Image");
             ptbThemThuongHieu.Location = new Point(262, 327);
             ptbThemThuongHieu.Margin = new Padding(4);
             ptbThemThuongHieu.Name = "ptbThemThuongHieu";
@@ -322,6 +328,7 @@
             // ptbKieuDang
             // 
             ptbKieuDang.Cursor = Cursors.Hand;
+            ptbKieuDang.Image = (Image)resources.GetObject("ptbKieuDang.Image");
             ptbKieuDang.Location = new Point(264, 392);
             ptbKieuDang.Margin = new Padding(4);
             ptbKieuDang.Name = "ptbKieuDang";
@@ -334,6 +341,7 @@
             // ptbGiay
             // 
             ptbGiay.Cursor = Cursors.Hand;
+            ptbGiay.Image = (Image)resources.GetObject("ptbGiay.Image");
             ptbGiay.Location = new Point(264, 50);
             ptbGiay.Margin = new Padding(4);
             ptbGiay.Name = "ptbGiay";
@@ -540,11 +548,12 @@
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
             Name = "Frm_US_SanPham";
-            Size = new Size(1258, 832);
+            Size = new Size(1258, 817);
+            Load += Frm_US_SanPham_Load;
             groupBox1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvSP).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSP).EndInit();
             groupBox2.ResumeLayout(false);
             groupBox3.ResumeLayout(false);
             groupBox3.PerformLayout();
@@ -561,7 +570,6 @@
 
         private GroupBox groupBox1;
         private GroupBox groupBox2;
-        private DataGridView dgvSP;
         private Panel panel2;
         private Button btnTimKiem;
         private ComboBox cbbTimKiem;
@@ -596,5 +604,6 @@
         private TextBox txtMoTa;
         private TextBox txtSoLuong;
         private TextBox txtGia;
+        private DataGridView dgvSP;
     }
 }

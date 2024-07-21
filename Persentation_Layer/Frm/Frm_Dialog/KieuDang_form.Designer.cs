@@ -69,6 +69,7 @@
             btnTimKiem.TabIndex = 4;
             btnTimKiem.Text = "Search";
             btnTimKiem.UseVisualStyleBackColor = true;
+            btnTimKiem.Click += btnTimKiem_Click;
             // 
             // groupBox1
             // 
@@ -91,6 +92,7 @@
             btnKhoa_MoKhoa.TabIndex = 2;
             btnKhoa_MoKhoa.Text = "Khóa / Mở khóa";
             btnKhoa_MoKhoa.UseVisualStyleBackColor = true;
+            btnKhoa_MoKhoa.Click += btnKhoa_MoKhoa_Click_1;
             // 
             // btnSua
             // 
@@ -101,6 +103,7 @@
             btnSua.TabIndex = 1;
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = true;
+            btnSua.Click += btnSua_Click_1;
             // 
             // btnThem
             // 
@@ -111,6 +114,7 @@
             btnThem.TabIndex = 0;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = true;
+            btnThem.Click += btnThem_Click_1;
             // 
             // label2
             // 

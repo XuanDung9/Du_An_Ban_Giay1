@@ -71,10 +71,6 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 dgv_Objects.Rows.Add(stt, item.Tenkichco, item.Mota, item.Mataikhoan, (item.Trangthai == true ? "Còn kinh doanh" : "Ngưng kinh doanh"));
             }
         }
-        private void btnTimKiem_Click(object sender, EventArgs e)
-        {
-            LoadData(txtTimKiem.Text, cbbTimKiem.Text);
-        }
 
         private void btnThem_Click(object sender, EventArgs e)
         {
@@ -225,6 +221,11 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             idClicked = objCellClick.Makichco;
             txtTen.Text = objCellClick.Tenkichco;
             txtMoTa.Text = objCellClick.Mota;
+        }
+
+        private void btnTimKiem_Click_1(object sender, EventArgs e)
+        {
+            LoadData(txtTimKiem.Text, cbbTimKiem.Text);
         }
     }
 }
