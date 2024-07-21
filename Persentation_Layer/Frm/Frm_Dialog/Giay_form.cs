@@ -86,7 +86,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             bool result;
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'thêm' giày không?", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận 'THÊM' giày không?", "Xác nhận", MessageBoxButtons.OKCancel);
 
                 if (confirmResult == DialogResult.OK)
                 {
@@ -110,7 +110,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
 
                     if (result)
                     {
-                        MessageBox.Show("Đã 'thêm' thành công 1 giày mới");
+                        MessageBox.Show("Đã 'THÊM' thành công 1 giày mới");
 
                         LoadData(null, null);
                     }
@@ -121,7 +121,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 }
                 else
                 {
-                    MessageBox.Show("Đã hủy 'thêm' sản phẩm này");
+                    MessageBox.Show("Đã hủy 'THÊM' ");
                 }
                 ClearTextBox();
 
@@ -136,7 +136,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'sửa' giày này không?", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận 'SỬA' giày này không?", "Xác nhận", MessageBoxButtons.OKCancel);
 
                 if (confirmResult == DialogResult.OK)
                 {
@@ -147,18 +147,18 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
 
                     if (result)
                     {
-                        MessageBox.Show("Đã 'sửa' giày này thành công");
+                        MessageBox.Show(" 'SỬA' thành công");
 
                         LoadData(null, null);
                     }
                     else
                     {
-                        MessageBox.Show("'Sửa' thất bại");
+                        MessageBox.Show("'SỬA' thất bại");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Đã hủy 'sửa' giày này");
+                    MessageBox.Show("Đã hủy 'sửa'");
                 }
                 ClearTextBox();
 

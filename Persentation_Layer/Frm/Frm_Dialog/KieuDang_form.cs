@@ -103,14 +103,14 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             // check dữ liệu đầu vào 
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'THÊM' chất liệu ? ", "Đúng", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận 'THÊM' kiểu dáng ? ", "Đúng", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     // check đã có trong csdl chưa 
                     var existingObj = _service.GetAll(null, null).FirstOrDefault(p => p.Tenkieudang == txtTen.Text && p.Mota == txtMoTa.Text);
                     if (existingObj != null)
                     {
-                        MessageBox.Show("Chất liệu đã tồn tại");
+                        MessageBox.Show("Kiểu dáng đã tồn tại");
                         result = false;
                     }
                     else
@@ -126,12 +126,12 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                     if (result)
                     {
                         // thành công 
-                        MessageBox.Show("Thêm thành công ");
+                        MessageBox.Show("THÊM thành công ");
                         LoadData(null, null);
                     }
                     else
                     {
-                        MessageBox.Show("Thêm thất bại");
+                        MessageBox.Show("THÊM thất bại");
                     }
                 }
                 else
@@ -150,7 +150,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'SỬA' chất liệu", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận 'SỬA' kiểu dáng", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     var result = _service.Sua(idClicked, new Kieudang()
@@ -160,7 +160,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                     });
                     if (result)
                     {
-                        MessageBox.Show("SỬA chất liệu thành công");
+                        MessageBox.Show("SỬA thành công");
                         LoadData(null, null);
                     }
                     else
@@ -170,7 +170,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 }
                 else
                 {
-                    MessageBox.Show("HỦY sửa chất liệu");
+                    MessageBox.Show("HỦY SỬA ");
                 }
             }
             else
@@ -184,7 +184,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
             if (_service.GetByID(idClicked).Trangthai == true)
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'KHÓA' chất liệu", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận 'KHÓA' kiểu dáng", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     var result = _service.Khoa_MoKhoa(idClicked);
@@ -200,13 +200,13 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 }
                 else
                 {
-                    MessageBox.Show("Đã hủy KHÓA chất liệu ");
+                    MessageBox.Show("Đã hủy KHÓA  ");
                 }
                 ClearTextBox();
             }
             else
             {
-                var confirmResult = MessageBox.Show("Xác nhận ' MỞ KHÓA' chất liệu", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận ' MỞ KHÓA' kiểu dáng", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     var result = _service.Khoa_MoKhoa(idClicked);
@@ -222,7 +222,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 }
                 else
                 {
-                    MessageBox.Show("Đã hủy MỞ KHÓA chất liệu ");
+                    MessageBox.Show("Đã hủy MỞ KHÓA  ");
                 }
                 ClearTextBox();
             }

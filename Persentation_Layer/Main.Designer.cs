@@ -52,7 +52,7 @@
             // 
             txt_tenTaiKhoan.AutoSize = true;
             txt_tenTaiKhoan.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_tenTaiKhoan.Location = new Point(96, 10);
+            txt_tenTaiKhoan.Location = new Point(75, 10);
             txt_tenTaiKhoan.Name = "txt_tenTaiKhoan";
             txt_tenTaiKhoan.Size = new Size(23, 25);
             txt_tenTaiKhoan.TabIndex = 0;
@@ -177,10 +177,10 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
             label2.Location = new Point(3, 10);
             label2.Name = "label2";
-            label2.Size = new Size(96, 25);
+            label2.Size = new Size(76, 20);
             label2.TabIndex = 1;
             label2.Text = "Xin chào :";
             // 
@@ -198,14 +198,14 @@
             // 
             pn_main.Location = new Point(278, 12);
             pn_main.Name = "pn_main";
-            pn_main.Size = new Size(1323, 828);
+            pn_main.Size = new Size(1231, 828);
             pn_main.TabIndex = 2;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1613, 867);
+            ClientSize = new Size(1542, 867);
             Controls.Add(pn_main);
             Controls.Add(pn_menu);
             Name = "Main";

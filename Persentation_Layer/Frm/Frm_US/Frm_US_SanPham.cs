@@ -90,7 +90,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
             if (!double.TryParse(txtGia.Text, out double result))
             {
-                MessageBox.Show("Vui lòng nhập giá chỉ chứa số");
+                MessageBox.Show("Vui lòng nhập lại giá sản phẩm ");
                 checkedTexbox = false;
             }
             else if (txtMoTa.Text == "")
@@ -105,7 +105,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
             else if (!int.TryParse(txtSoLuong.Text, out int result1))
             {
-                MessageBox.Show("Vui lòng nhập số lượng chỉ chứa số"); checkedTexbox = false;
+                MessageBox.Show("Vui lòng nhập lại số lượng"); checkedTexbox = false;
 
             }
             else
@@ -230,7 +230,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     item.Gia,
                     item.Mota,
                     item.Soluongton,
-                    (item.Trangthai == true ? "Đang hoạt động" : "Ngừng hoạt động"));
+                    (item.Trangthai == true ? "Đang kinh doanh" : "Ngừng kinh doanh"));
             }
         }
 
@@ -271,7 +271,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
                 try
                 {
-                    var confirmResult = MessageBox.Show("Xác nhận 'thêm' giày không?", "Xác nhận", MessageBoxButtons.OKCancel);
+                    var confirmResult = MessageBox.Show("Xác nhận 'THÊM' giày không?", "Xác nhận", MessageBoxButtons.OKCancel);
 
                     if (confirmResult == DialogResult.OK)
                     {
@@ -303,10 +303,9 @@ namespace A_Persentation_Layer.Frm.Frm_US
                         }
                         else
                         {
-                            MessageBox.Show("Đã tồn tại sản phẩm có các thuộc tính này");
+                            MessageBox.Show("Đã tồn tại giày có các thuộc tính này");
                             result = false;
                         }
-
                         if (result)
                         {
                             MessageBox.Show("THÊM thành công");
@@ -338,7 +337,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             CheckTextbox();
             if (checkedTexbox)
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'sửa' giày này không?", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận 'SỬA' giày này không?", "Xác nhận", MessageBoxButtons.OKCancel);
 
                 if (confirmResult == DialogResult.OK)
                 {

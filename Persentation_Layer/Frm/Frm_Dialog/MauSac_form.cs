@@ -101,7 +101,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             // check dữ liệu đầu vào 
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'THÊM' chất liệu ? ", "Đúng", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận 'THÊM' màu sắc ? ", "Đúng", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     // check đã có trong csdl chưa 
