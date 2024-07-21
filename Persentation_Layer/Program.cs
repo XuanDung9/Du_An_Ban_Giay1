@@ -14,7 +14,7 @@ namespace Persentation_Layer
             // To customize application configuration such as set high DPI settings or default font,
             // see https://aka.ms/applicationconfiguration.
             ApplicationConfiguration.Initialize();
-            Application.Run(new DangNhap_form());
+            Application.Run(new Main());
             // test 
             //ok
             //1
