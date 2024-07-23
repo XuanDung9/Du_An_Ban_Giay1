@@ -431,5 +431,10 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
             LoadDataGridView(txtTimKiem.Text, cbbTimKiem.Text);
         }
+
+        private void dgvSP_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
