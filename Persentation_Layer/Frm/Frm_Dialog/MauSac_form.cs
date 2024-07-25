@@ -108,7 +108,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                     var existingObj = _service.GetAll(null, null).FirstOrDefault(p => p.Tenmausac == txtTen.Text && p.Mota == txtMoTa.Text);
                     if (existingObj != null)
                     {
-                        MessageBox.Show("Chất liệu đã tồn tại");
+                        MessageBox.Show("Màu sắc đã tồn tại");
                         result = false;
                     }
                     else
@@ -148,7 +148,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'SỬA' chất liệu", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận 'SỬA' màu sắc", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     var result = _service.Sua(idClicked, new Mausac()

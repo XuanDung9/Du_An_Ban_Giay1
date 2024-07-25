@@ -50,30 +50,6 @@ namespace C_Data_Access_Layer.Repostories
             {
                 return _db.Giaychitiets.Where(c => c.Makieudang.ToString().Contains(txtSearch)).ToList();
             }
-            if (string.Equals(searchType, SearchType.soLuongTrongKhoNhoHon))
-            {
-                return _db.Giaychitiets.Where(c => c.Soluongton <= int.Parse(txtSearch)).ToList();
-            }
-            if (string.Equals(searchType, SearchType.soLuongTrongKhoLonHon))
-            {
-                return _db.Giaychitiets.Where(c => c.Soluongton >= int.Parse(txtSearch)).ToList();
-            }
-            if (string.Equals(searchType, SearchType.ngayTao_GiayChiTiet))
-            {
-                return _db.Giaychitiets.Where(c => c.Ngaytao.ToString().Contains(txtSearch)).ToList();
-            }
-            if (string.Equals(searchType, SearchType.ngaySua_GiayChiTiet))
-            {
-                return _db.Giaychitiets.Where(c => c.Ngaysua.ToString().Contains(txtSearch)).ToList();
-            }
-            if (string.Equals(searchType, SearchType.giaLonHon_GiayChiTiet))
-            {
-                return _db.Giaychitiets.Where(c => c.Gia <= int.Parse(txtSearch)).ToList();
-            }
-            if (string.Equals(searchType, SearchType.giaNhoHon_GiayChiTiet))
-            {
-                return _db.Giaychitiets.Where(c => c.Gia >= int.Parse(txtSearch)).ToList();
-            }
             if (string.Equals(searchType, SearchType.moTaChatLieu))
             {
                 return _db.Giaychitiets.Where(c => c.Mota.Contains(txtSearch)).ToList();

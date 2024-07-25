@@ -83,9 +83,9 @@
             // 
             groupBox1.Controls.Add(dgvSP);
             groupBox1.Controls.Add(panel2);
-            groupBox1.Location = new Point(3, 3);
+            groupBox1.Location = new Point(3, 19);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(924, 902);
+            groupBox1.Size = new Size(924, 886);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Sản phẩm";
@@ -99,7 +99,8 @@
             dgvSP.RowTemplate.Height = 29;
             dgvSP.Size = new Size(912, 531);
             dgvSP.TabIndex = 3;
-            dgvSP.CellClick += dgvSP_CellClick_1;
+            dgvSP.CellClick += dgvSP_CellClick;
+            dgvSP.CellContentClick += dgvSP_CellContentClick_1;
             // 
             // panel2
             // 
@@ -150,6 +151,7 @@
             txtTimKiem.Name = "txtTimKiem";
             txtTimKiem.Size = new Size(433, 31);
             txtTimKiem.TabIndex = 7;
+            txtTimKiem.TextChanged += txtTimKiem_TextChanged;
             // 
             // groupBox2
             // 

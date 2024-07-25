@@ -52,7 +52,7 @@
             // 
             txt_tenTaiKhoan.AutoSize = true;
             txt_tenTaiKhoan.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_tenTaiKhoan.Location = new Point(75, 10);
+            txt_tenTaiKhoan.Location = new Point(85, 10);
             txt_tenTaiKhoan.Name = "txt_tenTaiKhoan";
             txt_tenTaiKhoan.Size = new Size(23, 25);
             txt_tenTaiKhoan.TabIndex = 0;
@@ -60,7 +60,7 @@
             // 
             // pn_menu
             // 
-            pn_menu.BackColor = SystemColors.GradientInactiveCaption;
+            pn_menu.BackColor = SystemColors.ActiveCaption;
             pn_menu.Controls.Add(btn_dangXuat);
             pn_menu.Controls.Add(btn_thongKe);
             pn_menu.Controls.Add(btn_khuyenMai);
@@ -78,7 +78,7 @@
             // 
             // btn_dangXuat
             // 
-            btn_dangXuat.BackColor = Color.PowderBlue;
+            btn_dangXuat.BackColor = Color.DarkGray;
             btn_dangXuat.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             btn_dangXuat.Location = new Point(3, 772);
             btn_dangXuat.Name = "btn_dangXuat";
@@ -198,14 +198,14 @@
             // 
             pn_main.Location = new Point(278, 12);
             pn_main.Name = "pn_main";
-            pn_main.Size = new Size(1231, 828);
+            pn_main.Size = new Size(1330, 828);
             pn_main.TabIndex = 2;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1542, 867);
+            ClientSize = new Size(1620, 867);
             Controls.Add(pn_main);
             Controls.Add(pn_menu);
             Name = "Main";

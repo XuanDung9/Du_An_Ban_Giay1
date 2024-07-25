@@ -69,11 +69,6 @@ namespace B_Bussiness_Layer.Services
             {
                 return false;
             }
-            else if (!Regex.IsMatch(Mausac.Tenmausac, @"^[a-zA-Z0-9]+$"))
-            {
-                throw new ArgumentException("Tên không được chứa ký tự đặc biệt.");
-            }
-
             return _Rep.Them(Mausac);
         }
     }

@@ -8,18 +8,13 @@ using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
-namespace A_Persentation_Layer.Frm.Frm_US
+namespace A_Persentation_Layer.Frm.Frm_Dialog
 {
-    public partial class Frm_US_KhachHang : UserControl
+    public partial class TimKiemKhachHHang : Form
     {
-        public Frm_US_KhachHang()
+        public TimKiemKhachHHang()
         {
             InitializeComponent();
-        }
-
-        private void dgvKH_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
     }
 }
