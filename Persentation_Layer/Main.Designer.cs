@@ -60,7 +60,7 @@
             // 
             // pn_menu
             // 
-            pn_menu.BackColor = SystemColors.GradientInactiveCaption;
+            pn_menu.BackColor = SystemColors.ActiveCaption;
             pn_menu.Controls.Add(btn_dangXuat);
             pn_menu.Controls.Add(btn_thongKe);
             pn_menu.Controls.Add(btn_khuyenMai);
@@ -78,7 +78,7 @@
             // 
             // btn_dangXuat
             // 
-            btn_dangXuat.BackColor = Color.PowderBlue;
+            btn_dangXuat.BackColor = Color.DarkGray;
             btn_dangXuat.Font = new Font("Segoe UI Semibold", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
             btn_dangXuat.Location = new Point(3, 772);
             btn_dangXuat.Name = "btn_dangXuat";
