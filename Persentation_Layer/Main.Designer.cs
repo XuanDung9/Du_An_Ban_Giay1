@@ -52,7 +52,7 @@
             // 
             txt_tenTaiKhoan.AutoSize = true;
             txt_tenTaiKhoan.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_tenTaiKhoan.Location = new Point(75, 10);
+            txt_tenTaiKhoan.Location = new Point(85, 10);
             txt_tenTaiKhoan.Name = "txt_tenTaiKhoan";
             txt_tenTaiKhoan.Size = new Size(23, 25);
             txt_tenTaiKhoan.TabIndex = 0;
@@ -198,14 +198,14 @@
             // 
             pn_main.Location = new Point(278, 12);
             pn_main.Name = "pn_main";
-            pn_main.Size = new Size(1231, 828);
+            pn_main.Size = new Size(1330, 828);
             pn_main.TabIndex = 2;
             // 
             // Main
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(1542, 867);
+            ClientSize = new Size(1620, 867);
             Controls.Add(pn_main);
             Controls.Add(pn_menu);
             Name = "Main";

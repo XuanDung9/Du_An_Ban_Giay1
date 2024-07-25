@@ -67,6 +67,7 @@ namespace B_Bussiness_Layer.Services
                 return false;
             }
 
+
             return _Rep.Them(Thuonghieu);
         }
     }

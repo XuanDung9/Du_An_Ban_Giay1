@@ -4,6 +4,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 namespace B_Bussiness_Layer.Services
@@ -45,6 +46,7 @@ namespace B_Bussiness_Layer.Services
             {
                 return false;
             }
+
             else if (Kieudang.Tenkieudang == "" || Kieudang.Mota == "")
             {
                 return false;
@@ -62,6 +64,7 @@ namespace B_Bussiness_Layer.Services
             {
                 return false;
             }
+
             else if (Kieudang.Mataikhoan == 0 || Kieudang.Mataikhoan == null)
             {
                 return false;
