@@ -13,7 +13,7 @@ public partial class Uudai
 
     public DateTime? Ngayketthuc { get; set; }
 
-    public bool? Trangthai { get; set; }
+    public int? Trangthai { get; set; }
 
     public int? Soluong { get; set; }
 
