@@ -56,9 +56,9 @@
             this.groupBox1.Controls.Add(this.txtTimkiem);
             this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
             this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox1.Size = new System.Drawing.Size(2032, 250);
             this.groupBox1.TabIndex = 0;
             this.groupBox1.TabStop = false;
@@ -79,6 +79,7 @@
             this.btnExcel.TabIndex = 16;
             this.btnExcel.Text = "Xuất Excel";
             this.btnExcel.UseVisualStyleBackColor = false;
+            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
             // 
             // cmbTimkiem
             // 
@@ -89,6 +90,7 @@
             this.cmbTimkiem.Name = "cmbTimkiem";
             this.cmbTimkiem.Size = new System.Drawing.Size(244, 40);
             this.cmbTimkiem.TabIndex = 15;
+            this.cmbTimkiem.SelectedIndexChanged += new System.EventHandler(this.cmbTimkiem_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -117,30 +119,32 @@
             this.cmbloaitt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cmbloaitt.FormattingEnabled = true;
             this.cmbloaitt.Location = new System.Drawing.Point(256, 171);
-            this.cmbloaitt.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.cmbloaitt.Margin = new System.Windows.Forms.Padding(6);
             this.cmbloaitt.Name = "cmbloaitt";
             this.cmbloaitt.Size = new System.Drawing.Size(275, 40);
             this.cmbloaitt.TabIndex = 12;
+            this.cmbloaitt.SelectedIndexChanged += new System.EventHandler(this.cmbloaitt_SelectedIndexChanged_1);
             // 
             // txtTimkiem
             // 
             this.txtTimkiem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txtTimkiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
             this.txtTimkiem.Location = new System.Drawing.Point(193, 47);
-            this.txtTimkiem.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.txtTimkiem.Margin = new System.Windows.Forms.Padding(6);
             this.txtTimkiem.Multiline = true;
             this.txtTimkiem.Name = "txtTimkiem";
             this.txtTimkiem.Size = new System.Drawing.Size(704, 62);
             this.txtTimkiem.TabIndex = 11;
+            this.txtTimkiem.TextChanged += new System.EventHandler(this.txtTimkiem_TextChanged);
             // 
             // groupBox2
             // 
             this.groupBox2.Controls.Add(this.dgvHDCT);
             this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
             this.groupBox2.Location = new System.Drawing.Point(0, 849);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox2.Size = new System.Drawing.Size(2032, 715);
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
@@ -152,7 +156,7 @@
             this.dgvHDCT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHDCT.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHDCT.Location = new System.Drawing.Point(6, 38);
-            this.dgvHDCT.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgvHDCT.Margin = new System.Windows.Forms.Padding(6);
             this.dgvHDCT.Name = "dgvHDCT";
             this.dgvHDCT.RowHeadersWidth = 82;
             this.dgvHDCT.RowTemplate.Height = 25;
@@ -164,9 +168,9 @@
             this.groupBox3.Controls.Add(this.dgvHD);
             this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.groupBox3.Location = new System.Drawing.Point(0, 250);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox3.Margin = new System.Windows.Forms.Padding(6);
             this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.groupBox3.Padding = new System.Windows.Forms.Padding(6);
             this.groupBox3.Size = new System.Drawing.Size(2032, 599);
             this.groupBox3.TabIndex = 2;
             this.groupBox3.TabStop = false;
@@ -178,12 +182,13 @@
             this.dgvHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dgvHD.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dgvHD.Location = new System.Drawing.Point(6, 38);
-            this.dgvHD.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.dgvHD.Margin = new System.Windows.Forms.Padding(6);
             this.dgvHD.Name = "dgvHD";
             this.dgvHD.RowHeadersWidth = 82;
             this.dgvHD.RowTemplate.Height = 25;
             this.dgvHD.Size = new System.Drawing.Size(2020, 555);
             this.dgvHD.TabIndex = 0;
+            this.dgvHD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHD_CellClick);
             // 
             // Frm_US_HoaDon
             // 
@@ -192,7 +197,7 @@
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(6, 6, 6, 6);
+            this.Margin = new System.Windows.Forms.Padding(6);
             this.Name = "Frm_US_HoaDon";
             this.Size = new System.Drawing.Size(2032, 1564);
             this.groupBox1.ResumeLayout(false);
