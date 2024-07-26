@@ -82,15 +82,6 @@ namespace C_Data_Access_Layer.Models.ModelRefer
         public const string tenKieuDang = "Tên kiểu dáng";
         public const string moTaKieuDang = "Mô tả kiểu dáng";
         public const string trangThaiKieuDang = "Trạng thái Kiểu dáng";
-        public const string idNguoiThemKieuDang = "ID Người thêm Kiểu dáng";
-        public const string soLuongTrongKhoNhoHon = "Số lượng trong kho <= (x)";
-        public const string soLuongTrongKhoLonHon = "Số lượng trong kho >= (x)";
-        public const string ngayTao_GiayChiTiet = "Ngày tạo giày";
-        public const string ngaySua_GiayChiTiet = "Ngày sửa giày";
-        public const string idNguoiTao_GiayChiTiet = "Mã người tạo giày";
-        public const string idNguoiSua_GiayChiTiet = "Mã người sửa giày";
-        public const string giaLonHon_GiayChiTiet = "Giá lớn hơn";
-        public const string giaNhoHon_GiayChiTiet = "Giá nhỏ hơn";
         public const string moTa_GiayChiTiet = "Mô tả";
         public const string trangThai_GiayChiTiet = "Trạng thái Giày";
 

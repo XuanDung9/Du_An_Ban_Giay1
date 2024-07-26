@@ -1,5 +1,6 @@
 ﻿using A_Persentation_Layer.Frm.Frm_Dialog;
 using B_Bussiness_Layer.Services;
+using C_Data_Access_Layer.Context;
 using C_Data_Access_Layer.Models;
 using C_Data_Access_Layer.Models.ModelRefer;
 using System;
@@ -20,6 +21,8 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
             InitializeComponent();
         }
+        DBContext _context = new DBContext();
+        GIAYDTO _ser_GiayDTO = new GIAYDTO();
         GiayChiTietService _Ser_ChiTietGiay = new GiayChiTietService();
         ChatLieuService _Ser_ChatLieu = new ChatLieuService();
         GiayService _Ser_Giay = new GiayService();
@@ -27,6 +30,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
         KieuDangService _Ser_KieuDang = new KieuDangService();
         MauSacService _Ser_MauSac = new MauSacService();
         ThuongHieuService _Ser_ThuongHieu = new ThuongHieuService();
+        List<GiayChiTietDTO> _lst_GiayDTO = new List<GiayChiTietDTO>();
         List<Giay> _lstGiay = new List<Giay>();
         List<Chatlieu> _lstChatLieu = new List<Chatlieu>();
         List<Kichco> _LstKichCo = new List<Kichco>();
@@ -41,12 +45,16 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
             Giay_form frm_Giay = new Giay_form();
             frm_Giay.ShowDialog();
+            LoadCBB_Giay(null);
         }
 
         private void ptbChatLieu_Click(object sender, EventArgs e)
         {
-            ChatLieu_form frm_chatLieu = new ChatLieu_form();
-            frm_chatLieu.ShowDialog();
+            using (ChatLieu_form frm_chatLieu = new ChatLieu_form())
+            {
+                frm_chatLieu.FormClosed += (s, args) => LoadCBB_ChatLieu(null);
+                frm_chatLieu.ShowDialog();
+            }
         }
 
         private void dgvSP_CellContentClick(object sender, DataGridViewCellEventArgs e)
@@ -58,24 +66,28 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
             KichCo_form frm_kichCo = new KichCo_form();
             frm_kichCo.ShowDialog();
+            LoadCBB_KichCo(null);
         }
 
         private void ptbThemThuongHieu_Click(object sender, EventArgs e)
         {
             ThuongHieu_form frm_thuongHieu = new ThuongHieu_form();
             frm_thuongHieu.ShowDialog();
+            LoadCBB_ThuongHieu(null);
         }
 
         private void ptbKieuDang_Click(object sender, EventArgs e)
         {
             KieuDang_form kieuDang_Form = new KieuDang_form();
             kieuDang_Form.ShowDialog();
+            LoadCBB_KieuDang(null);
         }
 
         private void ptbMauSac_Click(object sender, EventArgs e)
         {
             MauSac_form mauSac_frm = new MauSac_form();
             mauSac_frm.ShowDialog();
+            LoadCBB_MauSac(null);
         }
         public void ClearTextBox()
         {
@@ -137,14 +149,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
             cbbTimKiem.Items.Add(SearchType.maKichCo);
             cbbTimKiem.Items.Add(SearchType.maThuongHieu);
             cbbTimKiem.Items.Add(SearchType.maKieuDang);
-            cbbTimKiem.Items.Add(SearchType.soLuongTrongKhoNhoHon);
-            cbbTimKiem.Items.Add(SearchType.soLuongTrongKhoLonHon);
-            cbbTimKiem.Items.Add(SearchType.ngayTao_GiayChiTiet);
-            cbbTimKiem.Items.Add(SearchType.ngaySua_GiayChiTiet);
-            cbbTimKiem.Items.Add(SearchType.idNguoiTao_GiayChiTiet);
-            cbbTimKiem.Items.Add(SearchType.idNguoiSua_GiayChiTiet);
-            cbbTimKiem.Items.Add(SearchType.giaNhoHon_GiayChiTiet);
-            cbbTimKiem.Items.Add(SearchType.giaLonHon_GiayChiTiet);
             cbbTimKiem.Items.Add(SearchType.moTa_GiayChiTiet);
             cbbTimKiem.Items.Add(SearchType.trangThai_GiayChiTiet);
             cbbTimKiem.SelectedIndex = 0;
@@ -195,71 +199,84 @@ namespace A_Persentation_Layer.Frm.Frm_US
         public void LoadDataGridView(string? txtTimKiem, string? SearchType)
         {
             dgvSP.Rows.Clear();
-            dgvSP.ColumnCount = 14;
-            dgvSP.Columns[0].Name = "STT";
+            dgvSP.ColumnCount = 19;
+            dgvSP.Columns[0].Name = "Mã giày chi tiết";
             dgvSP.Columns[1].Name = "Mã giày";
-            dgvSP.Columns[2].Name = "Mã giày chi tiết";
-            dgvSP.Columns[3].Name = "Mã chất liệu";
-            dgvSP.Columns[4].Name = "Mã màu sắc";
-            dgvSP.Columns[5].Name = "Mã kích cỡ";
-            dgvSP.Columns[6].Name = "Mã thương hiệu";
-            dgvSP.Columns[7].Name = "Mã kiểu dáng";
+            dgvSP.Columns[2].Name = "Tên giày ";
+            dgvSP.Columns[3].Name = "Chất liệu";
+            dgvSP.Columns[4].Name = "Màu sắc";
+            dgvSP.Columns[5].Name = "Kích cỡ";
+            dgvSP.Columns[6].Name = "Thương hiệu";
+            dgvSP.Columns[7].Name = "Kiểu dáng";
             dgvSP.Columns[8].Name = "Ngày tạo";
             dgvSP.Columns[9].Name = "Ngày sửa";
             dgvSP.Columns[10].Name = "Giá";
             dgvSP.Columns[11].Name = "Mô tả";
             dgvSP.Columns[12].Name = "Số lượng trong kho";
-            dgvSP.Columns[13].Name = "Trạng thái";
+            dgvSP.Columns[13].Name = " Mã chất liệu";
+            dgvSP.Columns[14].Name = "Mã màu sắc";
+            dgvSP.Columns[15].Name = "Mã kích cỡ";
+            dgvSP.Columns[16].Name = "mã thương hiệu";
+            dgvSP.Columns[17].Name = "Mã kiểu dáng";
+            dgvSP.Columns[18].Name = "Trạng thái";
 
-            _lstGiayChiTiet = _Ser_ChiTietGiay.GetAll(txtTimKiem, SearchType);
-
-            foreach (var item in _lstGiayChiTiet)
+            var giayChiTietList = from giaychitiet in _context.Giaychitiets
+                                  join giay in _context.Giays on giaychitiet.Magiay equals giay.Magiay
+                                  join chatlieu in _context.Chatlieus on giaychitiet.Machatlieu equals chatlieu.Machatlieu
+                                  join mausac in _context.Mausacs on giaychitiet.Mamausac equals mausac.Mamausac
+                                  join kichco in _context.Kichcos on giaychitiet.Makichco equals kichco.Makichco
+                                  join thuonghieu in _context.Thuonghieus on giaychitiet.Mathuonghieu equals thuonghieu.Mathuonghieu
+                                  join kieudang in _context.Kieudangs on giaychitiet.Makieudang equals kieudang.Makieudang
+                                  select new GiayChiTietDTO
+                                  {
+                                      Magiay = giaychitiet.Magiay,
+                                      TenGiay = giay.Tengiay,
+                                      Magiaychitiet = giaychitiet.Magiaychitiet,
+                                      TenChatLieu = chatlieu.Tenchatlieu,
+                                      TenMauSac = mausac.Tenmausac,
+                                      TenKichCo = kichco.Tenkichco,
+                                      TenThuongHieu = thuonghieu.Tenthuonghieu,
+                                      TenKieuDang = kieudang.Tenkieudang,
+                                      Ngaytao = giaychitiet.Ngaytao,
+                                      Ngaysua = giaychitiet.Ngaysua,
+                                      Gia = giaychitiet.Gia ?? 0,
+                                      Mota = giaychitiet.Mota,
+                                      Soluongton = giaychitiet.Soluongton ?? 0,
+                                      Trangthai = giaychitiet.Trangthai ?? false,
+                                      Machatlieu = giaychitiet.Machatlieu,
+                                      Mamausac = giaychitiet.Mamausac,
+                                      Makichco = giaychitiet.Makichco,
+                                      Mathuonghieu = giaychitiet.Mathuonghieu,
+                                      Makieudang = giaychitiet.Makieudang
+                                  };
+            _lst_GiayDTO = giayChiTietList.ToList();
+            var resultList = giayChiTietList.ToList();
+            _lstGiayChiTiet = _Ser_ChiTietGiay.GetAll(txtTimKiem,SearchType);
+            foreach (var item in resultList)
             {
-                int stt = _lstGiayChiTiet.IndexOf(item) + 1;
+                int stt = _lst_GiayDTO.IndexOf(item) + 1;
 
-                dgvSP.Rows.Add(stt,
-                    item.Magiay,
+                dgvSP.Rows.Add(
                     item.Magiaychitiet,
-                    item.Machatlieu,
-                    item.Mamausac,
-                    item.Makichco,
-                    item.Mathuonghieu,
-                    item.Makieudang,
+                    item.Magiay,
+                    item.TenGiay,
+                    item.TenChatLieu,
+                    item.TenMauSac,
+                    item.TenKichCo,
+                    item.TenThuongHieu,
+                    item.TenKieuDang,
                     item.Ngaytao,
                     item.Ngaysua,
                     item.Gia,
                     item.Mota,
                     item.Soluongton,
-                    (item.Trangthai == true ? "Đang kinh doanh" : "Ngừng kinh doanh"));
+                    item.Machatlieu,
+                    item.Mamausac,
+                    item.Makichco,
+                    item.Mathuonghieu,
+                    item.Makieudang,
+                    item.Trangthai ? "Đang kinh doanh" : "Ngừng kinh doanh");
             }
-        }
-
-        private void dgvSP_CellClick_1(object sender, DataGridViewCellEventArgs e)
-        {
-            int index = e.RowIndex;
-
-            if (index < 0 || index >= _lstGiayChiTiet.Count)
-            {
-                ClearTextBox();
-                return;
-            }
-
-            var objCellClick = _lstGiayChiTiet[index];
-
-            idClicked = objCellClick.Magiaychitiet;
-
-            cbbTenGiay.SelectedValue = objCellClick.Magiay;
-            txtGia.Text = objCellClick.Gia.ToString();
-            txtSoLuong.Text = objCellClick.Soluongton.ToString();
-            txtMoTa.Text = objCellClick.Mota;
-            cbbTenThuongHieu.SelectedValue = objCellClick.Mathuonghieu;
-            cbbTenKieuDang.SelectedValue = objCellClick.Makieudang;
-            cbbTenChatLieu.SelectedValue = objCellClick.Machatlieu;
-            cbbTenMauSac.SelectedValue = objCellClick.Mamausac;
-            cbbTenKichCo.SelectedValue = objCellClick.Makichco;
-
-            cbbTenGiay.Enabled = false;
-            cbbTenThuongHieu.Enabled = false;
         }
 
         private void btnThem_Click_1(object sender, EventArgs e)
@@ -433,6 +450,46 @@ namespace A_Persentation_Layer.Frm.Frm_US
         }
 
         private void dgvSP_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+        private void dgvSP_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+
+            if (index < 0 || index >= _lst_GiayDTO.Count)
+            {
+                ClearTextBox();
+                return;
+            }
+
+            var objCellClick = _lst_GiayDTO[index];
+            if (objCellClick == null)
+            {
+                MessageBox.Show("Dữ liệu không hợp lệ!");
+                ClearTextBox();
+                return;
+            }
+
+            MessageBox.Show($" Tên sản phẩm: {objCellClick.TenGiay}\nID sản phẩm: {objCellClick.Magiaychitiet}");
+            idClicked = objCellClick.Magiaychitiet;
+            cbbTenGiay.SelectedValue = objCellClick.Magiay;
+            txtGia.Text = objCellClick.Gia.ToString();
+            txtSoLuong.Text = objCellClick.Soluongton.ToString();
+            txtMoTa.Text = objCellClick.Mota;
+
+            cbbTenThuongHieu.SelectedValue = objCellClick.Mathuonghieu;
+            cbbTenKieuDang.SelectedValue = objCellClick.Makieudang;
+            cbbTenChatLieu.SelectedValue = objCellClick.Machatlieu;
+            cbbTenMauSac.SelectedValue = objCellClick.Mamausac;
+            cbbTenKichCo.SelectedValue = objCellClick.Makichco;
+
+            cbbTenGiay.Enabled = false;
+            cbbTenThuongHieu.Enabled = false;
+        }
+
+        private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
 
         }
