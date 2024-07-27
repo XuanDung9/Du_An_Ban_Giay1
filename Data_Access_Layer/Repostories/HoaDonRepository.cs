@@ -241,8 +241,5 @@ namespace C_Data_Access_Layer.Repositories
         {
             return _db.Uudais.ToList();
         }
-
-
-
     }
 }

@@ -42,7 +42,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             cmbTimkiem.DropDownStyle = ComboBoxStyle.DropDownList;
 
         }
-        public void LoadGridHD(string search, string searchType)
+        public void LoadGridHD(string searchText, string searchType)
         {
             int stt = 1;
             dgvHD.ColumnCount = 11;
@@ -61,7 +61,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
             dgvHD.Rows.Clear();
 
-            foreach (var x in _service.hoaDonNhes(search, searchType))
+            foreach (var x in _service.hoaDonNhes(searchText, searchType))
             {
                 dgvHD.Rows.Add(stt++, x.Hoadone.Mahoadon, x.tenkhachhang, x.sdtkhach, x.Hoadone.Mataikhoan, x.hovatentaikhoan, x.Hoadone.Ngaytao, x.tenhinhthuc, x.Hoadone.Tongtien, x.Hoadone.Ghichu, x.Hoadone.Trangthai == false ? "Chưa thanh toán" : "Đã thanh toán");
             }
