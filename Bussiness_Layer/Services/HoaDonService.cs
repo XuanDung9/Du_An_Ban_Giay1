@@ -8,7 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BUS.Services
+namespace B_Bussiness_Layer.Services
 {
     public class HoaDonService : IHoaDonService
     {

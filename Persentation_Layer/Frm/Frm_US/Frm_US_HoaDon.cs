@@ -1,4 +1,4 @@
-﻿using BUS.Services;
+﻿using B_Bussiness_Layer.Services;
 using C_Data_Access_Layer.Models.ModelRefer;
 using OfficeOpenXml;
 using System;
@@ -15,13 +15,15 @@ namespace A_Persentation_Layer.Frm.Frm_US
 {
     public partial class Frm_US_HoaDon : UserControl
     {
+       
+        HoaDonService _service = new HoaDonService();
+        int _idWhenclick;
         public Frm_US_HoaDon()
         {
             InitializeComponent(); LoadGridHD(null, null);
             Loadcombobox();
         }
-        HoaDonService _service = new HoaDonService();
-        int _idWhenclick;
+        
 
 
         public void Loadcombobox()
