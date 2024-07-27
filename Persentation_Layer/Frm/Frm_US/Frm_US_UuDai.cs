@@ -31,16 +31,16 @@ namespace A_Persentation_Layer.Frm.Frm_US
         public void loadGird(string search)
         {
             int stt = 1;
-            dtgHienthi.ColumnCount = 9;
+            dtgHienthi.ColumnCount = 7;
             dtgHienthi.Columns[0].Name = "STT";
             dtgHienthi.Columns[1].Name = "Mã";
             dtgHienthi.Columns[2].Name = "Tên";
-            dtgHienthi.Columns[5].Name = "Số lượng";
-            dtgHienthi.Columns[6].Name = "Ngày bắt đầu";
-            dtgHienthi.Columns[6].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-            dtgHienthi.Columns[7].Name = "Ngày kết thúc";
-            dtgHienthi.Columns[7].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-            dtgHienthi.Columns[8].Name = "Trạng thái";
+            dtgHienthi.Columns[3].Name = "Số lượng";
+            dtgHienthi.Columns[4].Name = "Ngày bắt đầu";
+            dtgHienthi.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+            dtgHienthi.Columns[5].Name = "Ngày kết thúc";
+            dtgHienthi.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+            dtgHienthi.Columns[6].Name = "Trạng thái";
 
             dtgHienthi.Rows.Clear();
             foreach (var x in _service.GetUudais(search))
