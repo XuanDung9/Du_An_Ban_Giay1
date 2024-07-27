@@ -29,6 +29,10 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            btnThem = new Button();
+            btnSua = new Button();
+            btnKhoa_MoKhoa = new Button();
+            btnExcel = new Button();
             txtDiemKH = new TextBox();
             txtSDT = new TextBox();
             txtHoVaTen = new TextBox();
@@ -37,23 +41,19 @@
             label3 = new Label();
             label2 = new Label();
             label1 = new Label();
-            btnThem = new Button();
-            btnSua = new Button();
-            btnKhoa_MoKhoa = new Button();
-            btnExcel = new Button();
             groupBox2 = new GroupBox();
+            panel2 = new Panel();
+            txtTimKiem_KhachHang = new TextBox();
+            label5 = new Label();
             panel1 = new Panel();
             dgvKH = new DataGridView();
-            panel2 = new Panel();
-            label5 = new Label();
-            txtTimKiem_KhachHang = new TextBox();
             groupBox3 = new GroupBox();
             dgvHD = new DataGridView();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
+            panel2.SuspendLayout();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvKH).BeginInit();
-            panel2.SuspendLayout();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHD).BeginInit();
             SuspendLayout();
@@ -78,6 +78,78 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thêm khách hàng";
+            // 
+            // btnThem
+            // 
+            btnThem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnThem.BackColor = Color.FromArgb(64, 79, 105);
+            btnThem.Cursor = Cursors.Hand;
+            btnThem.FlatAppearance.BorderSize = 0;
+            btnThem.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
+            btnThem.FlatStyle = FlatStyle.Flat;
+            btnThem.ForeColor = Color.White;
+            btnThem.Location = new Point(860, 59);
+            btnThem.Margin = new Padding(4);
+            btnThem.Name = "btnThem";
+            btnThem.Size = new Size(120, 55);
+            btnThem.TabIndex = 10;
+            btnThem.Text = "Thêm";
+            btnThem.UseVisualStyleBackColor = false;
+            btnThem.Click += btnThem_Click;
+            // 
+            // btnSua
+            // 
+            btnSua.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnSua.BackColor = Color.FromArgb(64, 79, 105);
+            btnSua.Cursor = Cursors.Hand;
+            btnSua.FlatAppearance.BorderSize = 0;
+            btnSua.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
+            btnSua.FlatStyle = FlatStyle.Flat;
+            btnSua.ForeColor = Color.White;
+            btnSua.Location = new Point(987, 59);
+            btnSua.Margin = new Padding(4);
+            btnSua.Name = "btnSua";
+            btnSua.Size = new Size(120, 55);
+            btnSua.TabIndex = 11;
+            btnSua.Text = "Sửa";
+            btnSua.UseVisualStyleBackColor = false;
+            btnSua.Click += btnSua_Click;
+            // 
+            // btnKhoa_MoKhoa
+            // 
+            btnKhoa_MoKhoa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnKhoa_MoKhoa.BackColor = Color.FromArgb(64, 79, 105);
+            btnKhoa_MoKhoa.Cursor = Cursors.Hand;
+            btnKhoa_MoKhoa.FlatAppearance.BorderSize = 0;
+            btnKhoa_MoKhoa.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
+            btnKhoa_MoKhoa.FlatStyle = FlatStyle.Flat;
+            btnKhoa_MoKhoa.ForeColor = Color.White;
+            btnKhoa_MoKhoa.Location = new Point(1114, 59);
+            btnKhoa_MoKhoa.Margin = new Padding(4);
+            btnKhoa_MoKhoa.Name = "btnKhoa_MoKhoa";
+            btnKhoa_MoKhoa.Size = new Size(131, 55);
+            btnKhoa_MoKhoa.TabIndex = 12;
+            btnKhoa_MoKhoa.Text = "Khóa/Mở khóa";
+            btnKhoa_MoKhoa.UseVisualStyleBackColor = false;
+            btnKhoa_MoKhoa.Click += btnKhoa_MoKhoa_Click;
+            // 
+            // btnExcel
+            // 
+            btnExcel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnExcel.BackColor = Color.FromArgb(64, 79, 105);
+            btnExcel.Cursor = Cursors.Hand;
+            btnExcel.FlatAppearance.BorderSize = 0;
+            btnExcel.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
+            btnExcel.FlatStyle = FlatStyle.Flat;
+            btnExcel.ForeColor = Color.White;
+            btnExcel.Location = new Point(1253, 59);
+            btnExcel.Margin = new Padding(4);
+            btnExcel.Name = "btnExcel";
+            btnExcel.Size = new Size(120, 55);
+            btnExcel.TabIndex = 9;
+            btnExcel.Text = "Excel";
+            btnExcel.UseVisualStyleBackColor = false;
+            btnExcel.Click += btnExcel_Click;
             // 
             // txtDiemKH
             // 
@@ -156,74 +228,6 @@
             label1.TabIndex = 8;
             label1.Text = "Mã khách hàng:";
             // 
-            // btnThem
-            // 
-            btnThem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnThem.BackColor = Color.FromArgb(64, 79, 105);
-            btnThem.Cursor = Cursors.Hand;
-            btnThem.FlatAppearance.BorderSize = 0;
-            btnThem.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
-            btnThem.FlatStyle = FlatStyle.Flat;
-            btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(860, 59);
-            btnThem.Margin = new Padding(4);
-            btnThem.Name = "btnThem";
-            btnThem.Size = new Size(120, 55);
-            btnThem.TabIndex = 10;
-            btnThem.Text = "Thêm";
-            btnThem.UseVisualStyleBackColor = false;
-            // 
-            // btnSua
-            // 
-            btnSua.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSua.BackColor = Color.FromArgb(64, 79, 105);
-            btnSua.Cursor = Cursors.Hand;
-            btnSua.FlatAppearance.BorderSize = 0;
-            btnSua.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
-            btnSua.FlatStyle = FlatStyle.Flat;
-            btnSua.ForeColor = Color.White;
-            btnSua.Location = new Point(987, 59);
-            btnSua.Margin = new Padding(4);
-            btnSua.Name = "btnSua";
-            btnSua.Size = new Size(120, 55);
-            btnSua.TabIndex = 11;
-            btnSua.Text = "Sửa";
-            btnSua.UseVisualStyleBackColor = false;
-            // 
-            // btnKhoa_MoKhoa
-            // 
-            btnKhoa_MoKhoa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnKhoa_MoKhoa.BackColor = Color.FromArgb(64, 79, 105);
-            btnKhoa_MoKhoa.Cursor = Cursors.Hand;
-            btnKhoa_MoKhoa.FlatAppearance.BorderSize = 0;
-            btnKhoa_MoKhoa.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
-            btnKhoa_MoKhoa.FlatStyle = FlatStyle.Flat;
-            btnKhoa_MoKhoa.ForeColor = Color.White;
-            btnKhoa_MoKhoa.Location = new Point(1114, 59);
-            btnKhoa_MoKhoa.Margin = new Padding(4);
-            btnKhoa_MoKhoa.Name = "btnKhoa_MoKhoa";
-            btnKhoa_MoKhoa.Size = new Size(131, 55);
-            btnKhoa_MoKhoa.TabIndex = 12;
-            btnKhoa_MoKhoa.Text = "Khóa/Mở khóa";
-            btnKhoa_MoKhoa.UseVisualStyleBackColor = false;
-            // 
-            // btnExcel
-            // 
-            btnExcel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnExcel.BackColor = Color.FromArgb(64, 79, 105);
-            btnExcel.Cursor = Cursors.Hand;
-            btnExcel.FlatAppearance.BorderSize = 0;
-            btnExcel.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
-            btnExcel.FlatStyle = FlatStyle.Flat;
-            btnExcel.ForeColor = Color.White;
-            btnExcel.Location = new Point(1253, 59);
-            btnExcel.Margin = new Padding(4);
-            btnExcel.Name = "btnExcel";
-            btnExcel.Size = new Size(120, 55);
-            btnExcel.TabIndex = 9;
-            btnExcel.Text = "Excel";
-            btnExcel.UseVisualStyleBackColor = false;
-            // 
             // groupBox2
             // 
             groupBox2.Controls.Add(panel2);
@@ -234,6 +238,35 @@
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Khách hàng";
+            // 
+            // panel2
+            // 
+            panel2.Controls.Add(txtTimKiem_KhachHang);
+            panel2.Controls.Add(label5);
+            panel2.Location = new Point(0, 28);
+            panel2.Name = "panel2";
+            panel2.Size = new Size(1409, 44);
+            panel2.TabIndex = 1;
+            // 
+            // txtTimKiem_KhachHang
+            // 
+            txtTimKiem_KhachHang.BorderStyle = BorderStyle.FixedSingle;
+            txtTimKiem_KhachHang.Location = new Point(107, 7);
+            txtTimKiem_KhachHang.Margin = new Padding(4);
+            txtTimKiem_KhachHang.Name = "txtTimKiem_KhachHang";
+            txtTimKiem_KhachHang.PlaceholderText = "Tìm kiếm...";
+            txtTimKiem_KhachHang.Size = new Size(428, 29);
+            txtTimKiem_KhachHang.TabIndex = 1;
+            txtTimKiem_KhachHang.TextChanged += txtTimKiem_KhachHang_TextChanged;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(26, 10);
+            label5.Name = "label5";
+            label5.Size = new Size(74, 21);
+            label5.TabIndex = 0;
+            label5.Text = "Tìm kiếm";
             // 
             // panel1
             // 
@@ -253,35 +286,9 @@
             dgvKH.RowTemplate.Height = 31;
             dgvKH.Size = new Size(1409, 383);
             dgvKH.TabIndex = 1;
+            dgvKH.CellBorderStyleChanged += dgvKH_CellBorderStyleChanged;
+            dgvKH.CellClick += dgvKH_CellClick;
             dgvKH.CellContentClick += dgvKH_CellContentClick;
-            // 
-            // panel2
-            // 
-            panel2.Controls.Add(txtTimKiem_KhachHang);
-            panel2.Controls.Add(label5);
-            panel2.Location = new Point(0, 28);
-            panel2.Name = "panel2";
-            panel2.Size = new Size(1409, 44);
-            panel2.TabIndex = 1;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(26, 10);
-            label5.Name = "label5";
-            label5.Size = new Size(74, 21);
-            label5.TabIndex = 0;
-            label5.Text = "Tìm kiếm";
-            // 
-            // txtTimKiem_KhachHang
-            // 
-            txtTimKiem_KhachHang.BorderStyle = BorderStyle.FixedSingle;
-            txtTimKiem_KhachHang.Location = new Point(107, 7);
-            txtTimKiem_KhachHang.Margin = new Padding(4);
-            txtTimKiem_KhachHang.Name = "txtTimKiem_KhachHang";
-            txtTimKiem_KhachHang.PlaceholderText = "Tìm kiếm...";
-            txtTimKiem_KhachHang.Size = new Size(428, 29);
-            txtTimKiem_KhachHang.TabIndex = 1;
             // 
             // groupBox3
             // 
@@ -318,10 +325,10 @@
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
-            panel1.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)dgvKH).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
+            panel1.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvKH).EndInit();
             groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvHD).EndInit();
             ResumeLayout(false);
