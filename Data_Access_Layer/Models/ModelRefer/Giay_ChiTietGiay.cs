@@ -8,7 +8,7 @@ namespace C_Data_Access_Layer.Models.ModelRefer
 {
     public class Giay_ChiTietGiay
     {
-        public Giaychitiet giaychitiet { get; set; }
+        public Giaychitiet giaychitiet { get; set; } // kế thừa lại các thuộc tính của giaychitiet 
         public string? tenGiay { get; set; }
         public string? tenChatLieu { get; set; }
         public string? tenMauSac { get; set; }

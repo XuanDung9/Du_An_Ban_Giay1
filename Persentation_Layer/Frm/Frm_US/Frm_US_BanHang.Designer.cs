@@ -103,6 +103,7 @@
             btn_XoaHoaDon.TabIndex = 2;
             btn_XoaHoaDon.Text = "Xóa hóa đơn";
             btn_XoaHoaDon.UseVisualStyleBackColor = false;
+            btn_XoaHoaDon.Click += btn_XoaHoaDon_Click;
             // 
             // btn_ThemHoaDon
             // 
@@ -113,6 +114,7 @@
             btn_ThemHoaDon.TabIndex = 1;
             btn_ThemHoaDon.Text = "Tạo hóa đơn mới";
             btn_ThemHoaDon.UseVisualStyleBackColor = false;
+            btn_ThemHoaDon.Click += btn_ThemHoaDon_Click;
             // 
             // dgv_HoaDon
             // 
@@ -123,6 +125,7 @@
             dgv_HoaDon.RowTemplate.Height = 29;
             dgv_HoaDon.Size = new Size(887, 145);
             dgv_HoaDon.TabIndex = 1;
+            dgv_HoaDon.CellContentClick += dgv_HoaDon_CellContentClick;
             // 
             // label1
             // 

@@ -1,5 +1,4 @@
 ﻿using System;
-using C_Data_Access_Layer.Models;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,5 +14,6 @@ namespace C_Data_Access_Layer.Models.ModelRefer
         public string tenKhachHang { get; set; }
         public int? diemKhachHang { get; set; }
         public string tenHinhThucThanhToan { get; set; }
+
     }
 }
