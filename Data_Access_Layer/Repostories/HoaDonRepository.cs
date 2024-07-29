@@ -94,8 +94,6 @@ namespace C_Data_Access_Layer.Repositories
         {
             try
             {
-                hoadon.Tongtien = 1500000;
-                hoadon.Ghichu = "Ghi chú don hàng 1";
                 _db.Hoadons.Add(hoadon);
                 _db.SaveChanges();
 
@@ -148,7 +146,7 @@ namespace C_Data_Access_Layer.Repositories
                     {
                         Hoadone = c,
                         tenkhachhang = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Tenkhachhang,
-                        sdtkhach = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Sdt.ToString(),
+                        sdtkhach = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)! .Sdt.ToString(),
                         hovatentaikhoan = c.Mataikhoan == null ? "N/A" : _db.Taikhoans.FirstOrDefault(cn => cn.Mataikhoan == c.Mataikhoan)!.Hoten,
                         tenhinhthuc = c.Mahinhthucthanhtoan == null ? "N/A" : _db.Hinhthucthanhtoans.FirstOrDefault(cn => cn.Mahinhthucthanhtoan == c.Mahinhthucthanhtoan)!.Tenhinhthuc
 
@@ -241,5 +239,6 @@ namespace C_Data_Access_Layer.Repositories
         {
             return _db.Uudais.ToList();
         }
+
     }
 }

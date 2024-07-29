@@ -223,6 +223,7 @@
             dgvSP.RowTemplate.Height = 29;
             dgvSP.Size = new Size(887, 209);
             dgvSP.TabIndex = 7;
+            dgvSP.CellClick += dgvSP_CellClick;
             // 
             // panel3
             // 

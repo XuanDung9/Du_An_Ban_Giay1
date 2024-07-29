@@ -7,13 +7,13 @@ public partial class Hoadon
 {
     public int Mahoadon { get; set; }
 
-    public int Mataikhoan { get; set; }
+    public int? Mataikhoan { get; set; }
 
-    public int Makhachhang { get; set; }
+    public int? Makhachhang { get; set; }
 
-    public int Mahinhthucthanhtoan { get; set; }
+    public int? Mahinhthucthanhtoan { get; set; }
 
-    public int Mauudai { get; set; }
+    public int? Mauudai { get; set; }
 
     public DateTime? Ngaytao { get; set; }
 
