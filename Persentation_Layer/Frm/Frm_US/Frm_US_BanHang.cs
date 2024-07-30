@@ -1,5 +1,6 @@
 ﻿using A_Persentation_Layer.Frm.Frm_Dialog;
 using B_Bussiness_Layer.Services;
+using C_Data_Access_Layer.Context;
 using C_Data_Access_Layer.Models;
 using C_Data_Access_Layer.Models.ModelRefer;
 using System;
@@ -20,6 +21,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
             InitializeComponent();
         }
+        DBContext _context = new DBContext();
         BanHangService _service = new BanHangService();
         UudaiService _ser_UuDai = new UudaiService();
         HinhThucThanhToanService _ser_HinhThucThanhToan = new HinhThucThanhToanService();
@@ -32,8 +34,12 @@ namespace A_Persentation_Layer.Frm.Frm_US
         HoaDonChiTIetService _Ser_HoaDonChiTiet = new HoaDonChiTIetService();
         List<HoaDonChiTiet_SP> _lstHoadonChiTiet = new List<HoaDonChiTiet_SP>();
         List<Giay_ChiTietGiay> _lstGiay_ChiTietGiay = new List<Giay_ChiTietGiay>();
+        GiayChiTietService _Ser_ChiTietGiay = new GiayChiTietService();
         List<HoaDon_Model> _lstHoaDon = new List<HoaDon_Model>();
+        List<GiayChiTietDTO> _lst_GiayDTO = new List<GiayChiTietDTO>();
+        List<Giaychitiet> _lstGiayChiTiet = new List<Giaychitiet>();
         List<Hinhthucthanhtoan> _lstHinhThucThanhToan = new List<Hinhthucthanhtoan>();
+
 
         List<int> idHoaDonChiTiet_Clicked = new List<int>();
         List<int> idHoaDon_ChuaThanhToan = new List<int>();
@@ -72,21 +78,22 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
             try
             {
+                var objUuDai = _ser_UuDai.GetUudai_InTime(); // nếu trong thời gian này có mã ưu đãi thì tự động thêm vào hóa đơn 
                 var confirmResult = MessageBox.Show("Xác nhận 'thêm' hóa đơn không?", "Xác nhận", MessageBoxButtons.OKCancel);
 
                 if (confirmResult == DialogResult.OK)
                 {
                     var result = _Ser_HoaDon.Them(new Hoadon()
-                    {
+                    { // data đượ fake null
                         Mataikhoan = XacThucDangNhap.Instance.IdTaiKhoan,
-                        Mauudai = 6,
-                        Makhachhang = 8 ,
+                        Mauudai = 10,
+                        Makhachhang = 16,
                         Mahinhthucthanhtoan = 8,
                         Ngaytao = dateTime,
                         Tongtien = null,
                         Ghichu = "",
                         Trangthai = false
-                    }); 
+                    });
 
                     if (result)
                     {
@@ -106,12 +113,11 @@ namespace A_Persentation_Layer.Frm.Frm_US
             catch (Exception ex)
             {
                 MessageBox.Show($"Lỗi: {ex.Message}");
-                Console.WriteLine($"Thông tin chi tiết: {ex.ToString()}");
             }
         }
 
 
-    private void btn_XoaHoaDon_Click(object sender, EventArgs e)
+        private void btn_XoaHoaDon_Click(object sender, EventArgs e)
         {
             try
             {
@@ -124,15 +130,14 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 if (confirmResult == DialogResult.OK)
                 {
 
-                    foreach (var item in _lstHoadonChiTiet) // khi xóa hóa đơn thì số lượng sp có trong hóa đơn sẽ hoàn trả lại vào danh sách sản phẩm
-                    {
-                        var objHoaDonDaCanXoa = _Ser_HoaDonChiTiet.GetByID(item.Hoadonchitiet.Mahoadonchitiet);
-                        var objGiayCanSua = _ser_GiayChiTiet.GetByID(objHoaDonDaCanXoa.Magiaychitiet); // chọn giày trong cái hóa đơn cần xóa
-                        objGiayCanSua.Soluongton = objGiayCanSua.Soluongton + objHoaDonDaCanXoa.Soluongmua; // số lượng mua trong hóa đơn chi tiết
-                        _ser_GiayChiTiet.Sua(objHoaDonDaCanXoa.Magiaychitiet, objGiayCanSua);
-                        var ketqua = _Ser_HoaDonChiTiet.Xoa(item.Hoadonchitiet.Mahoadonchitiet);
-
-                    }
+                    //foreach (var item in _lstHoadonChiTiet) // khi xóa hóa đơn thì số lượng sp có trong hóa đơn sẽ hoàn trả lại vào danh sách sản phẩm
+                    //{
+                    //    var objHoaDonDaCanXoa = _Ser_HoaDonChiTiet.GetByID(item.Hoadonchitiet.Mahoadonchitiet);
+                    //    var objGiayCanSua = _ser_GiayChiTiet.GetByID(objHoaDonDaCanXoa.Magiaychitiet); // chọn giày trong cái hóa đơn cần xóa
+                    //    objGiayCanSua.Soluongton = objGiayCanSua.Soluongton + objHoaDonDaCanXoa.Soluongmua; // số lượng mua trong hóa đơn chi tiết
+                    //    _ser_GiayChiTiet.Sua(objHoaDonDaCanXoa.Magiaychitiet, objGiayCanSua);
+                    //    var ketqua = _Ser_HoaDonChiTiet.Xoa(item.Hoadonchitiet.Mahoadonchitiet);
+                    //}
                     var result = _Ser_HoaDon.Xoa(idHoaDon_Clicked);
                     if (result)
                     {
@@ -221,20 +226,19 @@ namespace A_Persentation_Layer.Frm.Frm_US
             dgv_HoaDonChiTiet.Columns[0].Width = 30;
 
         }
-        public void LoadGridSP(string? txtSearch, string? Searchtype) // danh sách sản phẩm
+        public void LoadGridSP(string? txtSearch, string? Searchtype)
         {
             int stt = 1;
-            dgvSP.ColumnCount = 9;
-            dgvSP.Columns[0].Name = "STT";
-            dgvSP.Columns[1].Name = "Tên giày";
-            dgvSP.Columns[2].Name = "Thương hiệu";
-            dgvSP.Columns[3].Name = "Kích cỡ";
-            dgvSP.Columns[4].Name = "Màu sắc";
-            dgvSP.Columns[5].Name = "chất liệu";
-            dgvSP.Columns[6].Name = "Kiểu dáng";
-            dgvSP.Columns[7].Name = "Số lượng";
-            dgvSP.Columns[8].Name = "Giá";
-            dgvSP.Rows.Clear();
+            dgv_sanPham.ColumnCount = 9;
+            dgv_sanPham.Columns[0].Name = "STT";
+            dgv_sanPham.Columns[1].Name = "Tên giày";
+            dgv_sanPham.Columns[2].Name = "Thương hiệu";
+            dgv_sanPham.Columns[3].Name = "Kích cỡ";
+            dgv_sanPham.Columns[4].Name = "Màu sắc";
+            dgv_sanPham.Columns[5].Name = "chất liệu";
+            dgv_sanPham.Columns[6].Name = "Kiểu dáng";
+            dgv_sanPham.Columns[7].Name = "Số lượng";
+            dgv_sanPham.Columns[8].Name = "Giá";
             if (txtSearch == null && Searchtype == null)
             {
                 _lstGiay_ChiTietGiay = _Ser_Giay_ChiTietGiay.GetAll("true", "Trạng thái Giày");
@@ -246,9 +250,10 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
             foreach (var item in _lstGiay_ChiTietGiay)
             {
-                dgvSP.Rows.Add(stt++, item.tenGiay, item.tenThuongHieu, item.tenKichCo, item.tenMauSac, item.tenChatLieu, item.tenKieuDang, item.soLuongCon, item.gia);
+                dgv_sanPham.Rows.Add(stt++, item.tenGiay, item.tenThuongHieu, item.tenKichCo, item.tenMauSac, item.tenChatLieu, item.tenKieuDang, item.soLuongCon, item.gia);
             }
         }
+
 
         private void dgvSP_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -338,6 +343,40 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     MessageBox.Show($"Không đủ số lượng! Chỉ còn {objCellClick.giaychitiet.Soluongton} đôi.");
                 }
                 LoadGridSP(null, null);
+                lb_TongTienHang.Text = TinhTongTien_HoaDon(dgv_HoaDonChiTiet).ToString();
+                LoadTien_ThanhToan();
+            }
+            catch (Exception ex)
+            {
+
+                Console.WriteLine($"Thông tin chi tiết: {ex.ToString()}");
+            }
+        }
+
+        private void dgv_HoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            int index = e.RowIndex;
+
+            if (index < 0 || index >= _lstHoaDon.Count)
+            {
+                return;
+            }
+            var objCellClick = _lstHoaDon[index];
+
+            idHoaDon_Clicked = objCellClick.Hoadon.Mahoadon;
+            try
+            {
+
+                var confirmResult = MessageBox.Show($"Chọn hóa đơn của khách hàng{objCellClick.Hoadon.Makhachhang}", "Xác nhận", MessageBoxButtons.OKCancel);
+
+                if (confirmResult == DialogResult.OK)
+                {
+                    lb_MaHoaDon.Text = objCellClick.Hoadon.Mahoadon.ToString();
+                    lb_maKH.Text = objCellClick.Hoadon.Makhachhang.ToString();
+                    lb_TenKH.Text = objCellClick.tenKhachHang.ToString();
+                    txt_DiemKH.Text = objCellClick.diemKhachHang.ToString();
+                    LoadGridGH(objCellClick.Hoadon.Mahoadon, "Mã hóa đơn");
+                }
                 lb_TongTienHang.Text = TinhTongTien_HoaDon(dgv_HoaDonChiTiet).ToString();
                 LoadTien_ThanhToan();
             }

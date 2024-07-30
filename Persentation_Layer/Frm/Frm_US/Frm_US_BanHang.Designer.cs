@@ -41,7 +41,7 @@
             btn_ChonAll = new Button();
             btn_XoaSanPham = new Button();
             label3 = new Label();
-            dgvSP = new DataGridView();
+            dgv_sanPham = new DataGridView();
             panel3 = new Panel();
             cbb_TimKiem = new ComboBox();
             btn_TimKiem = new Button();
@@ -70,7 +70,7 @@
             lb_MaHoaDon = new Label();
             label8 = new Label();
             groupBox2 = new GroupBox();
-            lb_SDTkh = new Label();
+            lb_maKH = new Label();
             lb_TenKH = new Label();
             btn_TimKhachHang = new Button();
             label5 = new Label();
@@ -79,7 +79,7 @@
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDonChiTiet).BeginInit();
             panel2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSP).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_sanPham).BeginInit();
             panel3.SuspendLayout();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
@@ -123,8 +123,9 @@
             dgv_HoaDon.Name = "dgv_HoaDon";
             dgv_HoaDon.RowHeadersWidth = 51;
             dgv_HoaDon.RowTemplate.Height = 29;
-            dgv_HoaDon.Size = new Size(887, 145);
+            dgv_HoaDon.Size = new Size(887, 175);
             dgv_HoaDon.TabIndex = 1;
+            dgv_HoaDon.CellClick += dgv_HoaDon_CellClick;
             dgv_HoaDon.CellContentClick += dgv_HoaDon_CellContentClick;
             // 
             // label1
@@ -139,7 +140,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(6, 229);
+            label2.Location = new Point(3, 256);
             label2.Name = "label2";
             label2.Size = new Size(118, 20);
             label2.TabIndex = 5;
@@ -148,7 +149,7 @@
             // dgv_HoaDonChiTiet
             // 
             dgv_HoaDonChiTiet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgv_HoaDonChiTiet.Location = new Point(3, 305);
+            dgv_HoaDonChiTiet.Location = new Point(9, 332);
             dgv_HoaDonChiTiet.Name = "dgv_HoaDonChiTiet";
             dgv_HoaDonChiTiet.RowHeadersWidth = 51;
             dgv_HoaDonChiTiet.RowTemplate.Height = 29;
@@ -161,7 +162,7 @@
             panel2.Controls.Add(label22);
             panel2.Controls.Add(btn_ChonAll);
             panel2.Controls.Add(btn_XoaSanPham);
-            panel2.Location = new Point(3, 252);
+            panel2.Location = new Point(6, 279);
             panel2.Name = "panel2";
             panel2.Size = new Size(887, 47);
             panel2.TabIndex = 3;
@@ -208,29 +209,29 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(3, 517);
+            label3.Location = new Point(6, 540);
             label3.Name = "label3";
             label3.Size = new Size(145, 20);
             label3.TabIndex = 8;
             label3.Text = "Danh sách sản phẩm";
             // 
-            // dgvSP
+            // dgv_sanPham
             // 
-            dgvSP.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            dgvSP.Location = new Point(6, 593);
-            dgvSP.Name = "dgvSP";
-            dgvSP.RowHeadersWidth = 51;
-            dgvSP.RowTemplate.Height = 29;
-            dgvSP.Size = new Size(887, 209);
-            dgvSP.TabIndex = 7;
-            dgvSP.CellClick += dgvSP_CellClick;
+            dgv_sanPham.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgv_sanPham.Location = new Point(9, 616);
+            dgv_sanPham.Name = "dgv_sanPham";
+            dgv_sanPham.RowHeadersWidth = 51;
+            dgv_sanPham.RowTemplate.Height = 29;
+            dgv_sanPham.Size = new Size(887, 209);
+            dgv_sanPham.TabIndex = 7;
+            dgv_sanPham.CellClick += dgvSP_CellClick;
             // 
             // panel3
             // 
             panel3.Controls.Add(cbb_TimKiem);
             panel3.Controls.Add(btn_TimKiem);
             panel3.Controls.Add(txt_TimKiemSP);
-            panel3.Location = new Point(6, 540);
+            panel3.Location = new Point(9, 563);
             panel3.Name = "panel3";
             panel3.Size = new Size(887, 47);
             panel3.TabIndex = 6;
@@ -508,7 +509,7 @@
             // 
             // groupBox2
             // 
-            groupBox2.Controls.Add(lb_SDTkh);
+            groupBox2.Controls.Add(lb_maKH);
             groupBox2.Controls.Add(lb_TenKH);
             groupBox2.Controls.Add(btn_TimKhachHang);
             groupBox2.Controls.Add(label5);
@@ -520,21 +521,21 @@
             groupBox2.TabStop = false;
             groupBox2.Text = "Thông tin khách hàng";
             // 
-            // lb_SDTkh
+            // lb_maKH
             // 
-            lb_SDTkh.AutoSize = true;
-            lb_SDTkh.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_SDTkh.Location = new Point(106, 87);
-            lb_SDTkh.Name = "lb_SDTkh";
-            lb_SDTkh.Size = new Size(20, 23);
-            lb_SDTkh.TabIndex = 4;
-            lb_SDTkh.Text = "#";
+            lb_maKH.AutoSize = true;
+            lb_maKH.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            lb_maKH.Location = new Point(78, 51);
+            lb_maKH.Name = "lb_maKH";
+            lb_maKH.Size = new Size(20, 23);
+            lb_maKH.TabIndex = 4;
+            lb_maKH.Text = "#";
             // 
             // lb_TenKH
             // 
             lb_TenKH.AutoSize = true;
             lb_TenKH.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_TenKH.Location = new Point(131, 48);
+            lb_TenKH.Location = new Point(137, 84);
             lb_TenKH.Name = "lb_TenKH";
             lb_TenKH.Size = new Size(20, 23);
             lb_TenKH.TabIndex = 3;
@@ -554,17 +555,17 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(0, 87);
+            label5.Location = new Point(6, 51);
             label5.Name = "label5";
-            label5.Size = new Size(115, 23);
+            label5.Size = new Size(72, 23);
             label5.TabIndex = 1;
-            label5.Text = "Số điện thoại:";
+            label5.Text = "Mã KH :";
             // 
             // label4
             // 
             label4.AutoSize = true;
             label4.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label4.Location = new Point(0, 48);
+            label4.Location = new Point(6, 84);
             label4.Name = "label4";
             label4.Size = new Size(135, 23);
             label4.TabIndex = 0;
@@ -576,7 +577,7 @@
             AutoScaleMode = AutoScaleMode.Font;
             Controls.Add(groupBox1);
             Controls.Add(label3);
-            Controls.Add(dgvSP);
+            Controls.Add(dgv_sanPham);
             Controls.Add(panel3);
             Controls.Add(label2);
             Controls.Add(dgv_HoaDonChiTiet);
@@ -591,7 +592,7 @@
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDonChiTiet).EndInit();
             panel2.ResumeLayout(false);
             panel2.PerformLayout();
-            ((System.ComponentModel.ISupportInitialize)dgvSP).EndInit();
+            ((System.ComponentModel.ISupportInitialize)dgv_sanPham).EndInit();
             panel3.ResumeLayout(false);
             panel3.PerformLayout();
             groupBox1.ResumeLayout(false);
@@ -615,7 +616,7 @@
         private Button btn_ChonAll;
         private Button btn_XoaSanPham;
         private Label label3;
-        private DataGridView dgvSP;
+        private DataGridView dgv_sanPham;
         private Panel panel3;
         private GroupBox groupBox1;
         private GroupBox groupBox2;
@@ -624,7 +625,7 @@
         private Label label10;
         private Label lb_MaHoaDon;
         private Label label8;
-        private Label lb_SDTkh;
+        private Label lb_maKH;
         private Label lb_TenKH;
         private Button btn_TimKhachHang;
         private Label label5;

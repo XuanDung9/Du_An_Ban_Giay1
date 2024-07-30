@@ -10,6 +10,7 @@ namespace C_Data_Access_Layer.Models.ModelRefer
     {
         public Hoadon Hoadon { get; set; }
         public string tenTaiKhoan { get; set; }
+        public string SDTKH {  get; set; }
         public string tenUuDai { get; set; }
         public string tenKhachHang { get; set; }
         public int? diemKhachHang { get; set; }
