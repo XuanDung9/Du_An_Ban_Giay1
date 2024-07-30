@@ -1,6 +1,7 @@
 ﻿using A_Persentation_Layer.Frm.Frm_Dialog;
 using B_Bussiness_Layer.Services;
 using C_Data_Access_Layer.Models;
+using C_Data_Access_Layer.Models.ModelRefer;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -58,11 +59,11 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 for (int i = 0; i < rowCount - 1; i++)
                 {
                     DateTime Ngayhientai = DateTime.Now;
-                    DateTime? ngayBatDau = dtgHienthi.Rows[i].Cells[6].Value != null ? DateTime.Parse(dtgHienthi.Rows[i].Cells[6].Value.ToString()) : (DateTime?)null;
-                    DateTime? ngayKetThuc = dtgHienthi.Rows[i].Cells[7].Value != null ? DateTime.Parse(dtgHienthi.Rows[i].Cells[7].Value.ToString()) : (DateTime?)null;
+                    DateTime? ngayBatDau = dtgHienthi.Rows[i].Cells[4].Value != null ? DateTime.Parse(dtgHienthi.Rows[i].Cells[4].Value.ToString()) : (DateTime?)null;
+                    DateTime? ngayKetThuc = dtgHienthi.Rows[i].Cells[5].Value != null ? DateTime.Parse(dtgHienthi.Rows[i].Cells[5].Value.ToString()) : (DateTime?)null;
 
                     string trangThai = MapTrangThai(Ngayhientai, ngayBatDau, ngayKetThuc);
-                    dtgHienthi.Rows[i].Cells[8].Value = trangThai;
+                    dtgHienthi.Rows[i].Cells[6].Value = trangThai;
                 }
             }
         }
@@ -129,6 +130,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             uudai.Soluong = int.Parse(txtSoluong.Text);
             uudai.Ngaybatdau = ngayBatDau;
             uudai.Ngayketthuc = ngayKetThuc;
+            uudai.Mataikhoan = XacThucDangNhap.Instance.IdTaiKhoan;
 
             if (ngayBatDau <= DateTime.Now && DateTime.Now <= ngayKetThuc)
             {
@@ -178,6 +180,8 @@ namespace A_Persentation_Layer.Frm.Frm_US
             uudai.Soluong = int.Parse(txtSoluong.Text);
             uudai.Ngaybatdau = ngayBatDau;
             uudai.Ngayketthuc = ngayKetThuc;
+           
+            uudai.Mataikhoan = XacThucDangNhap.Instance.IdTaiKhoan;
 
             DateTime now = DateTime.Now;
 
