@@ -162,6 +162,7 @@
             this.dgvHDCT.RowTemplate.Height = 25;
             this.dgvHDCT.Size = new System.Drawing.Size(2020, 671);
             this.dgvHDCT.TabIndex = 0;
+            this.dgvHDCT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDCT_CellContentClick);
             // 
             // groupBox3
             // 

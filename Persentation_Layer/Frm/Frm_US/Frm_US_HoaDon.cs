@@ -21,7 +21,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
         public Frm_US_HoaDon()
         {
             InitializeComponent(); LoadGridHD(null, null);
-            Loadcombobox();
+            Loadcombobox();loadgridHoadonchitiet();
         }
         
 
@@ -82,15 +82,15 @@ namespace A_Persentation_Layer.Frm.Frm_US
             {
                 var idspct = _service.GetGiaychitiets().FirstOrDefault(i => i.Magiaychitiet == e.Magiaychitiet);
                 var idsp = _service.GetGiays().FirstOrDefault(s => s.Magiay == idspct.Magiay);
-                dgvHDCT.Rows.Add(stt++, e.Mahoadon, idsp.Tengiay, e.Soluongmua, e.Tongtien);
+                dgvHDCT.Rows.Add(stt++,e.Mahoadon, idsp.Tengiay, e.Soluongmua, e.Tongtien);
             }
         }
         private void dgvHD_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
+            //int index = e.RowIndex;
 
-            _idWhenclick = int.Parse(dgvHD.Rows[index].Cells[1].Value.ToString());
-            loadgridHoadonchitiet();
+            //_idWhenclick = int.Parse(dgvHD.Rows[index].Cells[1].Value.ToString());
+            //loadgridHoadonchitiet();
         }
 
         private void txtTimkiem_TextChanged(object sender, EventArgs e)
@@ -120,7 +120,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
         }
 
         private void btnExcel_Click(object sender, EventArgs e)
-
         {
             using (ExcelPackage excelPackage = new ExcelPackage())
             {
@@ -151,5 +150,9 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         }
 
+        private void dgvHDCT_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }
