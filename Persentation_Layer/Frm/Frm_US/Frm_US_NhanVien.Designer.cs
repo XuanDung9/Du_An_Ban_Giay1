@@ -424,6 +424,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             btnExcel.TabIndex = 0;
             btnExcel.Text = "Excel";
             btnExcel.UseVisualStyleBackColor = false;
+            btnExcel.Click += btnExcel_Click_1;
             // 
             // txtTimKiem
             // 
