@@ -21,7 +21,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
         public Frm_US_HoaDon()
         {
             InitializeComponent(); LoadGridHD(null, null);
-            Loadcombobox();loadgridHoadonchitiet();
+            Loadcombobox();
         }
         
 
@@ -87,10 +87,10 @@ namespace A_Persentation_Layer.Frm.Frm_US
         }
         private void dgvHD_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            //int index = e.RowIndex;
+            int index = e.RowIndex;
 
-            //_idWhenclick = int.Parse(dgvHD.Rows[index].Cells[1].Value.ToString());
-            //loadgridHoadonchitiet();
+            _idWhenclick = int.Parse(dgvHD.Rows[index].Cells[1].Value.ToString());
+            loadgridHoadonchitiet();
         }
 
         private void txtTimkiem_TextChanged(object sender, EventArgs e)
