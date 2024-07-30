@@ -66,7 +66,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     , x.Diachi, x.Email, x.Ngaysinh, idcv.Tenchucvu, x.Trangthai == false ? "Nghỉ làm" : "Đi làm");
             }
         }
- 
+
 
 
         public bool Checkrong(string soDienThoai, string email, string username)
@@ -156,38 +156,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
         }
 
-        private void btnexcel_Click(object sender, EventArgs e)
-        {
-            using (ExcelPackage excelPackage = new ExcelPackage())
-            {
-                ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
-
-                for (int i = 0; i < dgvHienThi.Columns.Count; i++)
-                {
-                    worksheet.Cells[1, i + 1].Value = dgvHienThi.Columns[i].HeaderText;
-                }
-
-                for (int i = 0; i < dgvHienThi.Rows.Count; i++)
-                {
-                    for (int j = 0; j < dgvHienThi.Columns.Count; j++)
-                    {
-                        worksheet.Cells[i + 2, j + 1].Value = dgvHienThi.Rows[i].Cells[j].Value?.ToString();
-                    }
-                }
-
-                SaveFileDialog saveFileDialog = new SaveFileDialog();
-                saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
-                if (saveFileDialog.ShowDialog() == DialogResult.OK)
-                {
-                    FileInfo fileInfo = new FileInfo(saveFileDialog.FileName);
-                    excelPackage.SaveAs(fileInfo);
-                }
-            }
-            MessageBox.Show("Dữ liệu đã được xuất thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
-        }
-
-
 
         private void txtTimKiem_TextChanged_1(object sender, EventArgs e)
         {
@@ -201,27 +169,27 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 MessageBox.Show("Số điện thoại tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            //if (Checkrong(txtSDT.Text, txtEmail.Text, txtTaikhoan.Text))
-            //{
-            Taikhoan taikhoan = new Taikhoan();
-            taikhoan.Username = txtTaikhoan.Text;
-            taikhoan.Password = txtMatkhau.Text;
-            taikhoan.Hoten = txtTen.Text;
-            taikhoan.Gioitinh = rbnNam.Checked;
-            taikhoan.Sdt = Convert.ToInt32(txtSDT.Text);
-            taikhoan.Diachi = txtDiachi.Text;
-            taikhoan.Email = txtEmail.Text;
-            taikhoan.Ngaysinh = dateSinh.Value;
-            taikhoan.Machucvu = _list[cmbChucvu.SelectedIndex];
-
-            taikhoan.Trangthai = true;
-            var relust = MessageBox.Show("Xác nhận muốm thêm", "Xác nhận", MessageBoxButtons.YesNo);
-            if (relust == DialogResult.Yes)
+            if (Checkrong(txtSDT.Text, txtEmail.Text, txtTaikhoan.Text))
             {
-                _service.AddNhanVien(taikhoan);
+                Taikhoan taikhoan = new Taikhoan();
+                taikhoan.Username = txtTaikhoan.Text;
+                taikhoan.Password = txtMatkhau.Text;
+                taikhoan.Hoten = txtTen.Text;
+                taikhoan.Gioitinh = rbnNam.Checked;
+                taikhoan.Sdt = Convert.ToInt32(txtSDT.Text);
+                taikhoan.Diachi = txtDiachi.Text;
+                taikhoan.Email = txtEmail.Text;
+                taikhoan.Ngaysinh = dateSinh.Value;
+                taikhoan.Machucvu = _list[cmbChucvu.SelectedIndex];
+
+                taikhoan.Trangthai = true;
+                var relust = MessageBox.Show("Xác nhận muốm thêm", "Xác nhận", MessageBoxButtons.YesNo);
+                if (relust == DialogResult.Yes)
+                {
+                    _service.AddNhanVien(taikhoan);
+                }
+                LoadGird(null);
             }
-            LoadGird(null);
-            //}
         }
 
         private void btnSua_Click(object sender, EventArgs e)
@@ -275,7 +243,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
-
+            LoadGird(txtTimKiem.Text);
         }
 
         private void dgvHienThi_CellClick_1(object sender, DataGridViewCellEventArgs e)
@@ -300,6 +268,37 @@ namespace A_Persentation_Layer.Frm.Frm_US
             txtEmail.Text = nhanvien.Email;
             dateSinh.Text = nhanvien.Ngaysinh.ToString();
             cmbChucvu.SelectedIndex = _list.FindIndex(x => x == nhanvien.Machucvu);
+        }
+
+        private void btnExcel_Click_1(object sender, EventArgs e)
+        {
+            using (ExcelPackage excelPackage = new ExcelPackage())
+            {
+               
+                ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
+
+                for (int i = 0; i < dgvHienThi.Columns.Count; i++)
+                {
+                    worksheet.Cells[1, i + 1].Value = dgvHienThi.Columns[i].HeaderText;
+                }
+
+                for (int i = 0; i < dgvHienThi.Rows.Count; i++)
+                {
+                    for (int j = 0; j < dgvHienThi.Columns.Count; j++)
+                    {
+                        worksheet.Cells[i + 2, j + 1].Value = dgvHienThi.Rows[i].Cells[j].Value?.ToString();
+                    }
+                }
+
+                SaveFileDialog saveFileDialog = new SaveFileDialog();
+                saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
+                if (saveFileDialog.ShowDialog() == DialogResult.OK)
+                {
+                    FileInfo fileInfo = new FileInfo(saveFileDialog.FileName);
+                    excelPackage.SaveAs(fileInfo);
+                }
+            }
+            MessageBox.Show("Dữ liệu đã được xuất thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
     }
 }
