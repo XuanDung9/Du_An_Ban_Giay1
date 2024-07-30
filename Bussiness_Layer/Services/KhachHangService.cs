@@ -44,7 +44,10 @@ namespace B_Bussiness_Layer.Services
         {
             return _repos.GetHinhthucthanhtoans();
         }
-
+        public List<Hoadon> GetHoadonsByKhachHangId(int khachHangId)
+        {
+            return _repos.GetHoadonsByKhachHangId(khachHangId);
+        }
         public string Khoa_MoKhoa(Khachhang khachhang)
         {
             var cloer = _repos.GetAllKhachhang(null).FirstOrDefault(x => x.Makhachhang == khachhang.Makhachhang);

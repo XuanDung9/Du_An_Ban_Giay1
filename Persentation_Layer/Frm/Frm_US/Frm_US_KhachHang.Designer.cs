@@ -29,10 +29,10 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
+            btnLamMoi = new Button();
             btnThem = new Button();
             btnSua = new Button();
             btnKhoa_MoKhoa = new Button();
-            btnExcel = new Button();
             txtDiemKH = new TextBox();
             txtSDT = new TextBox();
             txtHoVaTen = new TextBox();
@@ -43,7 +43,9 @@
             label1 = new Label();
             groupBox2 = new GroupBox();
             panel2 = new Panel();
+            rdbTimKiemTen = new RadioButton();
             txtTimKiem_KhachHang = new TextBox();
+            rdbTimKiemMa = new RadioButton();
             label5 = new Label();
             panel1 = new Panel();
             dgvKH = new DataGridView();
@@ -60,10 +62,10 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(btnLamMoi);
             groupBox1.Controls.Add(btnThem);
             groupBox1.Controls.Add(btnSua);
             groupBox1.Controls.Add(btnKhoa_MoKhoa);
-            groupBox1.Controls.Add(btnExcel);
             groupBox1.Controls.Add(txtDiemKH);
             groupBox1.Controls.Add(txtSDT);
             groupBox1.Controls.Add(txtHoVaTen);
@@ -78,6 +80,23 @@
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Thêm khách hàng";
+            // 
+            // btnLamMoi
+            // 
+            btnLamMoi.Anchor = AnchorStyles.Top | AnchorStyles.Right;
+            btnLamMoi.BackColor = Color.FromArgb(64, 79, 105);
+            btnLamMoi.Cursor = Cursors.Hand;
+            btnLamMoi.FlatAppearance.BorderSize = 0;
+            btnLamMoi.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
+            btnLamMoi.FlatStyle = FlatStyle.Flat;
+            btnLamMoi.ForeColor = Color.White;
+            btnLamMoi.Location = new Point(860, 131);
+            btnLamMoi.Margin = new Padding(4);
+            btnLamMoi.Name = "btnLamMoi";
+            btnLamMoi.Size = new Size(90, 33);
+            btnLamMoi.TabIndex = 16;
+            btnLamMoi.Text = "Clear";
+            btnLamMoi.UseVisualStyleBackColor = false;
             // 
             // btnThem
             // 
@@ -106,7 +125,7 @@
             btnSua.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnSua.FlatStyle = FlatStyle.Flat;
             btnSua.ForeColor = Color.White;
-            btnSua.Location = new Point(987, 59);
+            btnSua.Location = new Point(1060, 59);
             btnSua.Margin = new Padding(4);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(120, 55);
@@ -124,7 +143,7 @@
             btnKhoa_MoKhoa.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnKhoa_MoKhoa.FlatStyle = FlatStyle.Flat;
             btnKhoa_MoKhoa.ForeColor = Color.White;
-            btnKhoa_MoKhoa.Location = new Point(1114, 59);
+            btnKhoa_MoKhoa.Location = new Point(1246, 59);
             btnKhoa_MoKhoa.Margin = new Padding(4);
             btnKhoa_MoKhoa.Name = "btnKhoa_MoKhoa";
             btnKhoa_MoKhoa.Size = new Size(131, 55);
@@ -132,24 +151,6 @@
             btnKhoa_MoKhoa.Text = "Khóa/Mở khóa";
             btnKhoa_MoKhoa.UseVisualStyleBackColor = false;
             btnKhoa_MoKhoa.Click += btnKhoa_MoKhoa_Click;
-            // 
-            // btnExcel
-            // 
-            btnExcel.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnExcel.BackColor = Color.FromArgb(64, 79, 105);
-            btnExcel.Cursor = Cursors.Hand;
-            btnExcel.FlatAppearance.BorderSize = 0;
-            btnExcel.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
-            btnExcel.FlatStyle = FlatStyle.Flat;
-            btnExcel.ForeColor = Color.White;
-            btnExcel.Location = new Point(1253, 59);
-            btnExcel.Margin = new Padding(4);
-            btnExcel.Name = "btnExcel";
-            btnExcel.Size = new Size(120, 55);
-            btnExcel.TabIndex = 9;
-            btnExcel.Text = "Excel";
-            btnExcel.UseVisualStyleBackColor = false;
-            btnExcel.Click += btnExcel_Click;
             // 
             // txtDiemKH
             // 
@@ -241,12 +242,25 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(rdbTimKiemTen);
             panel2.Controls.Add(txtTimKiem_KhachHang);
+            panel2.Controls.Add(rdbTimKiemMa);
             panel2.Controls.Add(label5);
             panel2.Location = new Point(0, 28);
             panel2.Name = "panel2";
             panel2.Size = new Size(1409, 44);
             panel2.TabIndex = 1;
+            // 
+            // rdbTimKiemTen
+            // 
+            rdbTimKiemTen.AutoSize = true;
+            rdbTimKiemTen.Location = new Point(611, 11);
+            rdbTimKiemTen.Name = "rdbTimKiemTen";
+            rdbTimKiemTen.Size = new Size(54, 25);
+            rdbTimKiemTen.TabIndex = 15;
+            rdbTimKiemTen.TabStop = true;
+            rdbTimKiemTen.Text = "Tên";
+            rdbTimKiemTen.UseVisualStyleBackColor = true;
             // 
             // txtTimKiem_KhachHang
             // 
@@ -258,6 +272,17 @@
             txtTimKiem_KhachHang.Size = new Size(428, 29);
             txtTimKiem_KhachHang.TabIndex = 1;
             txtTimKiem_KhachHang.TextChanged += txtTimKiem_KhachHang_TextChanged;
+            // 
+            // rdbTimKiemMa
+            // 
+            rdbTimKiemMa.AutoSize = true;
+            rdbTimKiemMa.Location = new Point(552, 11);
+            rdbTimKiemMa.Name = "rdbTimKiemMa";
+            rdbTimKiemMa.Size = new Size(53, 25);
+            rdbTimKiemMa.TabIndex = 14;
+            rdbTimKiemMa.TabStop = true;
+            rdbTimKiemMa.Text = "Mã";
+            rdbTimKiemMa.UseVisualStyleBackColor = true;
             // 
             // label5
             // 
@@ -286,9 +311,7 @@
             dgvKH.RowTemplate.Height = 31;
             dgvKH.Size = new Size(1409, 383);
             dgvKH.TabIndex = 1;
-            dgvKH.CellBorderStyleChanged += dgvKH_CellBorderStyleChanged;
             dgvKH.CellClick += dgvKH_CellClick;
-            dgvKH.CellContentClick += dgvKH_CellContentClick;
             // 
             // groupBox3
             // 
@@ -340,7 +363,6 @@
         private Button btnThem;
         private Button btnSua;
         private Button btnKhoa_MoKhoa;
-        private Button btnExcel;
         private TextBox txtDiemKH;
         private TextBox txtSDT;
         private TextBox txtHoVaTen;
@@ -357,5 +379,8 @@
         private DataGridView dgvKH;
         private GroupBox groupBox3;
         private DataGridView dgvHD;
+        private Button btnLamMoi;
+        private RadioButton rdbTimKiemTen;
+        private RadioButton rdbTimKiemMa;
     }
 }
