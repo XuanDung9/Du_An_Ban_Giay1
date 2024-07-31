@@ -89,9 +89,11 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
             if (!int.TryParse(txtSDT.Text, out int sdt) || txtSDT.Text.Length != 10)
             {
-                MessageBox.Show("Số điện thoại không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
+                Khachhang khachhang = new Khachhang();
+                khachhang.Tenkhachhang = txtHoVaTen.Text;
+                khachhang.Sdt =int.Parse(txtSDT.Text);
+                khachhang.Diemkhachhang = 0;
+                khachhang.Trangthai = true;
 
             if (!checksdt(sdt))
             {

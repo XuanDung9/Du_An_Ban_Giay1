@@ -78,7 +78,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             // check dữ liệu đầu vào 
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'THÊM' kích cỡ ? ", "Đúng", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận THÊM ? ", "Đúng", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     // check đã có trong csdl chưa 
@@ -111,7 +111,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 }
                 else
                 {
-                    MessageBox.Show("Đã 'HỦY'");
+                    MessageBox.Show("Hủy THÊM");
                 }
             }
             else
@@ -125,7 +125,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'SỬA' kích cỡ", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận SỬA", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     var result = _service.Sua(idClicked, new Kichco()
@@ -135,7 +135,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                     });
                     if (result)
                     {
-                        MessageBox.Show("SỬA chất liệu thành công");
+                        MessageBox.Show("SỬA thành công");
                         LoadData(null, null);
                     }
                     else
@@ -145,7 +145,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 }
                 else
                 {
-                    MessageBox.Show("HỦY sửa chất liệu");
+                    MessageBox.Show("Đã hủy SỬA");
                 }
             }
             else
@@ -159,7 +159,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
             if (_service.GetByID(idClicked).Trangthai == true)
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'KHÓA' kích cỡ", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận KHÓA", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     var result = _service.Khoa_MoKhoa(idClicked);
@@ -181,7 +181,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             }
             else
             {
-                var confirmResult = MessageBox.Show("Xác nhận ' MỞ KHÓA' kích cỡ", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận MỞ KHÓA ", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     var result = _service.Khoa_MoKhoa(idClicked);

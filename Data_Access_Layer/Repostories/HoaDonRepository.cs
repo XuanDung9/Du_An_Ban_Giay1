@@ -139,81 +139,40 @@ namespace C_Data_Access_Layer.Repositories
         }
         public List<HoaDonNhe> hoaDonNhes(string searchText, string searchType)
         {
-            if (string.Equals(searchType, SearchType.tenkhach))
-            {
-                return _db.Hoadons
-                    .Select(c => new HoaDonNhe()
-                    {
-                        Hoadone = c,
-                        tenkhachhang = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Tenkhachhang,
-                        sdtkhach = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)! .Sdt.ToString(),
-                        hovatentaikhoan = c.Mataikhoan == null ? "N/A" : _db.Taikhoans.FirstOrDefault(cn => cn.Mataikhoan == c.Mataikhoan)!.Hoten,
-                        tenhinhthuc = c.Mahinhthucthanhtoan == null ? "N/A" : _db.Hinhthucthanhtoans.FirstOrDefault(cn => cn.Mahinhthucthanhtoan == c.Mahinhthucthanhtoan)!.Tenhinhthuc
-
-                    })
-                    .Where(c => c.tenkhachhang.Contains(searchText)).ToList();
-            }
-            if (string.Equals(searchType, SearchType.SDTkhach))
-            {
-                return _db.Hoadons
-                    .Select(c => new HoaDonNhe()
-                    {
-                        Hoadone = c,
-                        tenkhachhang = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Tenkhachhang,
-                        sdtkhach = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Sdt.ToString(),
-                        hovatentaikhoan = c.Mataikhoan == null ? "N/A" : _db.Taikhoans.FirstOrDefault(cn => cn.Mataikhoan == c.Mataikhoan)!.Hoten,
-                        tenhinhthuc = c.Mahinhthucthanhtoan == null ? "N/A" : _db.Hinhthucthanhtoans.FirstOrDefault(cn => cn.Mahinhthucthanhtoan == c.Mahinhthucthanhtoan)!.Tenhinhthuc
-                    })
-                    .Where(c => c.sdtkhach.Contains(searchText)).ToList();
-            }
-            if (string.Equals(searchType, SearchType.TenTaikhoan))
-            {
-                return _db.Hoadons
-                    .Select(c => new HoaDonNhe()
-                    {
-                        Hoadone = c,
-                        tenkhachhang = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Tenkhachhang,
-                        sdtkhach = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Sdt.ToString(),
-                        hovatentaikhoan = c.Mataikhoan == null ? "N/A" : _db.Taikhoans.FirstOrDefault(cn => cn.Mataikhoan == c.Mataikhoan)!.Hoten,
-                        tenhinhthuc = c.Mahinhthucthanhtoan == null ? "N/A" : _db.Hinhthucthanhtoans.FirstOrDefault(cn => cn.Mahinhthucthanhtoan == c.Mahinhthucthanhtoan)!.Tenhinhthuc
-                    })
-                    .Where(c => c.hovatentaikhoan.Contains(searchText)).ToList();
-            }
-            if (string.Equals(searchType, SearchType.tatca))
-            {
-                return _db.Hoadons
-                    .Select(c => new HoaDonNhe()
-                    {
-                        Hoadone = c,
-                        tenkhachhang = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Tenkhachhang,
-                        sdtkhach = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Sdt.ToString(),
-                        hovatentaikhoan = c.Mataikhoan == null ? "N/A" : _db.Taikhoans.FirstOrDefault(cn => cn.Mataikhoan == c.Mataikhoan)!.Hoten,
-                        tenhinhthuc = c.Mahinhthucthanhtoan == null ? "N/A" : _db.Hinhthucthanhtoans.FirstOrDefault(cn => cn.Mahinhthucthanhtoan == c.Mahinhthucthanhtoan)!.Tenhinhthuc
-                    })
-                    .Where(c => c.hovatentaikhoan.Contains(searchText) || c.sdtkhach.Contains(searchText) || c.tenkhachhang.Contains(searchText)).ToList();
-            }
-
-            var query = _db.Hoadons.AsQueryable();
-            if (!string.IsNullOrEmpty(searchType))
-            {
-                query = query
-                    .Where(x => x.Mahinhthucthanhtoan != null &&
-                                _db.Hinhthucthanhtoans.Any(cn => cn.Mahinhthucthanhtoan == x.Mahinhthucthanhtoan &&
-                                                                        (string.Equals(cn.Tenhinhthuc, searchType))));
-            }
-            var result = query
-                .Select(x => new HoaDonNhe()
+            var query = _db.Hoadons
+                .Select(c => new HoaDonNhe()
                 {
-                    Hoadone = x,
-                    tenkhachhang = x.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == x.Makhachhang)!.Tenkhachhang,
-                    sdtkhach = x.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == x.Makhachhang)!.Sdt.ToString(),
-                    hovatentaikhoan = x.Mataikhoan == null ? "N/A" : _db.Taikhoans.FirstOrDefault(cn => cn.Mataikhoan == x.Mataikhoan)!.Hoten,
-                    tenhinhthuc = x.Mahinhthucthanhtoan == null ? "N/A" : _db.Hinhthucthanhtoans.FirstOrDefault(cn => cn.Mahinhthucthanhtoan == x.Mahinhthucthanhtoan)!.Tenhinhthuc
-                })
-                .ToList();
+                    Hoadone = c,
+                    tenkhachhang = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Tenkhachhang,
+                    sdtkhach = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Sdt.ToString(),
+                    hovatentaikhoan = c.Mataikhoan == null ? "N/A" : _db.Taikhoans.FirstOrDefault(cn => cn.Mataikhoan == c.Mataikhoan)!.Hoten,
+                    tenhinhthuc = c.Mahinhthucthanhtoan == null ? "N/A" : _db.Hinhthucthanhtoans.FirstOrDefault(cn => cn.Mahinhthucthanhtoan == c.Mahinhthucthanhtoan)!.Tenhinhthuc
+                });
 
-            return result;
+            switch (searchType)
+            {
+                case SearchType.tenkhach:
+                    query = query.Where(c => c.tenkhachhang.Contains(searchText));
+                    break;
+                case SearchType.SDTkhach:
+                    query = query.Where(c => c.sdtkhach.Contains(searchText));
+                    break;
+                case SearchType.TenTaikhoan:
+                    query = query.Where(c => c.hovatentaikhoan.Contains(searchText));
+                    break;
+                case SearchType.tatca:
+                    query = query.Where(c => c.tenkhachhang.Contains(searchText) ||
+                                             c.sdtkhach.Contains(searchText) ||
+                                             c.hovatentaikhoan.Contains(searchText));
+                    break;
+                default:
+                    // Có thể thêm các loại tìm kiếm khác nếu cần
+                    break;
+            }
+
+            return query.ToList();
         }
+
 
         public List<Giay> GetGiays()
         {

@@ -78,7 +78,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             // check dữ liệu đầu vào 
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'THÊM' chất liệu ? ", "Đúng", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận THÊM ", "Đúng", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     // check đã có trong csdl chưa 
@@ -101,17 +101,17 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                     if (result)
                     {
                         // thành công 
-                        MessageBox.Show("Thêm thành công ");
+                        MessageBox.Show("THÊM thành công ");
                         LoadData(null, null);
                     }
                     else
                     {
-                        MessageBox.Show("Thêm thất bại");
+                        MessageBox.Show("THÊM thất bại");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Đã 'HỦY'");
+                    MessageBox.Show("Hủy THÊM");
                 }
             }
             else
@@ -125,7 +125,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'SỬA' chất liệu", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận SỬA", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     var result = _service.Sua(idClicked, new Chatlieu()
@@ -135,7 +135,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                     });
                     if (result)
                     {
-                        MessageBox.Show("SỬA chất liệu thành công");
+                        MessageBox.Show("SỬA thành công");
                         LoadData(null, null);
                     }
                     else
@@ -145,7 +145,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 }
                 else
                 {
-                    MessageBox.Show("HỦY sửa chất liệu");
+                    MessageBox.Show("Hủy SỬA");
                 }
             }
             else
@@ -159,7 +159,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
             if (_service.GetByID(idClicked).Trangthai == true)
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'KHÓA' chất liệu", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận KHÓA", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     var result = _service.Khoa_MoKhoa(idClicked);
@@ -175,13 +175,13 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 }
                 else
                 {
-                    MessageBox.Show("Đã hủy KHÓA chất liệu ");
+                    MessageBox.Show("Hủy KHÓA ");
                 }
                 ClearTextBox();
             }
             else
             {
-                var confirmResult = MessageBox.Show("Xác nhận ' MỞ KHÓA' chất liệu", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận MỞ KHÓA", "Xác nhận", MessageBoxButtons.OKCancel);
                 if (confirmResult == DialogResult.OK)
                 {
                     var result = _service.Khoa_MoKhoa(idClicked);
@@ -197,7 +197,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
                 }
                 else
                 {
-                    MessageBox.Show("Đã hủy MỞ KHÓA chất liệu ");
+                    MessageBox.Show("Đã hủy MỞ KHÓA ");
                 }
                 ClearTextBox();
             }

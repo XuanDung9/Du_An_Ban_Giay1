@@ -47,13 +47,13 @@
             btn_TimKiem = new Button();
             txt_TimKiemSP = new TextBox();
             groupBox1 = new GroupBox();
+            txtGiamGia = new TextBox();
             btn_ThanhToan = new Button();
             txt_GhiChu = new TextBox();
             txt_TienNhan = new TextBox();
             txt_DiemKH = new TextBox();
             btn_XemDiem = new Button();
             cb_SuDungDiem = new CheckBox();
-            cbb_MaGiamGia = new ComboBox();
             cbb_HinhThucThanhToan = new ComboBox();
             label20 = new Label();
             label21 = new Label();
@@ -155,6 +155,7 @@
             dgv_HoaDonChiTiet.RowTemplate.Height = 29;
             dgv_HoaDonChiTiet.Size = new Size(887, 209);
             dgv_HoaDonChiTiet.TabIndex = 4;
+            dgv_HoaDonChiTiet.CellContentClick += dgv_HoaDonChiTiet_CellContentClick;
             // 
             // panel2
             // 
@@ -205,6 +206,7 @@
             btn_XoaSanPham.TabIndex = 1;
             btn_XoaSanPham.Text = "XÓA";
             btn_XoaSanPham.UseVisualStyleBackColor = false;
+            btn_XoaSanPham.Click += btn_XoaSanPham_Click;
             // 
             // label3
             // 
@@ -253,6 +255,7 @@
             btn_TimKiem.TabIndex = 4;
             btn_TimKiem.Text = "Tìm kiếm";
             btn_TimKiem.UseVisualStyleBackColor = false;
+            btn_TimKiem.Click += btn_TimKiem_Click;
             // 
             // txt_TimKiemSP
             // 
@@ -264,13 +267,13 @@
             // 
             // groupBox1
             // 
+            groupBox1.Controls.Add(txtGiamGia);
             groupBox1.Controls.Add(btn_ThanhToan);
             groupBox1.Controls.Add(txt_GhiChu);
             groupBox1.Controls.Add(txt_TienNhan);
             groupBox1.Controls.Add(txt_DiemKH);
             groupBox1.Controls.Add(btn_XemDiem);
             groupBox1.Controls.Add(cb_SuDungDiem);
-            groupBox1.Controls.Add(cbb_MaGiamGia);
             groupBox1.Controls.Add(cbb_HinhThucThanhToan);
             groupBox1.Controls.Add(label20);
             groupBox1.Controls.Add(label21);
@@ -294,6 +297,13 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thanh toán";
             // 
+            // txtGiamGia
+            // 
+            txtGiamGia.Location = new Point(111, 193);
+            txtGiamGia.Name = "txtGiamGia";
+            txtGiamGia.Size = new Size(230, 27);
+            txtGiamGia.TabIndex = 24;
+            // 
             // btn_ThanhToan
             // 
             btn_ThanhToan.BackColor = SystemColors.Info;
@@ -304,6 +314,7 @@
             btn_ThanhToan.TabIndex = 23;
             btn_ThanhToan.Text = "THANH TOÁN";
             btn_ThanhToan.UseVisualStyleBackColor = false;
+            btn_ThanhToan.Click += btn_ThanhToan_Click;
             // 
             // txt_GhiChu
             // 
@@ -319,6 +330,7 @@
             txt_TienNhan.Name = "txt_TienNhan";
             txt_TienNhan.Size = new Size(228, 27);
             txt_TienNhan.TabIndex = 21;
+            txt_TienNhan.TextChanged += txt_TienNhan_TextChanged;
             // 
             // txt_DiemKH
             // 
@@ -326,6 +338,7 @@
             txt_DiemKH.Name = "txt_DiemKH";
             txt_DiemKH.Size = new Size(334, 27);
             txt_DiemKH.TabIndex = 20;
+            txt_DiemKH.TextChanged += txt_DiemKH_TextChanged;
             // 
             // btn_XemDiem
             // 
@@ -347,14 +360,7 @@
             cb_SuDungDiem.TabIndex = 18;
             cb_SuDungDiem.Text = "Sử dụng điểm tích lũy";
             cb_SuDungDiem.UseVisualStyleBackColor = true;
-            // 
-            // cbb_MaGiamGia
-            // 
-            cbb_MaGiamGia.FormattingEnabled = true;
-            cbb_MaGiamGia.Location = new Point(124, 193);
-            cbb_MaGiamGia.Name = "cbb_MaGiamGia";
-            cbb_MaGiamGia.Size = new Size(217, 28);
-            cbb_MaGiamGia.TabIndex = 17;
+            cb_SuDungDiem.CheckedChanged += cb_SuDungDiem_CheckedChanged;
             // 
             // cbb_HinhThucThanhToan
             // 
@@ -550,6 +556,7 @@
             btn_TimKhachHang.TabIndex = 2;
             btn_TimKhachHang.Text = "Tìm kiếm";
             btn_TimKhachHang.UseVisualStyleBackColor = false;
+            btn_TimKhachHang.Click += btn_TimKhachHang_Click;
             // 
             // label5
             // 
@@ -631,7 +638,6 @@
         private Label label5;
         private Label label4;
         private CheckBox cb_SuDungDiem;
-        private ComboBox cbb_MaGiamGia;
         private ComboBox cbb_HinhThucThanhToan;
         private Label label20;
         private Label label21;
@@ -652,5 +658,6 @@
         private TextBox txt_TimKiemSP;
         private TextBox txt_HoaDonChiTiet;
         private Label label22;
+        private TextBox txtGiamGia;
     }
 }
