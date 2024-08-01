@@ -66,7 +66,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
         }
 
-        public void loadgridHoadonchitiet()
+        public void loadgridHoadonchitiet( )
         {
             int stt = 1;
             dgvHDCT.ColumnCount = 5;
@@ -86,10 +86,20 @@ namespace A_Persentation_Layer.Frm.Frm_US
         }
         private void dgvHD_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
-
-            _idWhenclick = int.Parse(dgvHD.Rows[index].Cells[1].Value.ToString());
-            loadgridHoadonchitiet();
+            if (e.RowIndex >= 0)
+            {
+                // Lấy chỉ số hàng được click
+                int index = e.RowIndex;
+                if ( index < 0 || dgvHD.Rows.Count<index)
+                {
+                    return;
+                }   
+                else
+                {
+                    _idWhenclick = int.Parse(dgvHD.Rows[index].Cells[1].Value.ToString());
+                    loadgridHoadonchitiet();
+                }    
+            }
         }
 
         private void txtTimkiem_TextChanged(object sender, EventArgs e)

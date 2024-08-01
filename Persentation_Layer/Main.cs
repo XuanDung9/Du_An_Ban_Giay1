@@ -125,23 +125,48 @@ namespace A_Persentation_Layer
 
         private void btn_nhanVien_Click(object sender, EventArgs e)
         {
-            Frm_US_NhanVien _nhanVien = new Frm_US_NhanVien();
-            Load_Usercontrol(_nhanVien);
-            ActiveButton(sender);
+            if(maChucVu==1)
+            {
+                MessageBox.Show("Nhân viên không dùng được chức năng này ");
+            }    
+            else
+            {
+                Frm_US_NhanVien _nhanVien = new Frm_US_NhanVien();
+                Load_Usercontrol(_nhanVien);
+                ActiveButton(sender);
+            }    
+      
         }
 
         private void btn_khuyenMai_Click(object sender, EventArgs e)
         {
-            Frm_US_UuDai _uuDai = new Frm_US_UuDai();
-            Load_Usercontrol(_uuDai);
-            ActiveButton(sender);
+            if (maChucVu == 1)
+            {
+                MessageBox.Show("Nhân viên không dùng được chức năng này ");
+            }
+            else
+            {
+                Frm_US_UuDai _uuDai = new Frm_US_UuDai();
+                Load_Usercontrol(_uuDai);
+                ActiveButton(sender);
+            }    
+   
         }
 
         private void btn_thongKe_Click(object sender, EventArgs e)
         {
-            Frm_US_ThongKe _thongKe = new Frm_US_ThongKe();
-            Load_Usercontrol(_thongKe);
-            ActiveButton(sender);
+            if (maChucVu == 1)
+            {
+                MessageBox.Show("Nhân viên không dùng được chức năng này ");
+            }
+            else
+            {
+
+                Frm_US_ThongKe _thongKe = new Frm_US_ThongKe();
+                Load_Usercontrol(_thongKe);
+                ActiveButton(sender);
+            }    
+
         }
 
         private void btn_dangXuat_Click(object sender, EventArgs e)

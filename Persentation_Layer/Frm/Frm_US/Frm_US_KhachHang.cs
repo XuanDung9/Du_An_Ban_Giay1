@@ -29,13 +29,12 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
             int stt = 1;
 
-            dgvKH.ColumnCount = 6;
+            dgvKH.ColumnCount = 5;
             dgvKH.Columns[0].Name = "STT";
             dgvKH.Columns[1].Name = "Mã";
             dgvKH.Columns[2].Name = "Tên";
             dgvKH.Columns[3].Name = "SDT";
             dgvKH.Columns[4].Name = "Điểm";
-            dgvKH.Columns[5].Name = "Trạng Thái";
             dgvKH.Rows.Clear();
 
             IEnumerable<Khachhang> khachhangs = _service.GetAllKhachhang(null);
@@ -55,7 +54,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             foreach (var x in khachhangs)
             {
                 string sdtFormatted = x.Sdt.HasValue ? x.Sdt.Value.ToString("D10") : "Chưa có số";
-                dgvKH.Rows.Add(stt++, x.Makhachhang, x.Tenkhachhang, sdtFormatted, x.Diemkhachhang, x.Trangthai == false ? "Hoạt động" : "Không hoạt động");
+                dgvKH.Rows.Add(stt++, x.Makhachhang, x.Tenkhachhang, sdtFormatted, x.Diemkhachhang);
             }
         }
 
@@ -146,20 +145,20 @@ namespace A_Persentation_Layer.Frm.Frm_US
         }
 
 
-        public void btnKhoa_MoKhoa_Click(object sender, EventArgs e)
-        {
-            Khachhang khachhang = new Khachhang
-            {
-                Makhachhang = idWhenClick
-            };
+        //public void btnKhoa_MoKhoa_Click(object sender, EventArgs e)
+        //{
+        //    Khachhang khachhang = new Khachhang
+        //    {
+        //        Makhachhang = idWhenClick
+        //    };
 
-            var result = MessageBox.Show("Xác nhận muốn Khoá/Mở khoá", "Xác nhận", MessageBoxButtons.YesNo);
-            if (result == DialogResult.Yes)
-            {
-                MessageBox.Show(_service.Khoa_MoKhoa(khachhang));
-            }
-            LoadGrid(null, "Tên");
-        }
+        //    var result = MessageBox.Show("Xác nhận muốn Khoá/Mở khoá", "Xác nhận", MessageBoxButtons.YesNo);
+        //    if (result == DialogResult.Yes)
+        //    {
+        //        MessageBox.Show(_service.Khoa_MoKhoa(khachhang));
+        //    }
+        //    LoadGrid(null, "Tên");
+        //}
 
         private void dgvKH_CellClick(object sender, DataGridViewCellEventArgs e)
         {
@@ -209,6 +208,14 @@ namespace A_Persentation_Layer.Frm.Frm_US
             return true;
         }
         public void btnLamMoi_Click(object sender, EventArgs e)
+        {
+            txtMaKhachHang.Text = string.Empty;
+            txtHoVaTen.Text = string.Empty;
+            txtSDT.Text = string.Empty;
+            txtDiemKH.Text = string.Empty;
+        }
+
+        private void btnLamMoi_Click_1(object sender, EventArgs e)
         {
             txtMaKhachHang.Text = string.Empty;
             txtHoVaTen.Text = string.Empty;

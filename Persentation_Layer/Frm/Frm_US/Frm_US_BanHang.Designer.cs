@@ -36,6 +36,7 @@
             label2 = new Label();
             dgv_HoaDonChiTiet = new DataGridView();
             panel2 = new Panel();
+            lb_TTHD = new Label();
             txt_HoaDonChiTiet = new TextBox();
             label22 = new Label();
             btn_ChonAll = new Button();
@@ -75,7 +76,6 @@
             btn_TimKhachHang = new Button();
             label5 = new Label();
             label4 = new Label();
-            lb_TTHD = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDonChiTiet).BeginInit();
@@ -172,6 +172,16 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(887, 47);
             panel2.TabIndex = 3;
+            // 
+            // lb_TTHD
+            // 
+            lb_TTHD.AutoSize = true;
+            lb_TTHD.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            lb_TTHD.Location = new Point(716, 11);
+            lb_TTHD.Name = "lb_TTHD";
+            lb_TTHD.Size = new Size(59, 23);
+            lb_TTHD.TabIndex = 5;
+            lb_TTHD.Text = "label6";
             // 
             // txt_HoaDonChiTiet
             // 
@@ -308,6 +318,7 @@
             txtGiamGia.Name = "txtGiamGia";
             txtGiamGia.Size = new Size(230, 27);
             txtGiamGia.TabIndex = 24;
+            txtGiamGia.TextChanged += txtGiamGia_TextChanged;
             // 
             // btn_ThanhToan
             // 
@@ -582,16 +593,6 @@
             label4.Size = new Size(135, 23);
             label4.TabIndex = 0;
             label4.Text = "Tên khách hàng:";
-            // 
-            // lb_TTHD
-            // 
-            lb_TTHD.AutoSize = true;
-            lb_TTHD.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            lb_TTHD.Location = new Point(716, 11);
-            lb_TTHD.Name = "lb_TTHD";
-            lb_TTHD.Size = new Size(59, 23);
-            lb_TTHD.TabIndex = 5;
-            lb_TTHD.Text = "label6";
             // 
             // Frm_US_BanHang
             // 

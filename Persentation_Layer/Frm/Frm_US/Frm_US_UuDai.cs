@@ -2,6 +2,7 @@
 using B_Bussiness_Layer.Services;
 using C_Data_Access_Layer.Models;
 using C_Data_Access_Layer.Models.ModelRefer;
+using OfficeOpenXml.FormulaParsing.Excel.Functions.Finance.Implementations;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -90,7 +91,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 case 2:
                     return "Đang diễn ra";
                 default:
-                    return "";
+                    return "không xác nhận";
             }
         }
 
@@ -203,7 +204,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             {
                 uudai.Trangthai = 2;
             }
-            else if (ngayBatDau > now)
+            else if (ngayBatDau > now && ngayKetThuc > now)
             {
                 uudai.Trangthai = 1;
             }
