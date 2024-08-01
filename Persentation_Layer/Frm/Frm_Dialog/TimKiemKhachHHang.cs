@@ -27,18 +27,17 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         public void LoadGird(string search)
         {
             int stt = 1;
-            dgv_Objects.ColumnCount = 6;
+            dgv_Objects.ColumnCount = 5;
             dgv_Objects.Columns[0].Name = "STT";
             dgv_Objects.Columns[1].Name = "Mã";
             dgv_Objects.Columns[2].Name = "Tên";
             dgv_Objects.Columns[3].Name = "SDT";
             dgv_Objects.Columns[4].Name = "Điểm";
-            dgv_Objects.Columns[5].Name = "Trạng Thái";
             dgv_Objects.Rows.Clear();
 
             foreach (var x in _Ser_KhachHang.GetAllKhachhang(search))
             {
-                dgv_Objects.Rows.Add(stt++, x.Makhachhang, x.Tenkhachhang, x.Sdt, x.Diemkhachhang, x.Trangthai == false ? "Không hoạt động" : "Hoạt đông");
+                dgv_Objects.Rows.Add(stt++, x.Makhachhang, x.Tenkhachhang, x.Sdt, x.Diemkhachhang);
             }
         }
         private void btnTimKiem_Click(object sender, EventArgs e)
@@ -81,12 +80,11 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             try
             {
 
-                var confirmResult = MessageBox.Show("Xác nhận 'chọn' khách hàng này không?", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show($"Chọn khách hàng có mã {idClicked}", "Xác nhận", MessageBoxButtons.OKCancel);
 
                 if (confirmResult == DialogResult.OK)
                 {
                     ChooseID = idClicked;
-                    MessageBox.Show($"Đã chọn khách hàng có mã: {ChooseID}");
                     this.Close();
                 }
                 else

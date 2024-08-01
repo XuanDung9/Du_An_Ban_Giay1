@@ -36,6 +36,7 @@
             label2 = new Label();
             dgv_HoaDonChiTiet = new DataGridView();
             panel2 = new Panel();
+            label6 = new Label();
             lb_TTHD = new Label();
             txt_HoaDonChiTiet = new TextBox();
             label22 = new Label();
@@ -52,7 +53,6 @@
             txt_GhiChu = new TextBox();
             txt_TienNhan = new TextBox();
             txt_DiemKH = new TextBox();
-            btn_XemDiem = new Button();
             cb_SuDungDiem = new CheckBox();
             cbb_HinhThucThanhToan = new ComboBox();
             label20 = new Label();
@@ -75,7 +75,6 @@
             btn_TimKhachHang = new Button();
             label5 = new Label();
             label4 = new Label();
-            label6 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDonChiTiet).BeginInit();
@@ -172,6 +171,15 @@
             panel2.Name = "panel2";
             panel2.Size = new Size(887, 47);
             panel2.TabIndex = 3;
+            // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(549, 14);
+            label6.Name = "label6";
+            label6.Size = new Size(79, 20);
+            label6.TabIndex = 6;
+            label6.Text = "Tổng tiền :";
             // 
             // lb_TTHD
             // 
@@ -277,7 +285,6 @@
             groupBox1.Controls.Add(txt_GhiChu);
             groupBox1.Controls.Add(txt_TienNhan);
             groupBox1.Controls.Add(txt_DiemKH);
-            groupBox1.Controls.Add(btn_XemDiem);
             groupBox1.Controls.Add(cb_SuDungDiem);
             groupBox1.Controls.Add(cbb_HinhThucThanhToan);
             groupBox1.Controls.Add(label20);
@@ -340,21 +347,11 @@
             // 
             // txt_DiemKH
             // 
-            txt_DiemKH.Location = new Point(7, 307);
+            txt_DiemKH.Location = new Point(12, 307);
             txt_DiemKH.Name = "txt_DiemKH";
-            txt_DiemKH.Size = new Size(334, 27);
+            txt_DiemKH.Size = new Size(329, 27);
             txt_DiemKH.TabIndex = 20;
             txt_DiemKH.TextChanged += txt_DiemKH_TextChanged;
-            // 
-            // btn_XemDiem
-            // 
-            btn_XemDiem.BackColor = SystemColors.ActiveCaption;
-            btn_XemDiem.Location = new Point(187, 266);
-            btn_XemDiem.Name = "btn_XemDiem";
-            btn_XemDiem.Size = new Size(153, 35);
-            btn_XemDiem.TabIndex = 19;
-            btn_XemDiem.Text = "Xem điểm";
-            btn_XemDiem.UseVisualStyleBackColor = false;
             // 
             // cb_SuDungDiem
             // 
@@ -537,7 +534,7 @@
             // 
             lb_maKH.AutoSize = true;
             lb_maKH.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            lb_maKH.Location = new Point(78, 51);
+            lb_maKH.Location = new Point(79, 52);
             lb_maKH.Name = "lb_maKH";
             lb_maKH.Size = new Size(20, 23);
             lb_maKH.TabIndex = 4;
@@ -560,7 +557,7 @@
             btn_TimKhachHang.Name = "btn_TimKhachHang";
             btn_TimKhachHang.Size = new Size(94, 36);
             btn_TimKhachHang.TabIndex = 2;
-            btn_TimKhachHang.Text = "Tìm kiếm";
+            btn_TimKhachHang.Text = "Chọn";
             btn_TimKhachHang.UseVisualStyleBackColor = false;
             btn_TimKhachHang.Click += btn_TimKhachHang_Click;
             // 
@@ -568,7 +565,7 @@
             // 
             label5.AutoSize = true;
             label5.Font = new Font("Segoe UI Semibold", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            label5.Location = new Point(6, 51);
+            label5.Location = new Point(6, 52);
             label5.Name = "label5";
             label5.Size = new Size(72, 23);
             label5.TabIndex = 1;
@@ -583,15 +580,6 @@
             label4.Size = new Size(135, 23);
             label4.TabIndex = 0;
             label4.Text = "Tên khách hàng:";
-            // 
-            // label6
-            // 
-            label6.AutoSize = true;
-            label6.Location = new Point(549, 14);
-            label6.Name = "label6";
-            label6.Size = new Size(79, 20);
-            label6.TabIndex = 6;
-            label6.Text = "Tổng tiền :";
             // 
             // Frm_US_BanHang
             // 
@@ -665,7 +653,6 @@
         private Label lb_TongTienHang;
         private TextBox txt_TienNhan;
         private TextBox txt_DiemKH;
-        private Button btn_XemDiem;
         private TextBox txt_GhiChu;
         private Button btn_ThanhToan;
         private ComboBox cbb_TimKiem;

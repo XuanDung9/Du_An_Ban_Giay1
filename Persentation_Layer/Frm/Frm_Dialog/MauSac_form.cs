@@ -49,7 +49,6 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             cbbTimKiem.Items.Add(SearchType.tenMauSac);
             cbbTimKiem.Items.Add(SearchType.moTaMauSac);
             cbbTimKiem.Items.Add(SearchType.trangThaiMauSac);
-            cbbTimKiem.Items.Add(SearchType.idNguoiThemMauSac);
             cbbTimKiem.SelectedIndex = 0; // mặc định thằng ko được chọn là all
         }
         private void LoadData(string? txtTimKiem, string? SearchType)

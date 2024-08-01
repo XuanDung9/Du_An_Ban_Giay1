@@ -36,10 +36,6 @@ namespace C_Data_Access_Layer.Repostories
             {
                 return _db.Kichcos.Where(c => c.Trangthai.ToString().Contains(txtSearch)).ToList();
             }
-            if (string.Equals(searchType, SearchType.idNguoiThemKichCo))
-            {
-                return _db.Kichcos.Where(c => c.Mataikhoan.ToString().Contains(txtSearch)).ToList();
-            }
             return _db.Kichcos.ToList();
         }
 

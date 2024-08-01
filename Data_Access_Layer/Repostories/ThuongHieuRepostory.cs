@@ -27,10 +27,6 @@ namespace C_Data_Access_Layer.Repostories
             {
                 return _db.Thuonghieus.Where(c => c.Tenthuonghieu.Contains(txtSearch)).ToList();
             }
-            if (string.Equals(searchType, SearchType.idNguoiThemThuongHieu))
-            {
-                return _db.Thuonghieus.Where(c => c.Mataikhoan.ToString().Contains(txtSearch)).ToList();
-            }
             if (string.Equals(searchType, SearchType.trangThaiThuongHieu))
             {
                 return _db.Thuonghieus.Where(c => c.Trangthai.ToString().Contains(txtSearch)).ToList();

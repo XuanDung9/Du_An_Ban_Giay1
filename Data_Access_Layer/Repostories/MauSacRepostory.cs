@@ -35,10 +35,6 @@ namespace C_Data_Access_Layer.Repostories
             {
                 return _db.Mausacs.Where(c => c.Trangthai.ToString().Contains(txtSearch)).ToList();
             }
-            if (string.Equals(searchType, SearchType.idNguoiThemMauSac))
-            {
-                return _db.Mausacs.Where(c => c.Mataikhoan.ToString().Contains(txtSearch)).ToList();
-            }
             return _db.Mausacs.ToList();
         }
 

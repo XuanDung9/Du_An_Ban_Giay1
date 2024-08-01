@@ -95,7 +95,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                         Mataikhoan = XacThucDangNhap.Instance.IdTaiKhoan,
                         Mauudai = 10,
                         Makhachhang = 16,
-                        Mahinhthucthanhtoan = 8,
+                        Mahinhthucthanhtoan = 16,
                         Ngaytao = dateTime,
                         Tongtien = null,
                         Ghichu = "",

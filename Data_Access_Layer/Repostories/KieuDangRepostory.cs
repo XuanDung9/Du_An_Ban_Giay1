@@ -31,10 +31,6 @@ namespace C_Data_Access_Layer.Repostories
             {
                 return _db.Kieudangs.Where(c => c.Mota.Contains(txtSearch)).ToList();
             }
-            if (string.Equals(searchType, SearchType.trangThaiKieuDang))
-            {
-                return _db.Kieudangs.Where(c => c.Trangthai.ToString().Contains(txtSearch)).ToList();
-            }
 
             return _db.Kieudangs.ToList();
         }
