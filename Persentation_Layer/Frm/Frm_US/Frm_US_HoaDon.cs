@@ -66,7 +66,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
         }
 
-        public void loadgridHoadonchitiet( )
+        public void loadgridHoadonchitiet(int hdctId)
         {
             int stt = 1;
             dgvHDCT.ColumnCount = 5;
@@ -77,7 +77,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             dgvHDCT.Columns[4].Name = "Giá bán";
 
             dgvHDCT.Rows.Clear();
-            foreach (var e in _service.GetHoadonchitiets())
+            foreach (var e in _service.GetHoadonchitietsById(hdctId))
             {
                 var idspct = _service.GetGiaychitiets().FirstOrDefault(i => i.Magiaychitiet == e.Magiaychitiet);
                 var idsp = _service.GetGiays().FirstOrDefault(s => s.Magiay == idspct.Magiay);
@@ -90,14 +90,12 @@ namespace A_Persentation_Layer.Frm.Frm_US
             {
                 // Lấy chỉ số hàng được click
                 int index = e.RowIndex;
-                if ( index < 0 || dgvHD.Rows.Count<index)
-                {
-                    return;
-                }   
-                else
+                if (index >= 0 && index < dgvHD.Rows.Count - 1)
                 {
                     _idWhenclick = int.Parse(dgvHD.Rows[index].Cells[1].Value.ToString());
-                    loadgridHoadonchitiet();
+                    var hd = _service.GetHoadons(null).FirstOrDefault(x => x.Mahoadon == _idWhenclick);
+
+                    loadgridHoadonchitiet(hd.Mahoadon);
                 }    
             }
         }
@@ -128,7 +126,8 @@ namespace A_Persentation_Layer.Frm.Frm_US
             LoadGridHD(txtTimkiem.Text, cmbTimkiem.Text);
         }
 
-        private void btnExcel_Click(object sender, EventArgs e)
+        private void btnXuatExcel_Click(object sender, EventArgs e)
+
         {
             using (ExcelPackage excelPackage = new ExcelPackage())
             {
@@ -156,7 +155,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 }
             }
             MessageBox.Show("Dữ liệu đã được xuất thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-
         }
 
         private void dgvHDCT_CellContentClick(object sender, DataGridViewCellEventArgs e)

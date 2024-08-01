@@ -79,7 +79,7 @@
             this.btnExcel.TabIndex = 16;
             this.btnExcel.Text = "Xuất Excel";
             this.btnExcel.UseVisualStyleBackColor = false;
-            this.btnExcel.Click += new System.EventHandler(this.btnExcel_Click);
+            this.btnExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
             // 
             // cmbTimkiem
             // 
