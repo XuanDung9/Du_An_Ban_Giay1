@@ -39,7 +39,6 @@
             lb_TTHD = new Label();
             txt_HoaDonChiTiet = new TextBox();
             label22 = new Label();
-            btn_ChonAll = new Button();
             btn_XoaSanPham = new Button();
             label3 = new Label();
             dgv_sanPham = new DataGridView();
@@ -76,6 +75,7 @@
             btn_TimKhachHang = new Button();
             label5 = new Label();
             label4 = new Label();
+            label6 = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDonChiTiet).BeginInit();
@@ -163,10 +163,10 @@
             // 
             // panel2
             // 
+            panel2.Controls.Add(label6);
             panel2.Controls.Add(lb_TTHD);
             panel2.Controls.Add(txt_HoaDonChiTiet);
             panel2.Controls.Add(label22);
-            panel2.Controls.Add(btn_ChonAll);
             panel2.Controls.Add(btn_XoaSanPham);
             panel2.Location = new Point(6, 279);
             panel2.Name = "panel2";
@@ -177,18 +177,18 @@
             // 
             lb_TTHD.AutoSize = true;
             lb_TTHD.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
-            lb_TTHD.Location = new Point(716, 11);
+            lb_TTHD.Location = new Point(646, 11);
             lb_TTHD.Name = "lb_TTHD";
-            lb_TTHD.Size = new Size(59, 23);
+            lb_TTHD.Size = new Size(20, 23);
             lb_TTHD.TabIndex = 5;
-            lb_TTHD.Text = "label6";
+            lb_TTHD.Text = "0";
             // 
             // txt_HoaDonChiTiet
             // 
             txt_HoaDonChiTiet.Location = new Point(164, 3);
             txt_HoaDonChiTiet.Multiline = true;
             txt_HoaDonChiTiet.Name = "txt_HoaDonChiTiet";
-            txt_HoaDonChiTiet.Size = new Size(309, 41);
+            txt_HoaDonChiTiet.Size = new Size(233, 41);
             txt_HoaDonChiTiet.TabIndex = 4;
             // 
             // label22
@@ -200,22 +200,12 @@
             label22.TabIndex = 3;
             label22.Text = "Sản phẩm đã chọn";
             // 
-            // btn_ChonAll
-            // 
-            btn_ChonAll.BackColor = SystemColors.ActiveCaption;
-            btn_ChonAll.Location = new Point(569, 3);
-            btn_ChonAll.Name = "btn_ChonAll";
-            btn_ChonAll.Size = new Size(109, 41);
-            btn_ChonAll.TabIndex = 2;
-            btn_ChonAll.Text = "Chọn tất cả";
-            btn_ChonAll.UseVisualStyleBackColor = false;
-            // 
             // btn_XoaSanPham
             // 
             btn_XoaSanPham.BackColor = Color.LightCoral;
             btn_XoaSanPham.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btn_XoaSanPham.ForeColor = SystemColors.ActiveCaptionText;
-            btn_XoaSanPham.Location = new Point(479, 3);
+            btn_XoaSanPham.Location = new Point(403, 4);
             btn_XoaSanPham.Name = "btn_XoaSanPham";
             btn_XoaSanPham.Size = new Size(75, 41);
             btn_XoaSanPham.TabIndex = 1;
@@ -594,6 +584,15 @@
             label4.TabIndex = 0;
             label4.Text = "Tên khách hàng:";
             // 
+            // label6
+            // 
+            label6.AutoSize = true;
+            label6.Location = new Point(549, 14);
+            label6.Name = "label6";
+            label6.Size = new Size(79, 20);
+            label6.TabIndex = 6;
+            label6.Text = "Tổng tiền :";
+            // 
             // Frm_US_BanHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -637,7 +636,6 @@
         private Label label2;
         private DataGridView dgv_HoaDonChiTiet;
         private Panel panel2;
-        private Button btn_ChonAll;
         private Button btn_XoaSanPham;
         private Label label3;
         private DataGridView dgv_sanPham;
@@ -677,5 +675,6 @@
         private Label label22;
         private TextBox txtGiamGia;
         private Label lb_TTHD;
+        private Label label6;
     }
 }

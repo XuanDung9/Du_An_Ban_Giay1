@@ -12,6 +12,7 @@ namespace B_Bussiness_Layer.Services
 {
     public class HoaDonChiTIetService : IHoaDonChiTietService
     {
+        DuAnBanGiay1Context _duAnBanGiay1Context;
         HoaDonChiTietRepository _Rep;
         public HoaDonChiTIetService()
         {
