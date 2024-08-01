@@ -33,7 +33,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
             cmbloaitt.Items.AddRange(hinhThucThanhToans.ToArray());
             cmbloaitt.SelectedIndex = 0;
             cmbloaitt.DropDownStyle = ComboBoxStyle.DropDownList;
-
             cmbTimkiem.Items.Add(SearchType.tatca);
             cmbTimkiem.Items.Add(SearchType.tenkhach);
             cmbTimkiem.Items.Add(SearchType.SDTkhach);

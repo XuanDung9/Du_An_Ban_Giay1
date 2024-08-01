@@ -59,7 +59,7 @@ namespace A_Persentation_Layer
             }
         }
 
-        private void Load_Usercontrol(UserControl userControl)
+        public void Load_Usercontrol(UserControl userControl)
         {
             userControl.Dock = DockStyle.Fill;
             pn_main.Controls.Clear();

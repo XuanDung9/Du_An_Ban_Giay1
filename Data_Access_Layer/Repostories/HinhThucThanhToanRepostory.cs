@@ -11,10 +11,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class HinhThucThanhToanRepostory: IHinhThucThanhToanRepostory
     {
-        DBContext dbContext ;
+        DuAnBanGiay1Context dbContext ;
         public HinhThucThanhToanRepostory()
         {
-            dbContext = new DBContext();
+            dbContext = new DuAnBanGiay1Context();
         }
         public bool AddHTTT(Hinhthucthanhtoan ht)
         {

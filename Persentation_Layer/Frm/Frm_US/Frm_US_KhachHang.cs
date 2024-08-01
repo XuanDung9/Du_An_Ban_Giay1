@@ -79,7 +79,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 dgvHD.Rows.Add(stt++, e.Mahoadon, e.Ngaytao, idtt.Tenhinhthuc, e.Tongtien);
             }
         }
-
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtSDT.Text) || string.IsNullOrEmpty(txtHoVaTen.Text) || string.IsNullOrEmpty(txtDiemKH.Text))
@@ -87,17 +86,16 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 MessageBox.Show("Vui lòng nhập đủ dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
+
             if (!int.TryParse(txtSDT.Text, out int sdt) || txtSDT.Text.Length != 10)
             {
-                Khachhang khachhang = new Khachhang();
-                khachhang.Tenkhachhang = txtHoVaTen.Text;
-                khachhang.Sdt =int.Parse(txtSDT.Text);
-                khachhang.Diemkhachhang = 0;
-                khachhang.Trangthai = true;
+                MessageBox.Show("Số điện thoại không hợp lệ.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
 
             if (!checksdt(sdt))
             {
-                MessageBox.Show("Số điện thoại đã tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Số điện thoại đã tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
 
@@ -120,7 +118,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
         }
 
-        private void btnSua_Click(object sender, EventArgs e)
+        public void btnSua_Click(object sender, EventArgs e)
         {
             if (!int.TryParse(txtSDT.Text, out int sdt) || txtSDT.Text.Length != 10)
             {
@@ -148,7 +146,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
         }
 
 
-        private void btnKhoa_MoKhoa_Click(object sender, EventArgs e)
+        public void btnKhoa_MoKhoa_Click(object sender, EventArgs e)
         {
             Khachhang khachhang = new Khachhang
             {
@@ -180,7 +178,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 }
             }
         }
-
         private void txtTimKiem_KhachHang_TextChanged(object sender, EventArgs e)
         {
             string search = txtTimKiem_KhachHang.Text;
@@ -192,7 +189,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
             return !_service.GetAllKhachhang(null).Any(khachhang => khachhang.Sdt == sodienthoai);
         }
-
         public bool checkdulieu(string sodienthoai, string diem)
         {
             if (string.IsNullOrEmpty(sodienthoai) || string.IsNullOrEmpty(txtHoVaTen.Text) || string.IsNullOrEmpty(diem))
@@ -212,9 +208,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
             return true;
         }
-
-
-        private void btnLamMoi_Click(object sender, EventArgs e)
+        public void btnLamMoi_Click(object sender, EventArgs e)
         {
             txtMaKhachHang.Text = string.Empty;
             txtHoVaTen.Text = string.Empty;

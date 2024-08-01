@@ -32,22 +32,23 @@ namespace A_Persentation_Layer.Frm.Frm_US
         public void loadGird(string search)
         {
             int stt = 1;
-            dtgHienthi.ColumnCount = 7;
+            dtgHienthi.ColumnCount = 8;
             dtgHienthi.Columns[0].Name = "STT";
             dtgHienthi.Columns[1].Name = "Mã";
             dtgHienthi.Columns[2].Name = "Tên";
             dtgHienthi.Columns[3].Name = "Số lượng";
-            dtgHienthi.Columns[4].Name = "Ngày bắt đầu";
-            dtgHienthi.Columns[4].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-            dtgHienthi.Columns[5].Name = "Ngày kết thúc";
+            dtgHienthi.Columns[4].Name = "Phần trăm";
+            dtgHienthi.Columns[5].Name = "Ngày bắt đầu";
             dtgHienthi.Columns[5].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
-            dtgHienthi.Columns[6].Name = "Trạng thái";
+            dtgHienthi.Columns[6].Name = "Ngày kết thúc";
+            dtgHienthi.Columns[6].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
+            dtgHienthi.Columns[7].Name = "Trạng thái";
 
             dtgHienthi.Rows.Clear();
             foreach (var x in _service.GetUudais(search))
             {
                 var idtk = _service.GetTaikhoan().FirstOrDefault(e => e.Mataikhoan == x.Mataikhoan);
-                dtgHienthi.Rows.Add(stt++, x.Mauudai, x.Tenuudai, x.Soluong, x.Ngaybatdau, x.Ngayketthuc, MapTrangThai(x.Trangthai));
+                dtgHienthi.Rows.Add(stt++, x.Mauudai, x.Tenuudai, x.Soluong,x.Phantram, x.Ngaybatdau, x.Ngayketthuc, MapTrangThai(x.Trangthai));
             }
         }
         private void CapNhatTrangThaiUuDai()
@@ -59,11 +60,11 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 for (int i = 0; i < rowCount - 1; i++)
                 {
                     DateTime Ngayhientai = DateTime.Now;
-                    DateTime? ngayBatDau = dtgHienthi.Rows[i].Cells[4].Value != null ? DateTime.Parse(dtgHienthi.Rows[i].Cells[4].Value.ToString()) : (DateTime?)null;
-                    DateTime? ngayKetThuc = dtgHienthi.Rows[i].Cells[5].Value != null ? DateTime.Parse(dtgHienthi.Rows[i].Cells[5].Value.ToString()) : (DateTime?)null;
+                    DateTime? ngayBatDau = dtgHienthi.Rows[i].Cells[5].Value != null ? DateTime.Parse(dtgHienthi.Rows[i].Cells[5].Value.ToString()) : (DateTime?)null;
+                    DateTime? ngayKetThuc = dtgHienthi.Rows[i].Cells[6].Value != null ? DateTime.Parse(dtgHienthi.Rows[i].Cells[6].Value.ToString()) : (DateTime?)null;
 
                     string trangThai = MapTrangThai(Ngayhientai, ngayBatDau, ngayKetThuc);
-                    dtgHienthi.Rows[i].Cells[6].Value = trangThai;
+                    dtgHienthi.Rows[i].Cells[7].Value = trangThai;
                 }
             }
         }
@@ -96,12 +97,23 @@ namespace A_Persentation_Layer.Frm.Frm_US
         private void dtgHienthi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowindex = e.RowIndex;
-            _idWhenhClick = int.Parse(dtgHienthi.Rows[rowindex].Cells[1].Value.ToString());
-            var obj = _service.GetUudais(null).FirstOrDefault(x => x.Mauudai == _idWhenhClick);
-            txtTen.Text = obj.Tenuudai;
-            txtSoluong.Text = obj.Soluong.ToString();
-            datebatdau.Text = obj.Ngaybatdau.ToString();
-            dateketthuc.Text = obj.Ngayketthuc.ToString();
+            if (rowindex < 0 || rowindex > dtgHienthi.Rows.Count )
+            {
+                txtTen.Text = "";
+                txtSoluong.Text = "";
+                txtPhanTram.Text = "";
+            }    
+            else
+            {
+                _idWhenhClick = int.Parse(dtgHienthi.Rows[rowindex].Cells[1].Value.ToString());
+                var obj = _service.GetUudais(null).FirstOrDefault(x => x.Mauudai == _idWhenhClick);
+                txtTen.Text = obj.Tenuudai;
+                txtSoluong.Text = obj.Soluong.ToString();
+                txtPhanTram.Text = obj.Phantram.ToString();
+                datebatdau.Text = obj.Ngaybatdau.ToString();
+                dateketthuc.Text = obj.Ngayketthuc.ToString();
+            }    
+          
         }
 
         private void txtTimkiem_TextChanged(object sender, EventArgs e)
@@ -128,6 +140,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             Uudai uudai = new Uudai();
             uudai.Tenuudai = txtTen.Text;
             uudai.Soluong = int.Parse(txtSoluong.Text);
+            uudai.Phantram = int.Parse(txtPhanTram.Text);
             uudai.Ngaybatdau = ngayBatDau;
             uudai.Ngayketthuc = ngayKetThuc;
             uudai.Mataikhoan = XacThucDangNhap.Instance.IdTaiKhoan;
@@ -178,6 +191,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             uudai.Mauudai = _idWhenhClick;
             uudai.Tenuudai = txtTen.Text;
             uudai.Soluong = int.Parse(txtSoluong.Text);
+            uudai.Phantram = int.Parse(txtPhanTram.Text);
             uudai.Ngaybatdau = ngayBatDau;
             uudai.Ngayketthuc = ngayKetThuc;
            
@@ -216,10 +230,9 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         private void btnketthuc_Click(object sender, EventArgs e)
         {
-            CapNhatTrangThaiUuDai();
             Uudai uudai = new Uudai();
             uudai.Mauudai = _idWhenhClick;
-            var relust = MessageBox.Show("Xác nhận muốm kết thúc", "Xác nhận", MessageBoxButtons.YesNo);
+            var relust = MessageBox.Show("Xác nhận dừng ưu đãi", "Xác nhận", MessageBoxButtons.YesNo);
             if (relust == DialogResult.Yes)
             {
                 MessageBox.Show(_service.Trangthai(uudai));

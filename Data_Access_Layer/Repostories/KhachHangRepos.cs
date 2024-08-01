@@ -11,11 +11,11 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class KhachHangRepos : IKhachHangRepos
     {
-        DBContext dbContext;
+        DuAnBanGiay1Context dbContext;
 
         public KhachHangRepos()
         {
-            dbContext = new DBContext();
+            dbContext = new DuAnBanGiay1Context();
         }
         public bool AddKhachHang(Khachhang khachhang)
         {

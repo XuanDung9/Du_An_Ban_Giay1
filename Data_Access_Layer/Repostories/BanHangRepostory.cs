@@ -11,10 +11,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class BanHangRepostory: IBanHangRepostory
     {
-        DBContext dbContext;
+        DuAnBanGiay1Context dbContext;
         public BanHangRepostory()
         {
-            dbContext = new DBContext();
+            dbContext = new DuAnBanGiay1Context();
         }
 
         public bool AddHD(Hoadon hoadon)

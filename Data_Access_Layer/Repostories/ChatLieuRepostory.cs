@@ -13,10 +13,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class ChatLieuRepostory : IChatLieuRepostory
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public ChatLieuRepostory()
         {
-                _db = new DBContext();
+                _db = new DuAnBanGiay1Context();
         }
         public List<Chatlieu> GetAll(string? txtSearch, string? searchType)
         {

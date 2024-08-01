@@ -12,10 +12,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class MauSacRepostory: IMauSacRepostory
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public MauSacRepostory()
         {
-            _db = new DBContext();
+            _db = new DuAnBanGiay1Context();
         }
         public List<Mausac> GetAll(string? txtSearch, string? searchType)
         {

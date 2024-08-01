@@ -11,11 +11,11 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class UudaiRepos : IUudaiRepos
     {
-        DBContext dbContext;
+        DuAnBanGiay1Context dbContext;
 
         public UudaiRepos()
         {
-            dbContext = new DBContext();
+            dbContext = new DuAnBanGiay1Context();
         }
         public bool AddUudai(Uudai uudai)
         {

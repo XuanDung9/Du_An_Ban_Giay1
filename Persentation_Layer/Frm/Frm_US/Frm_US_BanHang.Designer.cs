@@ -75,6 +75,7 @@
             btn_TimKhachHang = new Button();
             label5 = new Label();
             label4 = new Label();
+            lb_TTHD = new Label();
             panel1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDon).BeginInit();
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDonChiTiet).BeginInit();
@@ -148,6 +149,8 @@
             // 
             // dgv_HoaDonChiTiet
             // 
+            dgv_HoaDonChiTiet.AllowUserToAddRows = false;
+            dgv_HoaDonChiTiet.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgv_HoaDonChiTiet.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgv_HoaDonChiTiet.Location = new Point(9, 332);
             dgv_HoaDonChiTiet.Name = "dgv_HoaDonChiTiet";
@@ -155,10 +158,12 @@
             dgv_HoaDonChiTiet.RowTemplate.Height = 29;
             dgv_HoaDonChiTiet.Size = new Size(887, 209);
             dgv_HoaDonChiTiet.TabIndex = 4;
+            dgv_HoaDonChiTiet.CellClick += dgv_HoaDonChiTiet_CellClick;
             dgv_HoaDonChiTiet.CellContentClick += dgv_HoaDonChiTiet_CellContentClick;
             // 
             // panel2
             // 
+            panel2.Controls.Add(lb_TTHD);
             panel2.Controls.Add(txt_HoaDonChiTiet);
             panel2.Controls.Add(label22);
             panel2.Controls.Add(btn_ChonAll);
@@ -173,7 +178,7 @@
             txt_HoaDonChiTiet.Location = new Point(164, 3);
             txt_HoaDonChiTiet.Multiline = true;
             txt_HoaDonChiTiet.Name = "txt_HoaDonChiTiet";
-            txt_HoaDonChiTiet.Size = new Size(464, 41);
+            txt_HoaDonChiTiet.Size = new Size(309, 41);
             txt_HoaDonChiTiet.TabIndex = 4;
             // 
             // label22
@@ -188,7 +193,7 @@
             // btn_ChonAll
             // 
             btn_ChonAll.BackColor = SystemColors.ActiveCaption;
-            btn_ChonAll.Location = new Point(760, 3);
+            btn_ChonAll.Location = new Point(569, 3);
             btn_ChonAll.Name = "btn_ChonAll";
             btn_ChonAll.Size = new Size(109, 41);
             btn_ChonAll.TabIndex = 2;
@@ -200,7 +205,7 @@
             btn_XoaSanPham.BackColor = Color.LightCoral;
             btn_XoaSanPham.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btn_XoaSanPham.ForeColor = SystemColors.ActiveCaptionText;
-            btn_XoaSanPham.Location = new Point(634, 3);
+            btn_XoaSanPham.Location = new Point(479, 3);
             btn_XoaSanPham.Name = "btn_XoaSanPham";
             btn_XoaSanPham.Size = new Size(75, 41);
             btn_XoaSanPham.TabIndex = 1;
@@ -225,7 +230,7 @@
             dgv_sanPham.RowHeadersWidth = 51;
             dgv_sanPham.RowTemplate.Height = 29;
             dgv_sanPham.Size = new Size(887, 209);
-            dgv_sanPham.TabIndex = 7;
+            dgv_sanPham.TabIndex = 3;
             dgv_sanPham.CellClick += dgvSP_CellClick;
             // 
             // panel3
@@ -578,6 +583,16 @@
             label4.TabIndex = 0;
             label4.Text = "Tên khách hàng:";
             // 
+            // lb_TTHD
+            // 
+            lb_TTHD.AutoSize = true;
+            lb_TTHD.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold | FontStyle.Italic, GraphicsUnit.Point);
+            lb_TTHD.Location = new Point(716, 11);
+            lb_TTHD.Name = "lb_TTHD";
+            lb_TTHD.Size = new Size(59, 23);
+            lb_TTHD.TabIndex = 5;
+            lb_TTHD.Text = "label6";
+            // 
             // Frm_US_BanHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -594,6 +609,7 @@
             Controls.Add(panel1);
             Name = "Frm_US_BanHang";
             Size = new Size(1330, 828);
+            Load += Frm_US_BanHang_Load_1;
             panel1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDon).EndInit();
             ((System.ComponentModel.ISupportInitialize)dgv_HoaDonChiTiet).EndInit();
@@ -659,5 +675,6 @@
         private TextBox txt_HoaDonChiTiet;
         private Label label22;
         private TextBox txtGiamGia;
+        private Label lb_TTHD;
     }
 }

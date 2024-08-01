@@ -46,6 +46,8 @@
             groupBox4 = new GroupBox();
             btnSua = new Button();
             btnThem = new Button();
+            txtPhanTram = new TextBox();
+            label5 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgHienthi).BeginInit();
             groupBox2.SuspendLayout();
@@ -122,6 +124,8 @@
             // 
             // groupBox3
             // 
+            groupBox3.Controls.Add(label5);
+            groupBox3.Controls.Add(txtPhanTram);
             groupBox3.Controls.Add(label4);
             groupBox3.Controls.Add(label3);
             groupBox3.Controls.Add(label2);
@@ -140,7 +144,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(27, 264);
+            label4.Location = new Point(27, 304);
             label4.Name = "label4";
             label4.Size = new Size(100, 20);
             label4.TabIndex = 10;
@@ -149,7 +153,7 @@
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(27, 199);
+            label3.Location = new Point(27, 239);
             label3.Name = "label3";
             label3.Size = new Size(99, 20);
             label3.TabIndex = 9;
@@ -175,14 +179,14 @@
             // 
             // dateketthuc
             // 
-            dateketthuc.Location = new Point(27, 287);
+            dateketthuc.Location = new Point(27, 327);
             dateketthuc.Name = "dateketthuc";
             dateketthuc.Size = new Size(281, 27);
             dateketthuc.TabIndex = 6;
             // 
             // datebatdau
             // 
-            datebatdau.Location = new Point(27, 222);
+            datebatdau.Location = new Point(27, 262);
             datebatdau.Name = "datebatdau";
             datebatdau.Size = new Size(281, 27);
             datebatdau.TabIndex = 5;
@@ -238,6 +242,22 @@
             btnThem.UseVisualStyleBackColor = false;
             btnThem.Click += btnThem_Click;
             // 
+            // txtPhanTram
+            // 
+            txtPhanTram.Location = new Point(27, 197);
+            txtPhanTram.Name = "txtPhanTram";
+            txtPhanTram.Size = new Size(281, 27);
+            txtPhanTram.TabIndex = 11;
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(27, 174);
+            label5.Name = "label5";
+            label5.Size = new Size(139, 20);
+            label5.TabIndex = 12;
+            label5.Text = "Phần trăm giảm giá";
+            // 
             // Frm_US_UuDai
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
@@ -278,5 +298,7 @@
         private Label label1;
         private Button btnSua;
         private Button btnThem;
+        private Label label5;
+        private TextBox txtPhanTram;
     }
 }

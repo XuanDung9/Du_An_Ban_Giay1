@@ -12,10 +12,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class KichCoRepostory : IKichCoRepostory
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public KichCoRepostory()
         {
-            _db = new DBContext();
+            _db = new DuAnBanGiay1Context();
         }
 
         public List<Kichco> GetAll(string? txtSearch, string? searchType)

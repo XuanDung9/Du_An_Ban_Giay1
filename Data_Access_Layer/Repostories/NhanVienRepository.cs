@@ -11,10 +11,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class NhanVienRepository : INhanVienRepository
     {
-        DBContext dbContext;
+        DuAnBanGiay1Context dbContext;
         public NhanVienRepository()
         {
-            dbContext = new DBContext();
+            dbContext = new DuAnBanGiay1Context();
         }
         public bool AddNhanVien(Taikhoan taikhoan)
         {

@@ -12,10 +12,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class ThuongHieuRepostory:IThuongHieuRepostory
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public ThuongHieuRepostory()
         {
-            _db = new DBContext();  
+            _db = new DuAnBanGiay1Context();  
         }
         public List<Thuonghieu> GetAll(string? txtSearch, string? searchType)
         {

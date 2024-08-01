@@ -12,10 +12,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class KieuDangRepostory:IKieuDangRepostory
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public KieuDangRepostory()
         {
-            _db = new DBContext();
+            _db = new DuAnBanGiay1Context();
         }
         public List<Kieudang> GetAll(string? txtSearch, string? searchType)
         {

@@ -14,10 +14,10 @@ namespace C_Data_Access_Layer.Repostories
     public class HoaDonChiTietRepository : IHoaDonChiTietRepository
     {
         GiayChiTietDTORepostory _Rep_Giay;
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public HoaDonChiTietRepository()
         {
-            _db = new DBContext();
+            _db = new DuAnBanGiay1Context();
             _Rep_Giay = new();
         }
         public List<HoaDonChiTiet_SP> GetAll(string? txtTimKiem, string? searchType)

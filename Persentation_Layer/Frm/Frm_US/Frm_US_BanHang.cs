@@ -70,8 +70,10 @@ namespace A_Persentation_Layer.Frm.Frm_US
             _lstHoaDon = _Ser_HoaDon.GetAll("false", "Trạng thái hóa đơn");
             foreach (var x in _lstHoaDon)
             {
-                dgv_HoaDon.Rows.Add(stt++, x.Hoadon.Mahoadon, x.tenUuDai, x.Hoadon.Ngaytao, x.tenTaiKhoan, x.tenKhachHang, x.tenHinhThucThanhToan, x.Hoadon.Tongtien == null ? "N/A" : x.Hoadon.Tongtien, x.Hoadon.Trangthai == true ? "Đã thanh toán" : "Chưa thanht toán");
+                dgv_HoaDon.Rows.Add(stt++, x.Hoadon.Mahoadon, x.tenUuDai, x.Hoadon.Ngaytao, x.tenTaiKhoan, x.tenKhachHang, x.tenHinhThucThanhToan, x.Hoadon.Tongtien == null ? "0" : x.Hoadon.Tongtien, x.Hoadon.Trangthai == true ? "Đã thanh toán" : "Chưa thanh toán");
             }
+            int totalAmount = TinhTongTien_HoaDon(dgv_HoaDon);
+            lb_TTHD.Text = totalAmount.ToString("N/A");
 
             dgv_HoaDon.Columns[0].Width = 30;
         }
@@ -98,7 +100,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
                     if (result)
                     {
-                        LoadGridHD(null, null);
+                        LoadGridHD(null, null); 
                     }
                     else
                     {
@@ -167,11 +169,11 @@ namespace A_Persentation_Layer.Frm.Frm_US
             string searchName = lb_TenKH.Text == "#" ? "1" : lb_TenKH.Text;
             var Obj = _Ser_KhachHang.GetAllKhachhang(null).Find(x => x.Tenkhachhang == searchName);
             lb_TongTienHang.Text = TinhTongTien_HoaDon(dgv_HoaDonChiTiet).ToString();
-            //lb_TongTien.Text = (TinhTongTien_HoaDon(dgv_HoaDonChiTiet)
-            //    - (int.Parse(lb_TongTienHang.Text)
-            //    * ((objUuDai.Soluong <= 0 ? 0 : double.Parse("0,"))))
-            //    - ((cb_SuDungDiem.Checked ? (Obj.Diemkhachhang == null || txt_DiemKH.Text == "" ? 0 : Obj.Diemkhachhang) : 0)
-            //    * 1000)).ToString();
+            lb_TongTien.Text = (TinhTongTien_HoaDon(dgv_HoaDonChiTiet)
+                - (int.Parse(lb_TongTienHang.Text)
+                * ((objUuDai.Soluong <= 0 ? 0 : double.Parse("0,"))))
+                - ((cb_SuDungDiem.Checked ? (Obj.Diemkhachhang == null || txt_DiemKH.Text == "" ? 0 : Obj.Diemkhachhang) : 0)
+                * 1000)).ToString();
 
         }
         private int TinhTongTien_HoaDon(DataGridView dataGridView)
@@ -182,13 +184,13 @@ namespace A_Persentation_Layer.Frm.Frm_US
             {
                 if (!row.IsNewRow)
                 {
-                    object cellValue = row.Cells["Thành tiền"].Value;
+                    object cellValue = row.Cells["Tổng tiền"].Value;
 
                     if (cellValue != null && int.TryParse(cellValue.ToString(), out int giaTriCot))
                     {
                         tongTien += giaTriCot;
                     }
-                }
+                }   
             }
             return tongTien;
         }
@@ -207,7 +209,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             dgv_HoaDonChiTiet.Columns[8].Name = "Số lượng mua";
             dgv_HoaDonChiTiet.Columns[9].Name = "Thành tiền";
             dgv_HoaDonChiTiet.Columns[10].Name = "ID Hóa đơn chi tiết";
-            dgv_HoaDonChiTiet.Columns[11].Visible = false;
+            dgv_HoaDonChiTiet.Columns[10].Visible = false;
 
             dgv_HoaDonChiTiet.Rows.Clear();
             _lstHoadonChiTiet = _Ser_HoaDonChiTiet.GetAll(idHoaDOn.ToString(), SearchType);
@@ -262,7 +264,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 {
                     return;
                 }
-                var objCellClick = _lstGiay_ChiTietGiay[index]; // click vào item trong bảng giày
+                var objCellClick = _lstGiay_ChiTietGiay[index];
                 idSanPham_Clicked = objCellClick.giaychitiet.Magiaychitiet;
                 SoLuongMua formSoluongMua = new SoLuongMua(); // chọn số lượng mua
                 formSoluongMua.ShowDialog();
@@ -283,6 +285,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
                         if (Sua)
                         {
+                            MessageBox.Show("Đã 'thêm' thành công 1 giày mới vào hóa đơn.");
                             var objGiayDaTonTai = _ser_GiayChiTiet.GetByID(idSanPham_Clicked);
                             objGiayDaTonTai.Soluongton = objGiayDaTonTai.Soluongton - formSoluongMua.soLuong;
                             objGiayDaTonTai.Ngaysua = dateTime;
@@ -297,7 +300,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     }
                     else
                     {
-                        var result = _Ser_HoaDonChiTiet.Them(new Hoadonchitiet()
+                        var result = _Ser_HoaDonChiTiet.Them(new Hoadonchitiet() /// 
                         {
                             Magiaychitiet = idSanPham_Clicked,
                             Mahoadon = int.Parse(lb_MaHoaDon.Text),
@@ -307,6 +310,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
                         if (result)
                         {
+                            MessageBox.Show("Đã 'thêm' thành công 1 giày mới vào hóa đơn");
                             var objGiayChuaTonTai = _ser_GiayChiTiet.GetByID(idSanPham_Clicked);
                             objGiayChuaTonTai.Soluongton = objGiayChuaTonTai.Soluongton - formSoluongMua.soLuong;
                             objGiayChuaTonTai.Ngaysua = dateTime;
@@ -339,7 +343,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 }
                 LoadGridSP(null, null);
                 lb_TongTienHang.Text = TinhTongTien_HoaDon(dgv_HoaDonChiTiet).ToString();
-                // LoadTien_ThanhToan();
+                LoadTien_ThanhToan();
             }
             catch (Exception ex)
             {
@@ -372,8 +376,12 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     txt_DiemKH.Text = objCellClick.diemKhachHang.ToString();
                     LoadGridGH(objCellClick.Hoadon.Mahoadon, "Mã hóa đơn");
                 }
+                else
+                {
+                    MessageBox.Show("Đã hủy 'chọn' hóa đơn này");
+                }
                 lb_TongTienHang.Text = TinhTongTien_HoaDon(dgv_HoaDonChiTiet).ToString();
-                // LoadTien_ThanhToan();
+                 LoadTien_ThanhToan();
             }
             catch (Exception ex)
             {
@@ -398,6 +406,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
         private void Frm_US_BanHang_Load(object sender, EventArgs e)
         {
             LoadGridHD(null, null);
+            //LoadGridGH(null, null);
             LoadGridSP(null, null);
             txt_HoaDonChiTiet.BorderStyle = BorderStyle.FixedSingle;
             LoadMaGiamGia();
@@ -406,32 +415,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         private void dgv_HoaDonChiTiet_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            if (e.ColumnIndex == dgv_HoaDonChiTiet.Columns["Chon"].Index && e.RowIndex >= 0)
-            {
-                DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)dgv_HoaDonChiTiet.Rows[e.RowIndex].Cells["Chon"];
 
-                checkBoxCell.Value = !Convert.ToBoolean(checkBoxCell.Value);
-
-                int idHoaDonChiTiet = Convert.ToInt32(dgv_HoaDonChiTiet.Rows[e.RowIndex].Cells["ID Hóa đơn chi tiết"].Value);
-
-                if (Convert.ToBoolean(checkBoxCell.Value))
-                {
-                    idHoaDonChiTiet_Clicked.Add(idHoaDonChiTiet);
-                }
-                else
-                {
-                    idHoaDonChiTiet_Clicked.Remove(idHoaDonChiTiet);
-                }
-
-                StringBuilder sb = new StringBuilder();
-                foreach (int id in idHoaDonChiTiet_Clicked)
-                {
-                    sb.Append(id.ToString());
-                    sb.Append(", ");
-                }
-                string danhSachIdText = sb.ToString().TrimEnd(',', ' ');
-                txt_HoaDonChiTiet.Text = danhSachIdText;
-            }
         }
 
         private void btn_TimKhachHang_Click(object sender, EventArgs e)
@@ -468,8 +452,44 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         private void btn_XoaSanPham_Click(object sender, EventArgs e)
         {
-        }
+            //int deleteItem;
+            if (idHoaDonChiTiet_Clicked.Count == 0)
+            {
+                MessageBox.Show("Vui lòng tích vào ô chọn ở cuối bảng bên phải!");
+            }
+            else
+            {
+                try
+                {
+                    var confirmResult = MessageBox.Show("Xác nhận xóa", "Xác nhận", MessageBoxButtons.OKCancel);
 
+                    if (confirmResult == DialogResult.OK)
+                    {
+                            foreach (var item in idHoaDonChiTiet_Clicked)
+                            {
+                                var objHoaDonDaCanXoa = _Ser_HoaDonChiTiet.GetByID(item);
+                                var result = _Ser_HoaDonChiTiet.Xoa(item);
+
+                            }
+                            MessageBox.Show("Xóa thành công");
+                             txt_HoaDonChiTiet.Text = "";
+                            LoadGridSP(null, null);
+                            LoadGridGH(int.Parse(lb_MaHoaDon.Text), "Mã hóa đơn");
+                    }
+                    else
+                    {
+                        MessageBox.Show("Đã hủy 'xóa' hóa đơn");
+                    }
+                    idHoaDonChiTiet_Clicked.Clear();
+                    lb_TongTienHang.Text = TinhTongTien_HoaDon(dgv_HoaDonChiTiet).ToString();
+                    LoadTien_ThanhToan();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Thông tin chi tiết: {ex.ToString()}");
+                }
+            }
+        }
         private void txt_TienNhan_TextChanged(object sender, EventArgs e)
         {
             LoadSoTienNhan();
@@ -480,7 +500,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             if (txt_TienNhan.Text == "")
             {
                 txt_GhiChu.Text = "";
-                lb_TienThieu.Text = lb_TienThieu.Text;
+                lb_TienThieu.Text = lb_TongTien.Text;
             }
             if (double.TryParse(txt_TienNhan.Text, out double soTienNhan))
             {
@@ -698,6 +718,41 @@ namespace A_Persentation_Layer.Frm.Frm_US
         private void btn_TimKiem_Click(object sender, EventArgs e)
         {
             LoadGridSP(txt_TimKiemSP.Text, "Tên giày");
+        }
+
+        private void dgv_HoaDonChiTiet_CellClick(object sender, DataGridViewCellEventArgs e)
+        {
+            if (e.ColumnIndex == dgv_HoaDonChiTiet.Columns["Chon"].Index && e.RowIndex >= 0)
+            {
+                DataGridViewCheckBoxCell checkBoxCell = (DataGridViewCheckBoxCell)dgv_HoaDonChiTiet.Rows[e.RowIndex].Cells["Chon"];
+
+                checkBoxCell.Value = !Convert.ToBoolean(checkBoxCell.Value);
+
+                int idHoaDonChiTiet = Convert.ToInt32(dgv_HoaDonChiTiet.Rows[e.RowIndex].Cells["ID Hóa đơn chi tiết"].Value);
+
+                if (Convert.ToBoolean(checkBoxCell.Value))
+                {
+                    idHoaDonChiTiet_Clicked.Add(idHoaDonChiTiet);
+                }
+                else
+                {
+                    idHoaDonChiTiet_Clicked.Remove(idHoaDonChiTiet);
+                }
+
+                StringBuilder sb = new StringBuilder();
+                foreach (int id in idHoaDonChiTiet_Clicked)
+                {
+                    sb.Append(id.ToString());
+                    sb.Append(", ");
+                }
+                string danhSachIdText = sb.ToString().TrimEnd(',', ' ');
+                txt_HoaDonChiTiet.Text = danhSachIdText;
+            }
+        }
+
+        private void Frm_US_BanHang_Load_1(object sender, EventArgs e)
+        {
+
         }
     }
 }

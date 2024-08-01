@@ -13,10 +13,10 @@ namespace C_Data_Access_Layer.Repositories
 {
     public class HoaDonRepository : IHoaDonRepository
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public HoaDonRepository()
         {
-            _db = new DBContext();
+            _db = new DuAnBanGiay1Context();
         }
         public List<HoaDon_Model> GetAll(string? txtTimKiem, string? searchType)
         {

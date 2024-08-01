@@ -12,10 +12,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class Giay_ChiTietGiayRepostory: IGiay_GiayChiTietRepostory
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public Giay_ChiTietGiayRepostory()
         {
-            _db = new DBContext();
+            _db = new DuAnBanGiay1Context();
         }
         public List<Giay_ChiTietGiay> GetAll(string? txtTimKiem, string? searchType)
         {
