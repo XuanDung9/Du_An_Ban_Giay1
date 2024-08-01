@@ -97,6 +97,7 @@
             // btn_XoaHoaDon
             // 
             btn_XoaHoaDon.BackColor = Color.LightCoral;
+            btn_XoaHoaDon.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btn_XoaHoaDon.Location = new Point(760, 3);
             btn_XoaHoaDon.Name = "btn_XoaHoaDon";
             btn_XoaHoaDon.Size = new Size(109, 41);
@@ -108,6 +109,7 @@
             // btn_ThemHoaDon
             // 
             btn_ThemHoaDon.BackColor = SystemColors.ActiveCaption;
+            btn_ThemHoaDon.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btn_ThemHoaDon.Location = new Point(572, 3);
             btn_ThemHoaDon.Name = "btn_ThemHoaDon";
             btn_ThemHoaDon.Size = new Size(137, 41);
@@ -262,6 +264,7 @@
             // btn_TimKiem
             // 
             btn_TimKiem.BackColor = SystemColors.ActiveCaption;
+            btn_TimKiem.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btn_TimKiem.Location = new Point(729, 3);
             btn_TimKiem.Name = "btn_TimKiem";
             btn_TimKiem.Size = new Size(137, 41);
@@ -553,6 +556,7 @@
             // btn_TimKhachHang
             // 
             btn_TimKhachHang.BackColor = SystemColors.ActiveCaption;
+            btn_TimKhachHang.Font = new Font("Segoe UI", 9F, FontStyle.Bold, GraphicsUnit.Point);
             btn_TimKhachHang.Location = new Point(240, 16);
             btn_TimKhachHang.Name = "btn_TimKhachHang";
             btn_TimKhachHang.Size = new Size(94, 36);

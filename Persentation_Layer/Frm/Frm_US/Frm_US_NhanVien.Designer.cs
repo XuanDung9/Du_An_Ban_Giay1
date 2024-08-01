@@ -99,12 +99,13 @@ namespace A_Persentation_Layer.Frm.Frm_US
             // 
             // btnClear
             // 
-            btnClear.BackColor = Color.FromArgb(64, 79, 105);
+            btnClear.BackColor = SystemColors.ActiveCaption;
             btnClear.Cursor = Cursors.Hand;
             btnClear.FlatAppearance.BorderSize = 0;
             btnClear.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnClear.FlatStyle = FlatStyle.Flat;
-            btnClear.ForeColor = Color.White;
+            btnClear.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnClear.ForeColor = Color.Black;
             btnClear.Location = new Point(174, 111);
             btnClear.Margin = new Padding(3, 4, 3, 4);
             btnClear.Name = "btnClear";
@@ -116,16 +117,17 @@ namespace A_Persentation_Layer.Frm.Frm_US
             // 
             // btnKhoa_MoKhoa
             // 
-            btnKhoa_MoKhoa.BackColor = Color.FromArgb(64, 79, 105);
+            btnKhoa_MoKhoa.BackColor = SystemColors.ActiveCaption;
             btnKhoa_MoKhoa.Cursor = Cursors.Hand;
             btnKhoa_MoKhoa.FlatAppearance.BorderSize = 0;
             btnKhoa_MoKhoa.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnKhoa_MoKhoa.FlatStyle = FlatStyle.Flat;
-            btnKhoa_MoKhoa.ForeColor = Color.White;
+            btnKhoa_MoKhoa.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnKhoa_MoKhoa.ForeColor = Color.Black;
             btnKhoa_MoKhoa.Location = new Point(21, 111);
             btnKhoa_MoKhoa.Margin = new Padding(3, 4, 3, 4);
             btnKhoa_MoKhoa.Name = "btnKhoa_MoKhoa";
-            btnKhoa_MoKhoa.Size = new Size(114, 49);
+            btnKhoa_MoKhoa.Size = new Size(119, 49);
             btnKhoa_MoKhoa.TabIndex = 0;
             btnKhoa_MoKhoa.Text = "Khóa/Mở khóa";
             btnKhoa_MoKhoa.UseVisualStyleBackColor = false;
@@ -133,12 +135,13 @@ namespace A_Persentation_Layer.Frm.Frm_US
             // 
             // btnSua
             // 
-            btnSua.BackColor = Color.FromArgb(64, 79, 105);
+            btnSua.BackColor = SystemColors.ActiveCaption;
             btnSua.Cursor = Cursors.Hand;
             btnSua.FlatAppearance.BorderSize = 0;
             btnSua.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnSua.FlatStyle = FlatStyle.Flat;
-            btnSua.ForeColor = Color.White;
+            btnSua.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSua.ForeColor = Color.Black;
             btnSua.Location = new Point(174, 29);
             btnSua.Margin = new Padding(3, 4, 3, 4);
             btnSua.Name = "btnSua";
@@ -150,16 +153,17 @@ namespace A_Persentation_Layer.Frm.Frm_US
             // 
             // btnThem
             // 
-            btnThem.BackColor = Color.FromArgb(64, 79, 105);
+            btnThem.BackColor = SystemColors.ActiveCaption;
             btnThem.Cursor = Cursors.Hand;
             btnThem.FlatAppearance.BorderSize = 0;
             btnThem.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnThem.FlatStyle = FlatStyle.Flat;
-            btnThem.ForeColor = Color.White;
+            btnThem.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
+            btnThem.ForeColor = Color.Black;
             btnThem.Location = new Point(21, 29);
             btnThem.Margin = new Padding(3, 4, 3, 4);
             btnThem.Name = "btnThem";
-            btnThem.Size = new Size(114, 49);
+            btnThem.Size = new Size(119, 49);
             btnThem.TabIndex = 0;
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = false;
@@ -411,12 +415,13 @@ namespace A_Persentation_Layer.Frm.Frm_US
             // 
             // btnExcel
             // 
-            btnExcel.BackColor = Color.FromArgb(64, 79, 105);
+            btnExcel.BackColor = SystemColors.ActiveCaption;
             btnExcel.Cursor = Cursors.Hand;
             btnExcel.FlatAppearance.BorderSize = 0;
             btnExcel.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnExcel.FlatStyle = FlatStyle.Flat;
-            btnExcel.ForeColor = Color.White;
+            btnExcel.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnExcel.ForeColor = Color.Black;
             btnExcel.Location = new Point(829, 4);
             btnExcel.Margin = new Padding(3, 4, 3, 4);
             btnExcel.Name = "btnExcel";

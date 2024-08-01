@@ -32,7 +32,6 @@
             btnLamMoi = new Button();
             btnThem = new Button();
             btnSua = new Button();
-            btnKhoa_MoKhoa = new Button();
             txtDiemKH = new TextBox();
             txtSDT = new TextBox();
             txtHoVaTen = new TextBox();
@@ -51,6 +50,7 @@
             dgvKH = new DataGridView();
             groupBox3 = new GroupBox();
             dgvHD = new DataGridView();
+            groupBox4 = new GroupBox();
             groupBox1.SuspendLayout();
             groupBox2.SuspendLayout();
             panel2.SuspendLayout();
@@ -58,39 +58,38 @@
             ((System.ComponentModel.ISupportInitialize)dgvKH).BeginInit();
             groupBox3.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dgvHD).BeginInit();
+            groupBox4.SuspendLayout();
             SuspendLayout();
             // 
             // groupBox1
             // 
-            groupBox1.Controls.Add(btnLamMoi);
-            groupBox1.Controls.Add(btnThem);
-            groupBox1.Controls.Add(btnSua);
-            groupBox1.Controls.Add(btnKhoa_MoKhoa);
-            groupBox1.Controls.Add(txtDiemKH);
             groupBox1.Controls.Add(txtSDT);
+            groupBox1.Controls.Add(btnLamMoi);
             groupBox1.Controls.Add(txtHoVaTen);
             groupBox1.Controls.Add(label4);
             groupBox1.Controls.Add(txtMaKhachHang);
-            groupBox1.Controls.Add(label3);
+            groupBox1.Controls.Add(txtDiemKH);
             groupBox1.Controls.Add(label2);
             groupBox1.Controls.Add(label1);
-            groupBox1.Location = new Point(3, 3);
+            groupBox1.Controls.Add(label3);
+            groupBox1.Location = new Point(906, 12);
             groupBox1.Name = "groupBox1";
-            groupBox1.Size = new Size(1250, 172);
+            groupBox1.Size = new Size(320, 327);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
-            groupBox1.Text = "Thêm khách hàng";
+            groupBox1.Text = "Thông tin khách hàng ";
             // 
             // btnLamMoi
             // 
             btnLamMoi.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnLamMoi.BackColor = Color.FromArgb(64, 79, 105);
+            btnLamMoi.BackColor = SystemColors.ActiveCaption;
             btnLamMoi.Cursor = Cursors.Hand;
             btnLamMoi.FlatAppearance.BorderSize = 0;
             btnLamMoi.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnLamMoi.FlatStyle = FlatStyle.Flat;
-            btnLamMoi.ForeColor = Color.White;
-            btnLamMoi.Location = new Point(764, 125);
+            btnLamMoi.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnLamMoi.ForeColor = Color.Black;
+            btnLamMoi.Location = new Point(205, 27);
             btnLamMoi.Margin = new Padding(4);
             btnLamMoi.Name = "btnLamMoi";
             btnLamMoi.Size = new Size(80, 31);
@@ -102,13 +101,14 @@
             // btnThem
             // 
             btnThem.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnThem.BackColor = Color.FromArgb(64, 79, 105);
+            btnThem.BackColor = SystemColors.ActiveCaption;
             btnThem.Cursor = Cursors.Hand;
             btnThem.FlatAppearance.BorderSize = 0;
             btnThem.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnThem.FlatStyle = FlatStyle.Flat;
-            btnThem.ForeColor = Color.White;
-            btnThem.Location = new Point(764, 56);
+            btnThem.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnThem.ForeColor = Color.Black;
+            btnThem.Location = new Point(178, 36);
             btnThem.Margin = new Padding(4);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(107, 52);
@@ -120,13 +120,14 @@
             // btnSua
             // 
             btnSua.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnSua.BackColor = Color.FromArgb(64, 79, 105);
+            btnSua.BackColor = SystemColors.ActiveCaption;
             btnSua.Cursor = Cursors.Hand;
             btnSua.FlatAppearance.BorderSize = 0;
             btnSua.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnSua.FlatStyle = FlatStyle.Flat;
-            btnSua.ForeColor = Color.White;
-            btnSua.Location = new Point(942, 56);
+            btnSua.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSua.ForeColor = Color.Black;
+            btnSua.Location = new Point(24, 36);
             btnSua.Margin = new Padding(4);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(107, 52);
@@ -135,27 +136,10 @@
             btnSua.UseVisualStyleBackColor = false;
             btnSua.Click += btnSua_Click;
             // 
-            // btnKhoa_MoKhoa
-            // 
-            btnKhoa_MoKhoa.Anchor = AnchorStyles.Top | AnchorStyles.Right;
-            btnKhoa_MoKhoa.BackColor = Color.FromArgb(64, 79, 105);
-            btnKhoa_MoKhoa.Cursor = Cursors.Hand;
-            btnKhoa_MoKhoa.FlatAppearance.BorderSize = 0;
-            btnKhoa_MoKhoa.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
-            btnKhoa_MoKhoa.FlatStyle = FlatStyle.Flat;
-            btnKhoa_MoKhoa.ForeColor = Color.White;
-            btnKhoa_MoKhoa.Location = new Point(1108, 56);
-            btnKhoa_MoKhoa.Margin = new Padding(4);
-            btnKhoa_MoKhoa.Name = "btnKhoa_MoKhoa";
-            btnKhoa_MoKhoa.Size = new Size(116, 52);
-            btnKhoa_MoKhoa.TabIndex = 12;
-            btnKhoa_MoKhoa.Text = "Khóa/Mở khóa";
-            btnKhoa_MoKhoa.UseVisualStyleBackColor = false;
-            // 
             // txtDiemKH
             // 
             txtDiemKH.BorderStyle = BorderStyle.FixedSingle;
-            txtDiemKH.Location = new Point(464, 101);
+            txtDiemKH.Location = new Point(22, 193);
             txtDiemKH.Margin = new Padding(4);
             txtDiemKH.Name = "txtDiemKH";
             txtDiemKH.Size = new Size(257, 27);
@@ -164,16 +148,16 @@
             // txtSDT
             // 
             txtSDT.BorderStyle = BorderStyle.FixedSingle;
-            txtSDT.Location = new Point(504, 38);
+            txtSDT.Location = new Point(22, 254);
             txtSDT.Margin = new Padding(4);
             txtSDT.Name = "txtSDT";
-            txtSDT.Size = new Size(217, 27);
+            txtSDT.Size = new Size(257, 27);
             txtSDT.TabIndex = 2;
             // 
             // txtHoVaTen
             // 
             txtHoVaTen.BorderStyle = BorderStyle.FixedSingle;
-            txtHoVaTen.Location = new Point(117, 101);
+            txtHoVaTen.Location = new Point(22, 131);
             txtHoVaTen.Margin = new Padding(4);
             txtHoVaTen.Name = "txtHoVaTen";
             txtHoVaTen.Size = new Size(257, 27);
@@ -182,7 +166,7 @@
             // label4
             // 
             label4.AutoSize = true;
-            label4.Location = new Point(388, 107);
+            label4.Location = new Point(22, 230);
             label4.Margin = new Padding(4, 0, 4, 0);
             label4.Name = "label4";
             label4.Size = new Size(48, 20);
@@ -193,16 +177,16 @@
             // 
             txtMaKhachHang.BorderStyle = BorderStyle.FixedSingle;
             txtMaKhachHang.Enabled = false;
-            txtMaKhachHang.Location = new Point(157, 38);
+            txtMaKhachHang.Location = new Point(22, 76);
             txtMaKhachHang.Margin = new Padding(4);
             txtMaKhachHang.Name = "txtMaKhachHang";
-            txtMaKhachHang.Size = new Size(217, 27);
+            txtMaKhachHang.Size = new Size(257, 27);
             txtMaKhachHang.TabIndex = 5;
             // 
             // label3
             // 
             label3.AutoSize = true;
-            label3.Location = new Point(388, 44);
+            label3.Location = new Point(22, 169);
             label3.Margin = new Padding(4, 0, 4, 0);
             label3.Name = "label3";
             label3.Size = new Size(100, 20);
@@ -212,7 +196,7 @@
             // label2
             // 
             label2.AutoSize = true;
-            label2.Location = new Point(41, 107);
+            label2.Location = new Point(19, 107);
             label2.Margin = new Padding(4, 0, 4, 0);
             label2.Name = "label2";
             label2.Size = new Size(76, 20);
@@ -222,7 +206,7 @@
             // label1
             // 
             label1.AutoSize = true;
-            label1.Location = new Point(41, 44);
+            label1.Location = new Point(19, 44);
             label1.Margin = new Padding(4, 0, 4, 0);
             label1.Name = "label1";
             label1.Size = new Size(112, 20);
@@ -233,12 +217,12 @@
             // 
             groupBox2.Controls.Add(panel2);
             groupBox2.Controls.Add(panel1);
-            groupBox2.Location = new Point(3, 181);
+            groupBox2.Location = new Point(6, 71);
             groupBox2.Name = "groupBox2";
-            groupBox2.Size = new Size(1252, 438);
+            groupBox2.Size = new Size(883, 438);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
-            groupBox2.Text = "Khách hàng";
+            groupBox2.Text = "Danh sách khách hàng ";
             // 
             // panel2
             // 
@@ -316,9 +300,9 @@
             // groupBox3
             // 
             groupBox3.Controls.Add(dgvHD);
-            groupBox3.Location = new Point(3, 625);
+            groupBox3.Location = new Point(6, 534);
             groupBox3.Name = "groupBox3";
-            groupBox3.Size = new Size(1252, 350);
+            groupBox3.Size = new Size(883, 350);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Hóa đơn đã mua";
@@ -333,13 +317,25 @@
             dgvHD.Name = "dgvHD";
             dgvHD.RowHeadersWidth = 51;
             dgvHD.RowTemplate.Height = 25;
-            dgvHD.Size = new Size(1246, 324);
+            dgvHD.Size = new Size(877, 324);
             dgvHD.TabIndex = 1;
+            // 
+            // groupBox4
+            // 
+            groupBox4.Controls.Add(btnSua);
+            groupBox4.Controls.Add(btnThem);
+            groupBox4.Location = new Point(906, 376);
+            groupBox4.Name = "groupBox4";
+            groupBox4.Size = new Size(320, 144);
+            groupBox4.TabIndex = 17;
+            groupBox4.TabStop = false;
+            groupBox4.Text = "Chức năng";
             // 
             // Frm_US_KhachHang
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(groupBox4);
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
@@ -354,6 +350,7 @@
             ((System.ComponentModel.ISupportInitialize)dgvKH).EndInit();
             groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvHD).EndInit();
+            groupBox4.ResumeLayout(false);
             ResumeLayout(false);
         }
 
@@ -362,7 +359,6 @@
         private GroupBox groupBox1;
         private Button btnThem;
         private Button btnSua;
-        private Button btnKhoa_MoKhoa;
         private TextBox txtDiemKH;
         private TextBox txtSDT;
         private TextBox txtHoVaTen;
@@ -382,5 +378,6 @@
         private Button btnLamMoi;
         private RadioButton rdbTimKiemTen;
         private RadioButton rdbTimKiemMa;
+        private GroupBox groupBox4;
     }
 }

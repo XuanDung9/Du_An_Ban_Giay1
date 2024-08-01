@@ -66,24 +66,24 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
         }
 
-        public void loadgridHoadonchitiet(int hdctId)
-        {
-            int stt = 1;
-            dgvHDCT.ColumnCount = 5;
-            dgvHDCT.Columns[0].Name = "STT";
-            dgvHDCT.Columns[1].Name = "Mã hoá đơn";
-            dgvHDCT.Columns[2].Name = "Tên sản phẩm";
-            dgvHDCT.Columns[3].Name = "Số lượng";
-            dgvHDCT.Columns[4].Name = "Giá bán";
+        //public void loadgridHoadonchitiet(int hdctId)
+        //{
+        //    int stt = 1;
+        //    dgvHDCT.ColumnCount = 5;
+        //    dgvHDCT.Columns[0].Name = "STT";
+        //    dgvHDCT.Columns[1].Name = "Mã hoá đơn";
+        //    dgvHDCT.Columns[2].Name = "Tên sản phẩm";
+        //    dgvHDCT.Columns[3].Name = "Số lượng";
+        //    dgvHDCT.Columns[4].Name = "Giá bán";
 
-            dgvHDCT.Rows.Clear();
-            foreach (var e in _service.GetHoadonchitietsById(hdctId))
-            {
-                var idspct = _service.GetGiaychitiets().FirstOrDefault(i => i.Magiaychitiet == e.Magiaychitiet);
-                var idsp = _service.GetGiays().FirstOrDefault(s => s.Magiay == idspct.Magiay);
-                dgvHDCT.Rows.Add(stt++,e.Mahoadon, idsp.Tengiay, e.Soluongmua, e.Tongtien);
-            }
-        }
+        //    dgvHDCT.Rows.Clear();
+        //    foreach (var e in _service.GetHoadonchitietsById(hdctId))
+        //    {
+        //        var idspct = _service.GetGiaychitiets().FirstOrDefault(i => i.Magiaychitiet == e.Magiaychitiet);
+        //        var idsp = _service.GetGiays().FirstOrDefault(s => s.Magiay == idspct.Magiay);
+        //        dgvHDCT.Rows.Add(stt++,e.Mahoadon, idsp.Tengiay, e.Soluongmua, e.Tongtien);
+        //    }
+        //}
         private void dgvHD_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.RowIndex >= 0)
@@ -95,7 +95,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     _idWhenclick = int.Parse(dgvHD.Rows[index].Cells[1].Value.ToString());
                     var hd = _service.GetHoadons(null).FirstOrDefault(x => x.Mahoadon == _idWhenclick);
 
-                    loadgridHoadonchitiet(hd.Mahoadon);
+                    //loadgridHoadonchitiet(hd.Mahoadon);
                 }    
             }
         }

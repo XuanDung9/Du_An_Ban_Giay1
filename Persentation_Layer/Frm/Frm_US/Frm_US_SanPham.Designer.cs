@@ -97,7 +97,7 @@
             dgvSP.Name = "dgvSP";
             dgvSP.RowHeadersWidth = 51;
             dgvSP.RowTemplate.Height = 29;
-            dgvSP.Size = new Size(912, 531);
+            dgvSP.Size = new Size(912, 661);
             dgvSP.TabIndex = 3;
             dgvSP.CellClick += dgvSP_CellClick;
             dgvSP.CellContentClick += dgvSP_CellContentClick_1;
@@ -116,13 +116,13 @@
             // 
             // btnTimKiem
             // 
-            btnTimKiem.BackColor = Color.FromArgb(64, 79, 105);
+            btnTimKiem.BackColor = SystemColors.ActiveCaption;
             btnTimKiem.Cursor = Cursors.Hand;
             btnTimKiem.FlatAppearance.BorderSize = 0;
             btnTimKiem.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnTimKiem.FlatStyle = FlatStyle.Flat;
             btnTimKiem.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnTimKiem.ForeColor = Color.White;
+            btnTimKiem.ForeColor = Color.Black;
             btnTimKiem.Location = new Point(652, 16);
             btnTimKiem.Margin = new Padding(4);
             btnTimKiem.Name = "btnTimKiem";
@@ -169,13 +169,13 @@
             // btnLamMoi
             // 
             btnLamMoi.Anchor = AnchorStyles.None;
-            btnLamMoi.BackColor = Color.FromArgb(64, 79, 105);
+            btnLamMoi.BackColor = SystemColors.ActiveCaption;
             btnLamMoi.Cursor = Cursors.Hand;
             btnLamMoi.FlatAppearance.BorderSize = 0;
             btnLamMoi.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnLamMoi.FlatStyle = FlatStyle.Flat;
             btnLamMoi.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnLamMoi.ForeColor = Color.White;
+            btnLamMoi.ForeColor = Color.Black;
             btnLamMoi.Location = new Point(164, 85);
             btnLamMoi.Margin = new Padding(4);
             btnLamMoi.Name = "btnLamMoi";
@@ -187,13 +187,13 @@
             // btnKhoa_MoKhoa
             // 
             btnKhoa_MoKhoa.Anchor = AnchorStyles.None;
-            btnKhoa_MoKhoa.BackColor = Color.FromArgb(64, 79, 105);
+            btnKhoa_MoKhoa.BackColor = SystemColors.ActiveCaption;
             btnKhoa_MoKhoa.Cursor = Cursors.Hand;
             btnKhoa_MoKhoa.FlatAppearance.BorderSize = 0;
             btnKhoa_MoKhoa.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnKhoa_MoKhoa.FlatStyle = FlatStyle.Flat;
             btnKhoa_MoKhoa.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnKhoa_MoKhoa.ForeColor = Color.White;
+            btnKhoa_MoKhoa.ForeColor = Color.Black;
             btnKhoa_MoKhoa.Location = new Point(13, 85);
             btnKhoa_MoKhoa.Margin = new Padding(4);
             btnKhoa_MoKhoa.Name = "btnKhoa_MoKhoa";
@@ -206,13 +206,13 @@
             // btnSua
             // 
             btnSua.Anchor = AnchorStyles.None;
-            btnSua.BackColor = Color.FromArgb(64, 79, 105);
+            btnSua.BackColor = SystemColors.ActiveCaption;
             btnSua.Cursor = Cursors.Hand;
             btnSua.FlatAppearance.BorderSize = 0;
             btnSua.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnSua.FlatStyle = FlatStyle.Flat;
             btnSua.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSua.ForeColor = Color.White;
+            btnSua.ForeColor = Color.Black;
             btnSua.Location = new Point(164, 28);
             btnSua.Margin = new Padding(4);
             btnSua.Name = "btnSua";
@@ -225,13 +225,13 @@
             // btnThem
             // 
             btnThem.Anchor = AnchorStyles.None;
-            btnThem.BackColor = Color.FromArgb(64, 79, 105);
+            btnThem.BackColor = SystemColors.ActiveCaption;
             btnThem.Cursor = Cursors.Hand;
             btnThem.FlatAppearance.BorderSize = 0;
             btnThem.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
             btnThem.FlatStyle = FlatStyle.Flat;
             btnThem.Font = new Font("Segoe UI Semibold", 9.75F, FontStyle.Bold, GraphicsUnit.Point);
-            btnThem.ForeColor = Color.White;
+            btnThem.ForeColor = Color.Black;
             btnThem.Location = new Point(13, 28);
             btnThem.Margin = new Padding(4);
             btnThem.Name = "btnThem";

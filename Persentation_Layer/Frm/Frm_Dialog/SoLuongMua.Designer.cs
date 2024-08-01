@@ -48,16 +48,16 @@
             txtSoLuong.Location = new Point(161, 34);
             txtSoLuong.Multiline = true;
             txtSoLuong.Name = "txtSoLuong";
-            txtSoLuong.Size = new Size(86, 34);
+            txtSoLuong.Size = new Size(227, 34);
             txtSoLuong.TabIndex = 1;
             txtSoLuong.TextChanged += txtSoLuong_TextChanged;
             // 
             // btnSoLuong
             // 
             btnSoLuong.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
-            btnSoLuong.Location = new Point(245, 107);
+            btnSoLuong.Location = new Point(245, 120);
             btnSoLuong.Name = "btnSoLuong";
-            btnSoLuong.Size = new Size(143, 59);
+            btnSoLuong.Size = new Size(143, 46);
             btnSoLuong.TabIndex = 2;
             btnSoLuong.Text = "Xác nhận";
             btnSoLuong.UseVisualStyleBackColor = true;
@@ -67,7 +67,7 @@
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(400, 178);
+            ClientSize = new Size(426, 178);
             Controls.Add(btnSoLuong);
             Controls.Add(txtSoLuong);
             Controls.Add(label1);

@@ -28,187 +28,187 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.groupBox1 = new System.Windows.Forms.GroupBox();
-            this.btnExcel = new System.Windows.Forms.Button();
-            this.cmbTimkiem = new System.Windows.Forms.ComboBox();
-            this.label2 = new System.Windows.Forms.Label();
-            this.label1 = new System.Windows.Forms.Label();
-            this.cmbloaitt = new System.Windows.Forms.ComboBox();
-            this.txtTimkiem = new System.Windows.Forms.TextBox();
-            this.groupBox2 = new System.Windows.Forms.GroupBox();
-            this.dgvHDCT = new System.Windows.Forms.DataGridView();
-            this.groupBox3 = new System.Windows.Forms.GroupBox();
-            this.dgvHD = new System.Windows.Forms.DataGridView();
-            this.groupBox1.SuspendLayout();
-            this.groupBox2.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHDCT)).BeginInit();
-            this.groupBox3.SuspendLayout();
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHD)).BeginInit();
-            this.SuspendLayout();
+            groupBox1 = new GroupBox();
+            btnExcel = new Button();
+            cmbTimkiem = new ComboBox();
+            label2 = new Label();
+            label1 = new Label();
+            cmbloaitt = new ComboBox();
+            txtTimkiem = new TextBox();
+            groupBox2 = new GroupBox();
+            dgvHDCT = new DataGridView();
+            groupBox3 = new GroupBox();
+            dgvHD = new DataGridView();
+            groupBox1.SuspendLayout();
+            groupBox2.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvHDCT).BeginInit();
+            groupBox3.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)dgvHD).BeginInit();
+            SuspendLayout();
             // 
             // groupBox1
             // 
-            this.groupBox1.Controls.Add(this.btnExcel);
-            this.groupBox1.Controls.Add(this.cmbTimkiem);
-            this.groupBox1.Controls.Add(this.label2);
-            this.groupBox1.Controls.Add(this.label1);
-            this.groupBox1.Controls.Add(this.cmbloaitt);
-            this.groupBox1.Controls.Add(this.txtTimkiem);
-            this.groupBox1.Dock = System.Windows.Forms.DockStyle.Top;
-            this.groupBox1.Location = new System.Drawing.Point(0, 0);
-            this.groupBox1.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox1.Size = new System.Drawing.Size(2032, 250);
-            this.groupBox1.TabIndex = 0;
-            this.groupBox1.TabStop = false;
-            this.groupBox1.Text = "Tìm kiếm";
+            groupBox1.Controls.Add(btnExcel);
+            groupBox1.Controls.Add(cmbTimkiem);
+            groupBox1.Controls.Add(label2);
+            groupBox1.Controls.Add(label1);
+            groupBox1.Controls.Add(cmbloaitt);
+            groupBox1.Controls.Add(txtTimkiem);
+            groupBox1.Dock = DockStyle.Top;
+            groupBox1.Location = new Point(0, 0);
+            groupBox1.Margin = new Padding(4, 4, 4, 4);
+            groupBox1.Name = "groupBox1";
+            groupBox1.Padding = new Padding(4, 4, 4, 4);
+            groupBox1.Size = new Size(1250, 156);
+            groupBox1.TabIndex = 0;
+            groupBox1.TabStop = false;
+            groupBox1.Text = "Tìm kiếm";
             // 
             // btnExcel
             // 
-            this.btnExcel.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(64)))), ((int)(((byte)(79)))), ((int)(((byte)(105)))));
-            this.btnExcel.Cursor = System.Windows.Forms.Cursors.Hand;
-            this.btnExcel.FlatAppearance.BorderSize = 0;
-            this.btnExcel.FlatAppearance.MouseDownBackColor = System.Drawing.Color.FromArgb(((int)(((byte)(69)))), ((int)(((byte)(97)))), ((int)(((byte)(120)))));
-            this.btnExcel.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnExcel.ForeColor = System.Drawing.Color.White;
-            this.btnExcel.Location = new System.Drawing.Point(994, 128);
-            this.btnExcel.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
-            this.btnExcel.Name = "btnExcel";
-            this.btnExcel.Size = new System.Drawing.Size(156, 92);
-            this.btnExcel.TabIndex = 16;
-            this.btnExcel.Text = "Xuất Excel";
-            this.btnExcel.UseVisualStyleBackColor = false;
-            this.btnExcel.Click += new System.EventHandler(this.btnXuatExcel_Click);
+            btnExcel.BackColor = SystemColors.ActiveCaption;
+            btnExcel.Cursor = Cursors.Hand;
+            btnExcel.FlatAppearance.BorderSize = 0;
+            btnExcel.FlatAppearance.MouseDownBackColor = Color.FromArgb(69, 97, 120);
+            btnExcel.FlatStyle = FlatStyle.Flat;
+            btnExcel.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnExcel.ForeColor = Color.Black;
+            btnExcel.Location = new Point(606, 77);
+            btnExcel.Margin = new Padding(4, 2, 4, 2);
+            btnExcel.Name = "btnExcel";
+            btnExcel.Size = new Size(114, 58);
+            btnExcel.TabIndex = 16;
+            btnExcel.Text = "Xuất Excel";
+            btnExcel.UseVisualStyleBackColor = false;
+            btnExcel.Click += btnXuatExcel_Click;
             // 
             // cmbTimkiem
             // 
-            this.cmbTimkiem.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbTimkiem.FormattingEnabled = true;
-            this.cmbTimkiem.Location = new System.Drawing.Point(923, 49);
-            this.cmbTimkiem.Margin = new System.Windows.Forms.Padding(6, 4, 6, 4);
-            this.cmbTimkiem.Name = "cmbTimkiem";
-            this.cmbTimkiem.Size = new System.Drawing.Size(244, 40);
-            this.cmbTimkiem.TabIndex = 15;
-            this.cmbTimkiem.SelectedIndexChanged += new System.EventHandler(this.cmbTimkiem_SelectedIndexChanged);
+            cmbTimkiem.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbTimkiem.FormattingEnabled = true;
+            cmbTimkiem.Location = new Point(568, 31);
+            cmbTimkiem.Margin = new Padding(4, 2, 4, 2);
+            cmbTimkiem.Name = "cmbTimkiem";
+            cmbTimkiem.Size = new Size(152, 28);
+            cmbTimkiem.TabIndex = 15;
+            cmbTimkiem.SelectedIndexChanged += cmbTimkiem_SelectedIndexChanged;
             // 
             // label2
             // 
-            this.label2.AutoSize = true;
-            this.label2.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label2.Location = new System.Drawing.Point(26, 173);
-            this.label2.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(200, 36);
-            this.label2.TabIndex = 13;
-            this.label2.Text = "Loại thanh toán:";
+            label2.AutoSize = true;
+            label2.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label2.Location = new Point(16, 108);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(135, 23);
+            label2.TabIndex = 13;
+            label2.Text = "Loại thanh toán:";
             // 
             // label1
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.label1.Location = new System.Drawing.Point(26, 58);
-            this.label1.Margin = new System.Windows.Forms.Padding(6, 0, 6, 0);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(125, 36);
-            this.label1.TabIndex = 14;
-            this.label1.Text = "Tìm kiếm:";
+            label1.AutoSize = true;
+            label1.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            label1.Location = new Point(16, 36);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(83, 23);
+            label1.TabIndex = 14;
+            label1.Text = "Tìm kiếm:";
             // 
             // cmbloaitt
             // 
-            this.cmbloaitt.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
-            this.cmbloaitt.FormattingEnabled = true;
-            this.cmbloaitt.Location = new System.Drawing.Point(256, 171);
-            this.cmbloaitt.Margin = new System.Windows.Forms.Padding(6);
-            this.cmbloaitt.Name = "cmbloaitt";
-            this.cmbloaitt.Size = new System.Drawing.Size(275, 40);
-            this.cmbloaitt.TabIndex = 12;
-            this.cmbloaitt.SelectedIndexChanged += new System.EventHandler(this.cmbloaitt_SelectedIndexChanged_1);
+            cmbloaitt.DropDownStyle = ComboBoxStyle.DropDownList;
+            cmbloaitt.FormattingEnabled = true;
+            cmbloaitt.Location = new Point(158, 107);
+            cmbloaitt.Margin = new Padding(4, 4, 4, 4);
+            cmbloaitt.Name = "cmbloaitt";
+            cmbloaitt.Size = new Size(171, 28);
+            cmbloaitt.TabIndex = 12;
+            cmbloaitt.SelectedIndexChanged += cmbloaitt_SelectedIndexChanged_1;
             // 
             // txtTimkiem
             // 
-            this.txtTimkiem.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.txtTimkiem.Font = new System.Drawing.Font("Segoe UI", 9.75F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point);
-            this.txtTimkiem.Location = new System.Drawing.Point(193, 47);
-            this.txtTimkiem.Margin = new System.Windows.Forms.Padding(6);
-            this.txtTimkiem.Multiline = true;
-            this.txtTimkiem.Name = "txtTimkiem";
-            this.txtTimkiem.Size = new System.Drawing.Size(704, 62);
-            this.txtTimkiem.TabIndex = 11;
-            this.txtTimkiem.TextChanged += new System.EventHandler(this.txtTimkiem_TextChanged);
+            txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
+            txtTimkiem.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
+            txtTimkiem.Location = new Point(119, 29);
+            txtTimkiem.Margin = new Padding(4, 4, 4, 4);
+            txtTimkiem.Multiline = true;
+            txtTimkiem.Name = "txtTimkiem";
+            txtTimkiem.Size = new Size(434, 40);
+            txtTimkiem.TabIndex = 11;
+            txtTimkiem.TextChanged += txtTimkiem_TextChanged;
             // 
             // groupBox2
             // 
-            this.groupBox2.Controls.Add(this.dgvHDCT);
-            this.groupBox2.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.groupBox2.Location = new System.Drawing.Point(0, 849);
-            this.groupBox2.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox2.Size = new System.Drawing.Size(2032, 715);
-            this.groupBox2.TabIndex = 1;
-            this.groupBox2.TabStop = false;
-            this.groupBox2.Text = "Hóa đơn chi tiết";
+            groupBox2.Controls.Add(dgvHDCT);
+            groupBox2.Dock = DockStyle.Bottom;
+            groupBox2.Location = new Point(0, 531);
+            groupBox2.Margin = new Padding(4, 4, 4, 4);
+            groupBox2.Name = "groupBox2";
+            groupBox2.Padding = new Padding(4, 4, 4, 4);
+            groupBox2.Size = new Size(1250, 447);
+            groupBox2.TabIndex = 1;
+            groupBox2.TabStop = false;
+            groupBox2.Text = "Hóa đơn chi tiết";
             // 
             // dgvHDCT
             // 
-            this.dgvHDCT.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
-            this.dgvHDCT.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHDCT.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvHDCT.Location = new System.Drawing.Point(6, 38);
-            this.dgvHDCT.Margin = new System.Windows.Forms.Padding(6);
-            this.dgvHDCT.Name = "dgvHDCT";
-            this.dgvHDCT.RowHeadersWidth = 82;
-            this.dgvHDCT.RowTemplate.Height = 25;
-            this.dgvHDCT.Size = new System.Drawing.Size(2020, 671);
-            this.dgvHDCT.TabIndex = 0;
-            this.dgvHDCT.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHDCT_CellContentClick);
+            dgvHDCT.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
+            dgvHDCT.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvHDCT.Dock = DockStyle.Fill;
+            dgvHDCT.Location = new Point(4, 24);
+            dgvHDCT.Margin = new Padding(4, 4, 4, 4);
+            dgvHDCT.Name = "dgvHDCT";
+            dgvHDCT.RowHeadersWidth = 82;
+            dgvHDCT.RowTemplate.Height = 25;
+            dgvHDCT.Size = new Size(1242, 419);
+            dgvHDCT.TabIndex = 0;
+            dgvHDCT.CellContentClick += dgvHDCT_CellContentClick;
             // 
             // groupBox3
             // 
-            this.groupBox3.Controls.Add(this.dgvHD);
-            this.groupBox3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.groupBox3.Location = new System.Drawing.Point(0, 250);
-            this.groupBox3.Margin = new System.Windows.Forms.Padding(6);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Padding = new System.Windows.Forms.Padding(6);
-            this.groupBox3.Size = new System.Drawing.Size(2032, 599);
-            this.groupBox3.TabIndex = 2;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Hóa đơn";
+            groupBox3.Controls.Add(dgvHD);
+            groupBox3.Dock = DockStyle.Fill;
+            groupBox3.Location = new Point(0, 156);
+            groupBox3.Margin = new Padding(4, 4, 4, 4);
+            groupBox3.Name = "groupBox3";
+            groupBox3.Padding = new Padding(4, 4, 4, 4);
+            groupBox3.Size = new Size(1250, 375);
+            groupBox3.TabIndex = 2;
+            groupBox3.TabStop = false;
+            groupBox3.Text = "Hóa đơn";
             // 
             // dgvHD
             // 
-            this.dgvHD.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.DisplayedCells;
-            this.dgvHD.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
-            this.dgvHD.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dgvHD.Location = new System.Drawing.Point(6, 38);
-            this.dgvHD.Margin = new System.Windows.Forms.Padding(6);
-            this.dgvHD.Name = "dgvHD";
-            this.dgvHD.RowHeadersWidth = 82;
-            this.dgvHD.RowTemplate.Height = 25;
-            this.dgvHD.Size = new System.Drawing.Size(2020, 555);
-            this.dgvHD.TabIndex = 0;
-            this.dgvHD.CellClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dgvHD_CellClick);
+            dgvHD.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvHD.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dgvHD.Dock = DockStyle.Fill;
+            dgvHD.Location = new Point(4, 24);
+            dgvHD.Margin = new Padding(4, 4, 4, 4);
+            dgvHD.Name = "dgvHD";
+            dgvHD.RowHeadersWidth = 82;
+            dgvHD.RowTemplate.Height = 25;
+            dgvHD.Size = new Size(1242, 347);
+            dgvHD.TabIndex = 0;
+            dgvHD.CellClick += dgvHD_CellClick;
             // 
             // Frm_US_HoaDon
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 32F);
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.groupBox2);
-            this.Controls.Add(this.groupBox1);
-            this.Margin = new System.Windows.Forms.Padding(6);
-            this.Name = "Frm_US_HoaDon";
-            this.Size = new System.Drawing.Size(2032, 1564);
-            this.groupBox1.ResumeLayout(false);
-            this.groupBox1.PerformLayout();
-            this.groupBox2.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHDCT)).EndInit();
-            this.groupBox3.ResumeLayout(false);
-            ((System.ComponentModel.ISupportInitialize)(this.dgvHD)).EndInit();
-            this.ResumeLayout(false);
-
+            AutoScaleDimensions = new SizeF(8F, 20F);
+            AutoScaleMode = AutoScaleMode.Font;
+            Controls.Add(groupBox3);
+            Controls.Add(groupBox2);
+            Controls.Add(groupBox1);
+            Margin = new Padding(4, 4, 4, 4);
+            Name = "Frm_US_HoaDon";
+            Size = new Size(1250, 978);
+            groupBox1.ResumeLayout(false);
+            groupBox1.PerformLayout();
+            groupBox2.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvHDCT).EndInit();
+            groupBox3.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)dgvHD).EndInit();
+            ResumeLayout(false);
         }
 
         #endregion

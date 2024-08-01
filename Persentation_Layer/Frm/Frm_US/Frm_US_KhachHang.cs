@@ -222,5 +222,10 @@ namespace A_Persentation_Layer.Frm.Frm_US
             txtSDT.Text = string.Empty;
             txtDiemKH.Text = string.Empty;
         }
+
+        private void dgvHD_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
     }
 }

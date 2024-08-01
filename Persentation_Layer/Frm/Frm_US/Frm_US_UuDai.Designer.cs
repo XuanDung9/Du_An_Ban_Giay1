@@ -35,6 +35,8 @@
             btnketthuc = new Button();
             txtTimkiem = new TextBox();
             groupBox3 = new GroupBox();
+            label5 = new Label();
+            txtPhanTram = new TextBox();
             label4 = new Label();
             label3 = new Label();
             label2 = new Label();
@@ -46,8 +48,6 @@
             groupBox4 = new GroupBox();
             btnSua = new Button();
             btnThem = new Button();
-            txtPhanTram = new TextBox();
-            label5 = new Label();
             groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)dtgHienthi).BeginInit();
             groupBox2.SuspendLayout();
@@ -91,8 +91,9 @@
             // 
             // btnlammoi
             // 
-            btnlammoi.BackColor = Color.FromArgb(64, 79, 105);
-            btnlammoi.ForeColor = SystemColors.ButtonHighlight;
+            btnlammoi.BackColor = SystemColors.ActiveCaption;
+            btnlammoi.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnlammoi.ForeColor = SystemColors.ActiveCaptionText;
             btnlammoi.Location = new Point(177, 87);
             btnlammoi.Name = "btnlammoi";
             btnlammoi.Size = new Size(115, 51);
@@ -103,8 +104,9 @@
             // 
             // btnketthuc
             // 
-            btnketthuc.BackColor = Color.FromArgb(64, 79, 105);
-            btnketthuc.ForeColor = SystemColors.ButtonHighlight;
+            btnketthuc.BackColor = SystemColors.ActiveCaption;
+            btnketthuc.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnketthuc.ForeColor = SystemColors.ActiveCaptionText;
             btnketthuc.Location = new Point(41, 87);
             btnketthuc.Name = "btnketthuc";
             btnketthuc.Size = new Size(120, 51);
@@ -140,6 +142,22 @@
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Thông tin";
+            // 
+            // label5
+            // 
+            label5.AutoSize = true;
+            label5.Location = new Point(27, 174);
+            label5.Name = "label5";
+            label5.Size = new Size(139, 20);
+            label5.TabIndex = 12;
+            label5.Text = "Phần trăm giảm giá";
+            // 
+            // txtPhanTram
+            // 
+            txtPhanTram.Location = new Point(27, 197);
+            txtPhanTram.Name = "txtPhanTram";
+            txtPhanTram.Size = new Size(281, 27);
+            txtPhanTram.TabIndex = 11;
             // 
             // label4
             // 
@@ -220,8 +238,9 @@
             // 
             // btnSua
             // 
-            btnSua.BackColor = Color.FromArgb(64, 79, 105);
-            btnSua.ForeColor = SystemColors.ButtonHighlight;
+            btnSua.BackColor = SystemColors.ActiveCaption;
+            btnSua.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnSua.ForeColor = SystemColors.ActiveCaptionText;
             btnSua.Location = new Point(27, 97);
             btnSua.Name = "btnSua";
             btnSua.Size = new Size(281, 51);
@@ -232,8 +251,9 @@
             // 
             // btnThem
             // 
-            btnThem.BackColor = Color.FromArgb(64, 79, 105);
-            btnThem.ForeColor = SystemColors.ButtonHighlight;
+            btnThem.BackColor = SystemColors.ActiveCaption;
+            btnThem.Font = new Font("Segoe UI", 10.2F, FontStyle.Bold, GraphicsUnit.Point);
+            btnThem.ForeColor = SystemColors.ActiveCaptionText;
             btnThem.Location = new Point(27, 40);
             btnThem.Name = "btnThem";
             btnThem.Size = new Size(281, 51);
@@ -241,22 +261,6 @@
             btnThem.Text = "Thêm";
             btnThem.UseVisualStyleBackColor = false;
             btnThem.Click += btnThem_Click;
-            // 
-            // txtPhanTram
-            // 
-            txtPhanTram.Location = new Point(27, 197);
-            txtPhanTram.Name = "txtPhanTram";
-            txtPhanTram.Size = new Size(281, 27);
-            txtPhanTram.TabIndex = 11;
-            // 
-            // label5
-            // 
-            label5.AutoSize = true;
-            label5.Location = new Point(27, 174);
-            label5.Name = "label5";
-            label5.Size = new Size(139, 20);
-            label5.TabIndex = 12;
-            label5.Text = "Phần trăm giảm giá";
             // 
             // Frm_US_UuDai
             // 
