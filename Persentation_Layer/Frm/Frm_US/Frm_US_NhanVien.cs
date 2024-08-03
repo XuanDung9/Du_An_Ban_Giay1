@@ -263,24 +263,27 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
             else
             {
-                _idWhenclick = int.Parse(dgvHienThi.Rows[index].Cells[1].Value.ToString());
-                var nhanvien = _service.GetTaikhoan(null).FirstOrDefault(x => x.Mataikhoan == _idWhenclick);
-                txtTaikhoan.Text = nhanvien.Username;
-                txtMatkhau.Text = nhanvien.Password;
-                txtTen.Text = nhanvien.Hoten;
-                if (nhanvien.Gioitinh == false)
+                if (index >= 0 && index < dgvHienThi.Rows.Count - 1)
                 {
-                    rbnNu.Checked = true;
+                    _idWhenclick = int.Parse(dgvHienThi.Rows[index].Cells[1].Value.ToString());
+                    var nhanvien = _service.GetTaikhoan(null).FirstOrDefault(x => x.Mataikhoan == _idWhenclick);
+                    txtTaikhoan.Text = nhanvien.Username;
+                    txtMatkhau.Text = nhanvien.Password;
+                    txtTen.Text = nhanvien.Hoten;
+                    if (nhanvien.Gioitinh == false)
+                    {
+                        rbnNu.Checked = true;
+                    }
+                    else
+                    {
+                        rbnNam.Checked = true;
+                    }
+                    txtSDT.Text = nhanvien.Sdt.ToString();
+                    txtDiachi.Text = nhanvien.Diachi;
+                    txtEmail.Text = nhanvien.Email;
+                    dateSinh.Text = nhanvien.Ngaysinh.ToString();
+                    cmbChucvu.SelectedIndex = _list.FindIndex(x => x == nhanvien.Machucvu);
                 }
-                else
-                {
-                    rbnNam.Checked = true;
-                }
-                txtSDT.Text = nhanvien.Sdt.ToString();
-                txtDiachi.Text = nhanvien.Diachi;
-                txtEmail.Text = nhanvien.Email;
-                dateSinh.Text = nhanvien.Ngaysinh.ToString();
-                cmbChucvu.SelectedIndex = _list.FindIndex(x => x == nhanvien.Machucvu);
             }    
            
         }
