@@ -18,6 +18,7 @@ namespace B_Bussiness_Layer.IServies
         public List<Hinhthucthanhtoan> GetHinhthucthanhtoans();
         public List<Giaychitiet> GetGiaychitiets();
         public List<Hoadonchitiet> GetHoadonchitiets();
+        public List<Hoadonchitiet> GetHoadonchitietsById(int hdctId);
         public List<Hoadon> GetHoadons(string search);
         public List<Taikhoan> GetTaikhoans();
         public List<Uudai> GetUudais();

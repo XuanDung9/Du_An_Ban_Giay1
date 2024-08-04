@@ -17,6 +17,7 @@ namespace C_Data_Access_Layer.IRepostories
         public bool Xoa(int id);
         public List<Hinhthucthanhtoan> GetHinhthucthanhtoans();
         public List<Hoadonchitiet> GetHoadonchitiets();
+        public List<Hoadonchitiet> GetHoadonchitietsById(int hdctId);
         public List<Giaychitiet> GetGiaychitiets();
         public List<Hoadon> GetHoadons(string search);
         public List<Taikhoan> GetTaikhoans();
