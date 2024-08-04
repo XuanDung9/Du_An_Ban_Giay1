@@ -1,4 +1,4 @@
-﻿using C_Data_Access_Layer.IRepostories;
+﻿    using C_Data_Access_Layer.IRepostories;
 using C_Data_Access_Layer.Context;
 using C_Data_Access_Layer.Models;
 using C_Data_Access_Layer.Models.ModelRefer;
@@ -69,7 +69,11 @@ namespace C_Data_Access_Layer.Repositories
             try
             {
                 var Obj = _db.Hoadons.FirstOrDefault(a => a.Mahoadon == id);
-                if (Obj == null) { return false; }
+                if (Obj == null)
+                {
+                    Console.WriteLine($"Không tìm thấy hóa đơn với mã {id}");
+                    return false;
+                }
 
                 Obj.Mataikhoan = hoadon.Mataikhoan;
                 Obj.Mauudai = hoadon.Mauudai;
@@ -77,13 +81,19 @@ namespace C_Data_Access_Layer.Repositories
                 Obj.Mahinhthucthanhtoan = hoadon.Mahinhthucthanhtoan;
                 Obj.Tongtien = hoadon.Tongtien;
                 Obj.Ghichu = hoadon.Ghichu;
-
+                if (hoadon.Hoadonchitiets != null && hoadon.Hoadonchitiets.Count > 0)
+                {
+                    Obj.Hoadonchitiets = hoadon.Hoadonchitiets;
+                }
                 _db.Hoadons.Update(Obj);
                 _db.SaveChanges();
                 return true;
-
             }
-            catch { return false; }
+            catch (Exception ex)
+            {
+                Console.WriteLine($"Có lỗi xảy ra khi cập nhật hóa đơn: {ex.Message}");
+                return false;
+            }
         }
         public List<Giaychitiet> GetGiaychitiets()
         {

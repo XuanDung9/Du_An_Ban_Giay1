@@ -53,10 +53,10 @@ namespace B_Bussiness_Layer.Services
         {
             return _Rep.GetHoadonchitiets();
         }
-        public List<Hoadonchitiet> GetHoadonchitietsById(int hdctId)
-        {
-            return _Rep.GetHoadonchitietsById(hdctId);
-        }
+        //public List<Hoadonchitiet> GetHoadonchitietsById(int hdctId)
+        //{
+        //    return _Rep.GetHoadonchitietsById(hdctId);
+        //}
         public List<HoaDonNhe> hoaDonNhes(string searchText, string searchType)
         {
             return _Rep.hoaDonNhes(searchText, searchType);

@@ -128,7 +128,6 @@
             dgv_HoaDon.Size = new Size(887, 175);
             dgv_HoaDon.TabIndex = 1;
             dgv_HoaDon.CellClick += dgv_HoaDon_CellClick;
-            dgv_HoaDon.CellContentClick += dgv_HoaDon_CellContentClick;
             // 
             // label1
             // 
@@ -160,7 +159,6 @@
             dgv_HoaDonChiTiet.Size = new Size(887, 209);
             dgv_HoaDonChiTiet.TabIndex = 4;
             dgv_HoaDonChiTiet.CellClick += dgv_HoaDonChiTiet_CellClick;
-            dgv_HoaDonChiTiet.CellContentClick += dgv_HoaDonChiTiet_CellContentClick;
             // 
             // panel2
             // 
@@ -318,7 +316,6 @@
             txtGiamGia.Name = "txtGiamGia";
             txtGiamGia.Size = new Size(230, 27);
             txtGiamGia.TabIndex = 24;
-            txtGiamGia.TextChanged += txtGiamGia_TextChanged;
             // 
             // btn_ThanhToan
             // 
@@ -375,6 +372,7 @@
             cbb_HinhThucThanhToan.Name = "cbb_HinhThucThanhToan";
             cbb_HinhThucThanhToan.Size = new Size(170, 28);
             cbb_HinhThucThanhToan.TabIndex = 16;
+            cbb_HinhThucThanhToan.SelectedIndexChanged += cbb_HinhThucThanhToan_SelectedIndexChanged;
             // 
             // label20
             // 
