@@ -202,7 +202,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             dgvSP.ColumnCount = 19;
             dgvSP.Columns[0].Name = "Mã giày chi tiết";
             dgvSP.Columns[1].Name = "Mã giày";
-            dgvSP.Columns[2].Name = "Tên giày ";
+            dgvSP.Columns[2].Name = "Tên giày";
             dgvSP.Columns[3].Name = "Chất liệu";
             dgvSP.Columns[4].Name = "Màu sắc";
             dgvSP.Columns[5].Name = "Kích cỡ";
@@ -212,8 +212,8 @@ namespace A_Persentation_Layer.Frm.Frm_US
             dgvSP.Columns[9].Name = "Ngày sửa";
             dgvSP.Columns[10].Name = "Giá";
             dgvSP.Columns[11].Name = "Mô tả";
-            dgvSP.Columns[12].Name = "Số lượng trong kho";
-            dgvSP.Columns[13].Name = " Mã chất liệu";
+            dgvSP.Columns[12].Name = "Số lượng tồn";
+            dgvSP.Columns[13].Name = "Mã chất liệu";
             dgvSP.Columns[14].Name = "Mã màu sắc";
             dgvSP.Columns[15].Name = "Mã kích cỡ";
             dgvSP.Columns[16].Name = "Mã thương hiệu";
@@ -308,6 +308,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     item.Trangthai ? "Đang kinh doanh" : "Ngừng kinh doanh");
             }
         }
+
 
 
 
@@ -485,38 +486,44 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         private void dgvSP_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
-
-            if (index < 0 || index >= _lst_GiayDTO.Count)
+            if (e.RowIndex < 0 || e.RowIndex >= dgvSP.Rows.Count)
             {
                 ClearTextBox();
                 return;
             }
 
-            var objCellClick = _lst_GiayDTO[index];
-            if (objCellClick == null)
+            // Lấy hàng được click
+            var row = dgvSP.Rows[e.RowIndex];
+
+            // Hiển thị thông tin sản phẩm và gán giá trị vào các controls
+            MessageBox.Show($"Tên sản phẩm: {row.Cells["Tên giày"].Value.ToString()}\nID sản phẩm: {row.Cells["Mã giày chi tiết"].Value.ToString()}");
+
+            idClicked = Convert.ToInt32(row.Cells["Mã giày chi tiết"].Value);
+            cbbTenGiay.SelectedValue = Convert.ToInt32(row.Cells["Mã giày"].Value);
+            txtGia.Text = row.Cells["Giá"].Value.ToString();
+            txtSoLuong.Text = row.Cells["Số lượng tồn"].Value.ToString();
+            txtMoTa.Text = row.Cells["Mô tả"].Value.ToString();
+
+            try
             {
-                MessageBox.Show("Dữ liệu không hợp lệ!");
-                ClearTextBox();
-                return;
+                cbbTenThuongHieu.SelectedValue = Convert.ToInt32(row.Cells["Mã thương hiệu"].Value);
+                cbbTenKieuDang.SelectedValue = Convert.ToInt32(row.Cells["Mã kiểu dáng"].Value);
+                cbbTenChatLieu.SelectedValue = Convert.ToInt32(row.Cells["Mã chất liệu"].Value);
+                cbbTenMauSac.SelectedValue = Convert.ToInt32(row.Cells["Mã màu sắc"].Value);
+                cbbTenKichCo.SelectedValue = Convert.ToInt32(row.Cells["Mã kích cỡ"].Value);
             }
-
-            MessageBox.Show($" Tên sản phẩm: {objCellClick.TenGiay}\nID sản phẩm: {objCellClick.Magiaychitiet}");
-            idClicked = objCellClick.Magiaychitiet;
-            cbbTenGiay.SelectedValue = objCellClick.Magiay;
-            txtGia.Text = objCellClick.Gia.ToString();
-            txtSoLuong.Text = objCellClick.Soluongton.ToString();
-            txtMoTa.Text = objCellClick.Mota;
-
-            cbbTenThuongHieu.SelectedValue = objCellClick.Mathuonghieu;
-            cbbTenKieuDang.SelectedValue = objCellClick.Makieudang;
-            cbbTenChatLieu.SelectedValue = objCellClick.Machatlieu;
-            cbbTenMauSac.SelectedValue = objCellClick.Mamausac;
-            cbbTenKichCo.SelectedValue = objCellClick.Makichco;
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}");
+            }
 
             cbbTenGiay.Enabled = false;
             cbbTenThuongHieu.Enabled = false;
         }
+
+
+
+
 
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
@@ -530,6 +537,13 @@ namespace A_Persentation_Layer.Frm.Frm_US
         }
 
         private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string search = txtTimKiem.Text;
+            string searchType = cbbTimKiem.SelectedItem.ToString();
+            LoadDataGridView(search, searchType);
+        }
+
+        private void btnTimKiem_Click_1(object sender, EventArgs e)
         {
             string search = txtTimKiem.Text;
             string searchType = cbbTimKiem.SelectedItem.ToString();
