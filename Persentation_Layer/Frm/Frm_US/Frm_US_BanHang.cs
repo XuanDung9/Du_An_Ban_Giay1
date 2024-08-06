@@ -146,6 +146,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                         dgv_HoaDonChiTiet.Rows.Clear();
                         lb_TTHD.Text = "0";
                         lb_TongTienHang.Text = "0";
+                        LamMoi_ThanhToan();
                         LoadGridHD(null, null);
                     }
                     else
@@ -185,25 +186,26 @@ namespace A_Persentation_Layer.Frm.Frm_US
         public void LoadGridGH(int? idHoaDOn, string? SearchType) // giỏ hàng của hóa đơn 
         {
             int stt = 1;
-            dgv_HoaDonChiTiet.ColumnCount = 11;
+            dgv_HoaDonChiTiet.ColumnCount = 12;
             dgv_HoaDonChiTiet.Columns[0].Name = "STT";
             dgv_HoaDonChiTiet.Columns[1].Name = "Mã hóa đơn";
             dgv_HoaDonChiTiet.Columns[2].Name = "Tên";
-            dgv_HoaDonChiTiet.Columns[3].Name = "Thương hiệu";
-            dgv_HoaDonChiTiet.Columns[4].Name = "Kích cỡ";
-            dgv_HoaDonChiTiet.Columns[5].Name = "Màu sắc";
-            dgv_HoaDonChiTiet.Columns[6].Name = "chất liệu";
-            dgv_HoaDonChiTiet.Columns[7].Name = "Kiểu dáng";
-            dgv_HoaDonChiTiet.Columns[8].Name = "Số lượng mua";
-            dgv_HoaDonChiTiet.Columns[9].Name = "Thành tiền";
-            dgv_HoaDonChiTiet.Columns[10].Name = "ID Hóa đơn chi tiết";
-            dgv_HoaDonChiTiet.Columns[10].Visible = false;
+            dgv_HoaDonChiTiet.Columns[3].Name = "Magiaychitiet";
+            dgv_HoaDonChiTiet.Columns[4].Name = "Thương hiệu";
+            dgv_HoaDonChiTiet.Columns[5].Name = "Kích cỡ";
+            dgv_HoaDonChiTiet.Columns[6].Name = "Màu sắc";
+            dgv_HoaDonChiTiet.Columns[7].Name = "chất liệu";
+            dgv_HoaDonChiTiet.Columns[8].Name = "Kiểu dáng";
+            dgv_HoaDonChiTiet.Columns[9].Name = "Số lượng mua";
+            dgv_HoaDonChiTiet.Columns[10].Name = "Thành tiền";
+            dgv_HoaDonChiTiet.Columns[11].Name = "ID Hóa đơn chi tiết";
+            dgv_HoaDonChiTiet.Columns[11].Visible = false;
 
             dgv_HoaDonChiTiet.Rows.Clear();
             _lstHoadonChiTiet = _Ser_HoaDonChiTiet.GetAll(idHoaDOn.ToString(), SearchType);
             foreach (var e in _lstHoadonChiTiet)
             {
-                dgv_HoaDonChiTiet.Rows.Add(stt++, e.Hoadonchitiet.Mahoadon, e.tenGiay, e.tenThuongHieu, e.tenKichCo, e.tenMauSac, e.tenChatLieu, e.tenKieuDang, e.Hoadonchitiet.Soluongmua, e.Hoadonchitiet.Tongtien, e.Hoadonchitiet.Mahoadonchitiet);
+                dgv_HoaDonChiTiet.Rows.Add(stt++, e.Hoadonchitiet.Mahoadon, e.tenGiay,e.Hoadonchitiet.Magiaychitiet, e.tenThuongHieu, e.tenKichCo, e.tenMauSac, e.tenChatLieu, e.tenKieuDang, e.Hoadonchitiet.Soluongmua, e.Hoadonchitiet.Tongtien, e.Hoadonchitiet.Mahoadonchitiet);
             }
             DataGridViewCheckBoxColumn ChooseObj = new DataGridViewCheckBoxColumn();
             ChooseObj.HeaderText = "Chọn";
@@ -602,20 +604,28 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         private void cbb_HinhThucThanhToan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            var hoaDon = _Ser_HoaDon.GetByID(idHoaDon_Clicked);
-            if (hoaDon != null)
-            {
-                hoaDon.Mahinhthucthanhtoan = (int)cbb_HinhThucThanhToan.SelectedValue;
-                var result = _Ser_HoaDon.Sua(idHoaDon_Clicked, hoaDon);
-                if (result)
-                {
-                    LoadGridHD(null, null);
-                }
-                else
-                {
-                    MessageBox.Show("Cập nhật hình thức thanh toán thất bại.");
-                }
-            }
+            //int idHD = int.TryParse(lb_MaHoaDon.Text, out int idH) ? idH : 0;   
+            //var hoaDon = _Ser_HoaDon.GetByID(idHD);
+            //if (hoaDon != null)
+            //{
+            //    if (cbb_HinhThucThanhToan.SelectedValue != null)
+            //    {
+            //        hoaDon.Mahinhthucthanhtoan = (int)cbb_HinhThucThanhToan.SelectedValue;
+            //        var result = _Ser_HoaDon.Sua(idHoaDon_Clicked, hoaDon);
+            //        if (result)
+            //        {
+            //            LoadGridHD(null, null);
+            //        }
+            //        else
+            //        {
+            //            MessageBox.Show("Cập nhật hình thức thanh toán thất bại.");
+            //        }
+            //    }
+            //    else
+            //    {
+            //        MessageBox.Show("Vui lòng chọn hình thức thanh toán hợp lệ.");
+            //    }
+            //}
         }
 
         private void btn_ThanhToan_Click(object sender, EventArgs e)
@@ -669,39 +679,22 @@ namespace A_Persentation_Layer.Frm.Frm_US
                             MessageBox.Show("Không tìm thấy hóa đơn");
                             return;
                         }
+                       
 
-                        hoaDon_ThanhToan.Trangthai = true;
-                        hoaDon_ThanhToan.Mahinhthucthanhtoan = (int)cbb_HinhThucThanhToan.SelectedValue;
-                        hoaDon_ThanhToan.Tongtien = int.Parse(lb_TongTienHang.Text.Replace(",", "").Replace(".", "").Replace(" ", "").Trim());
-                        hoaDon_ThanhToan.Ghichu = txt_GhiChu.Text;
-
-                        // Thêm chi tiết hóa đơn nếu có
-                        if (dgv_HoaDonChiTiet.Rows.Count > 0)
-                        {
-                            hoaDon_ThanhToan.Hoadonchitiets = new List<Hoadonchitiet>();
-                            foreach (DataGridViewRow row in dgv_HoaDonChiTiet.Rows)
-                            {
-                                var chiTiet = new Hoadonchitiet
-                                {
-                                    // Thiết lập các thuộc tính của chi tiết hóa đơn từ dữ liệu trên lưới
-                                };
-                                hoaDon_ThanhToan.Hoadonchitiets.Add(chiTiet);
-                            }
-                        }
-
-                        var result = _Ser_HoaDon.Sua( maHoaDon,hoaDon_ThanhToan);
+                        var result = _Ser_HoaDon.Sua(maHoaDon, hoaDon_ThanhToan);
                         if (result)
                         {
-                            DuAnBanGiay1Context _context = new DuAnBanGiay1Context();
-                            foreach (var item in hoaDon_ThanhToan.Hoadonchitiets)
+                            hoaDon_ThanhToan.Makhachhang = int.Parse(lb_maKH.Text);
+                            hoaDon_ThanhToan.Trangthai = true;
+                            hoaDon_ThanhToan.Mahinhthucthanhtoan = (int)cbb_HinhThucThanhToan.SelectedValue;
+
+                            if (!int.TryParse(lb_TongTienHang.Text.Replace(",", "").Replace(".", "").Replace(" ", "").Trim(), out int tongTien))
                             {
-                                var objSP = _context.Giaychitiets.FirstOrDefault(a => a.Magiaychitiet == item.Magiaychitiet);
-                                if (objSP != null)
-                                {
-                                    objSP.Soluongton -= item.Soluongmua;
-                                }
+                                MessageBox.Show("Tổng tiền không hợp lệ");
+                                return;
                             }
-                            _context.SaveChanges();
+                            hoaDon_ThanhToan.Tongtien = tongTien;
+                            hoaDon_ThanhToan.Ghichu = txt_GhiChu.Text;
 
                             MessageBox.Show("Thanh toán thành công");
                             LoadGridHD(null, null);
@@ -724,6 +717,8 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 }
             }
         }
+
+
         private void LamMoi_ThanhToan()
         {
             //txtMaKhachhang.Text = "1";
@@ -732,6 +727,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             lb_MaHoaDon.Text = "#";
             lb_maKH.Text = "";
             txt_DiemKH.Text = "";
+            cbb_HinhThucThanhToan.SelectedValue = 4;
             cb_SuDungDiem.Checked = false;
             lb_TienThieu.Text = "";
             lb_TongTien.Text = "#";

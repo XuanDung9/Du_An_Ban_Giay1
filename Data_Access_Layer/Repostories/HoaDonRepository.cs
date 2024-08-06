@@ -74,17 +74,16 @@ namespace C_Data_Access_Layer.Repositories
                     Console.WriteLine($"Không tìm thấy hóa đơn với mã {id}");
                     return false;
                 }
-
-                Obj.Mataikhoan = hoadon.Mataikhoan;
+                Obj.Makhachhang= hoadon.Makhachhang;
                 Obj.Mauudai = hoadon.Mauudai;
-                Obj.Makhachhang = hoadon.Makhachhang;
                 Obj.Mahinhthucthanhtoan = hoadon.Mahinhthucthanhtoan;
                 Obj.Tongtien = hoadon.Tongtien;
                 Obj.Ghichu = hoadon.Ghichu;
-                if (hoadon.Hoadonchitiets != null && hoadon.Hoadonchitiets.Count > 0)
-                {
-                    Obj.Hoadonchitiets = hoadon.Hoadonchitiets;
-                }
+                //if (hoadon.Hoadonchitiets != null && hoadon.Hoadonchitiets.Count > 0)
+                //{
+                //    Obj.Hoadonchitiets = hoadon.Hoadonchitiets;
+                //}
+                Obj.Trangthai= hoadon.Trangthai;
                 _db.Hoadons.Update(Obj);
                 _db.SaveChanges();
                 return true;
