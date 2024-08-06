@@ -19,6 +19,7 @@ namespace C_Data_Access_Layer.Models.ModelRefer
             IdTaiKhoan = idTaiKhoan;
             MaChucVu = maChucVu;
             HoTen = hoTen;
+            
         }
         public void DangXuat()
         {

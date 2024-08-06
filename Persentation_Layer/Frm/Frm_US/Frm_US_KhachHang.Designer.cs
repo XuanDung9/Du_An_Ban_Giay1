@@ -29,17 +29,17 @@
         private void InitializeComponent()
         {
             groupBox1 = new GroupBox();
-            btnLamMoi = new Button();
-            btnThem = new Button();
-            btnSua = new Button();
-            txtDiemKH = new TextBox();
             txtSDT = new TextBox();
+            btnLamMoi = new Button();
             txtHoVaTen = new TextBox();
             label4 = new Label();
             txtMaKhachHang = new TextBox();
-            label3 = new Label();
+            txtDiemKH = new TextBox();
             label2 = new Label();
             label1 = new Label();
+            label3 = new Label();
+            btnThem = new Button();
+            btnSua = new Button();
             groupBox2 = new GroupBox();
             panel2 = new Panel();
             rdbTimKiemTen = new RadioButton();
@@ -79,6 +79,15 @@
             groupBox1.TabStop = false;
             groupBox1.Text = "Thông tin khách hàng ";
             // 
+            // txtSDT
+            // 
+            txtSDT.BorderStyle = BorderStyle.FixedSingle;
+            txtSDT.Location = new Point(22, 254);
+            txtSDT.Margin = new Padding(4);
+            txtSDT.Name = "txtSDT";
+            txtSDT.Size = new Size(257, 27);
+            txtSDT.TabIndex = 2;
+            // 
             // btnLamMoi
             // 
             btnLamMoi.Anchor = AnchorStyles.Top | AnchorStyles.Right;
@@ -97,6 +106,75 @@
             btnLamMoi.Text = "Clear";
             btnLamMoi.UseVisualStyleBackColor = false;
             btnLamMoi.Click += btnLamMoi_Click_1;
+            // 
+            // txtHoVaTen
+            // 
+            txtHoVaTen.BorderStyle = BorderStyle.FixedSingle;
+            txtHoVaTen.Location = new Point(22, 131);
+            txtHoVaTen.Margin = new Padding(4);
+            txtHoVaTen.Name = "txtHoVaTen";
+            txtHoVaTen.Size = new Size(257, 27);
+            txtHoVaTen.TabIndex = 3;
+            // 
+            // label4
+            // 
+            label4.AutoSize = true;
+            label4.Location = new Point(22, 230);
+            label4.Margin = new Padding(4, 0, 4, 0);
+            label4.Name = "label4";
+            label4.Size = new Size(104, 20);
+            label4.TabIndex = 4;
+            label4.Text = "Số điện thoại :";
+            // 
+            // txtMaKhachHang
+            // 
+            txtMaKhachHang.BorderStyle = BorderStyle.FixedSingle;
+            txtMaKhachHang.Enabled = false;
+            txtMaKhachHang.Location = new Point(22, 76);
+            txtMaKhachHang.Margin = new Padding(4);
+            txtMaKhachHang.Name = "txtMaKhachHang";
+            txtMaKhachHang.Size = new Size(257, 27);
+            txtMaKhachHang.TabIndex = 5;
+            // 
+            // txtDiemKH
+            // 
+            txtDiemKH.BorderStyle = BorderStyle.FixedSingle;
+            txtDiemKH.Location = new Point(22, 193);
+            txtDiemKH.Margin = new Padding(4);
+            txtDiemKH.Name = "txtDiemKH";
+            txtDiemKH.Size = new Size(257, 27);
+            txtDiemKH.TabIndex = 1;
+            // 
+            // label2
+            // 
+            label2.AutoSize = true;
+            label2.Location = new Point(19, 107);
+            label2.Margin = new Padding(4, 0, 4, 0);
+            label2.Name = "label2";
+            label2.Size = new Size(76, 20);
+            label2.TabIndex = 7;
+            label2.Text = "Họ và tên:";
+            // 
+            // label1
+            // 
+            label1.AutoSize = true;
+            label1.Location = new Point(19, 44);
+            label1.Margin = new Padding(4, 0, 4, 0);
+            label1.Name = "label1";
+            label1.Size = new Size(112, 20);
+            label1.TabIndex = 8;
+            label1.Text = "Mã khách hàng:";
+            // 
+            // label3
+            // 
+            label3.AutoSize = true;
+            label3.Location = new Point(22, 169);
+            label3.Margin = new Padding(4, 0, 4, 0);
+            label3.Name = "label3";
+            label3.Size = new Size(131, 20);
+            label3.TabIndex = 6;
+            label3.Text = "Điểm khách hàng :";
+            label3.Click += label3_Click;
             // 
             // btnThem
             // 
@@ -135,83 +213,6 @@
             btnSua.Text = "Sửa";
             btnSua.UseVisualStyleBackColor = false;
             btnSua.Click += btnSua_Click;
-            // 
-            // txtDiemKH
-            // 
-            txtDiemKH.BorderStyle = BorderStyle.FixedSingle;
-            txtDiemKH.Location = new Point(22, 193);
-            txtDiemKH.Margin = new Padding(4);
-            txtDiemKH.Name = "txtDiemKH";
-            txtDiemKH.Size = new Size(257, 27);
-            txtDiemKH.TabIndex = 1;
-            // 
-            // txtSDT
-            // 
-            txtSDT.BorderStyle = BorderStyle.FixedSingle;
-            txtSDT.Location = new Point(22, 254);
-            txtSDT.Margin = new Padding(4);
-            txtSDT.Name = "txtSDT";
-            txtSDT.Size = new Size(257, 27);
-            txtSDT.TabIndex = 2;
-            // 
-            // txtHoVaTen
-            // 
-            txtHoVaTen.BorderStyle = BorderStyle.FixedSingle;
-            txtHoVaTen.Location = new Point(22, 131);
-            txtHoVaTen.Margin = new Padding(4);
-            txtHoVaTen.Name = "txtHoVaTen";
-            txtHoVaTen.Size = new Size(257, 27);
-            txtHoVaTen.TabIndex = 3;
-            // 
-            // label4
-            // 
-            label4.AutoSize = true;
-            label4.Location = new Point(22, 230);
-            label4.Margin = new Padding(4, 0, 4, 0);
-            label4.Name = "label4";
-            label4.Size = new Size(48, 20);
-            label4.TabIndex = 4;
-            label4.Text = "Điểm:";
-            // 
-            // txtMaKhachHang
-            // 
-            txtMaKhachHang.BorderStyle = BorderStyle.FixedSingle;
-            txtMaKhachHang.Enabled = false;
-            txtMaKhachHang.Location = new Point(22, 76);
-            txtMaKhachHang.Margin = new Padding(4);
-            txtMaKhachHang.Name = "txtMaKhachHang";
-            txtMaKhachHang.Size = new Size(257, 27);
-            txtMaKhachHang.TabIndex = 5;
-            // 
-            // label3
-            // 
-            label3.AutoSize = true;
-            label3.Location = new Point(22, 169);
-            label3.Margin = new Padding(4, 0, 4, 0);
-            label3.Name = "label3";
-            label3.Size = new Size(100, 20);
-            label3.TabIndex = 6;
-            label3.Text = "Số điện thoại:";
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Location = new Point(19, 107);
-            label2.Margin = new Padding(4, 0, 4, 0);
-            label2.Name = "label2";
-            label2.Size = new Size(76, 20);
-            label2.TabIndex = 7;
-            label2.Text = "Họ và tên:";
-            // 
-            // label1
-            // 
-            label1.AutoSize = true;
-            label1.Location = new Point(19, 44);
-            label1.Margin = new Padding(4, 0, 4, 0);
-            label1.Name = "label1";
-            label1.Size = new Size(112, 20);
-            label1.TabIndex = 8;
-            label1.Text = "Mã khách hàng:";
             // 
             // groupBox2
             // 

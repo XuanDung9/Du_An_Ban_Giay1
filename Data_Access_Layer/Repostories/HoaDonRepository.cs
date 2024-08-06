@@ -74,18 +74,25 @@ namespace C_Data_Access_Layer.Repositories
                     Console.WriteLine($"Không tìm thấy hóa đơn với mã {id}");
                     return false;
                 }
-                Obj.Makhachhang= hoadon.Makhachhang;
+
+                // In các giá trị trước khi cập nhật để kiểm tra
+                Console.WriteLine($"Trước cập nhật: Makhachhang={Obj.Makhachhang}, Mauudai={Obj.Mauudai}, Mahinhthucthanhtoan={Obj.Mahinhthucthanhtoan}, Tongtien={Obj.Tongtien}, Ghichu={Obj.Ghichu}, Trangthai={Obj.Trangthai}");
+
+                Obj.Makhachhang = hoadon.Makhachhang;
                 Obj.Mauudai = hoadon.Mauudai;
                 Obj.Mahinhthucthanhtoan = hoadon.Mahinhthucthanhtoan;
                 Obj.Tongtien = hoadon.Tongtien;
                 Obj.Ghichu = hoadon.Ghichu;
-                //if (hoadon.Hoadonchitiets != null && hoadon.Hoadonchitiets.Count > 0)
-                //{
-                //    Obj.Hoadonchitiets = hoadon.Hoadonchitiets;
-                //}
-                Obj.Trangthai= hoadon.Trangthai;
+                Obj.Trangthai = hoadon.Trangthai;
+
+                // In các giá trị sau khi cập nhật để kiểm tra
+                Console.WriteLine($"Sau cập nhật: Makhachhang={Obj.Makhachhang}, Mauudai={Obj.Mauudai}, Mahinhthucthanhtoan={Obj.Mahinhthucthanhtoan}, Tongtien={Obj.Tongtien}, Ghichu={Obj.Ghichu}, Trangthai={Obj.Trangthai}");
+
                 _db.Hoadons.Update(Obj);
                 _db.SaveChanges();
+
+                // Kiểm tra xem SaveChanges có trả về kết quả không mong muốn không
+                Console.WriteLine("SaveChanges thành công");
                 return true;
             }
             catch (Exception ex)

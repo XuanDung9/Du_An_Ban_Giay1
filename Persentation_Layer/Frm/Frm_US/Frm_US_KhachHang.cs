@@ -227,5 +227,10 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
 
         }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+
+        }
     }
 }
