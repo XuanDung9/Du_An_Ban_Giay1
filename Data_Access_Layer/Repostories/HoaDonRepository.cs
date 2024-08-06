@@ -74,25 +74,15 @@ namespace C_Data_Access_Layer.Repositories
                     Console.WriteLine($"Không tìm thấy hóa đơn với mã {id}");
                     return false;
                 }
-
-                // In các giá trị trước khi cập nhật để kiểm tra
-                Console.WriteLine($"Trước cập nhật: Makhachhang={Obj.Makhachhang}, Mauudai={Obj.Mauudai}, Mahinhthucthanhtoan={Obj.Mahinhthucthanhtoan}, Tongtien={Obj.Tongtien}, Ghichu={Obj.Ghichu}, Trangthai={Obj.Trangthai}");
-
                 Obj.Makhachhang = hoadon.Makhachhang;
                 Obj.Mauudai = hoadon.Mauudai;
                 Obj.Mahinhthucthanhtoan = hoadon.Mahinhthucthanhtoan;
                 Obj.Tongtien = hoadon.Tongtien;
                 Obj.Ghichu = hoadon.Ghichu;
-                Obj.Trangthai = hoadon.Trangthai;
-
-                // In các giá trị sau khi cập nhật để kiểm tra
-                Console.WriteLine($"Sau cập nhật: Makhachhang={Obj.Makhachhang}, Mauudai={Obj.Mauudai}, Mahinhthucthanhtoan={Obj.Mahinhthucthanhtoan}, Tongtien={Obj.Tongtien}, Ghichu={Obj.Ghichu}, Trangthai={Obj.Trangthai}");
+                Obj.Trangthai = hoadon.Trangthai;             
 
                 _db.Hoadons.Update(Obj);
                 _db.SaveChanges();
-
-                // Kiểm tra xem SaveChanges có trả về kết quả không mong muốn không
-                Console.WriteLine("SaveChanges thành công");
                 return true;
             }
             catch (Exception ex)
@@ -159,39 +149,6 @@ namespace C_Data_Access_Layer.Repositories
         }
         public List<HoaDonNhe> hoaDonNhes(string searchText, string searchType)
         {
-            //var query = _db.Hoadons
-            //    .Select(c => new HoaDonNhe()
-            //    {
-            //        Hoadone = c,
-            //        tenkhachhang = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Tenkhachhang,
-            //        sdtkhach = c.Makhachhang == null ? "N/A" : _db.Khachhangs.FirstOrDefault(cn => cn.Makhachhang == c.Makhachhang)!.Sdt.ToString(),
-            //        hovatentaikhoan = c.Mataikhoan == null ? "N/A" : _db.Taikhoans.FirstOrDefault(cn => cn.Mataikhoan == c.Mataikhoan)!.Hoten,
-            //        tenhinhthuc = c.Mahinhthucthanhtoan == null ? "N/A" : _db.Hinhthucthanhtoans.FirstOrDefault(cn => cn.Mahinhthucthanhtoan == c.Mahinhthucthanhtoan)!.Tenhinhthuc
-            //    });
-
-            //switch (searchType)
-            //{
-            //    case SearchType.tenkhach:
-            //        query = query.Where(c => c.tenkhachhang.Contains(searchText));
-            //        break;
-            //    case SearchType.SDTkhach:
-            //        query = query.Where(c => c.sdtkhach.Contains(searchText));
-            //        break;
-            //    case SearchType.TenTaikhoan:
-            //        query = query.Where(c => c.hovatentaikhoan.Contains(searchText));
-            //        break;
-            //    case SearchType.tatca:
-            //        query = query.Where(c => c.tenkhachhang.Contains(searchText) ||
-            //                                 c.sdtkhach.Contains(searchText) ||
-            //                                 c.hovatentaikhoan.Contains(searchText));
-            //        break;
-            //    default:
-            //        // Có thể thêm các loại tìm kiếm khác nếu cần
-            //        break;
-            //}
-
-            //return query.ToList();
-            
                 if (string.Equals(searchType, SearchType.tenkhach))
                 {
                     return _db.Hoadons

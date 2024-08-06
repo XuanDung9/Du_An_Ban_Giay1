@@ -363,7 +363,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     lb_TienThieu.Text = "0";
                     lb_TongTienHang.Text = TinhTongTienHoaDonChiTiet(int.Parse(lb_MaHoaDon.Text)).ToString("N0");
                     lb_TTHD.Text = TinhTongTienHoaDonChiTiet(int.Parse(lb_MaHoaDon.Text)).ToString("N0");
-                    lb_TongTien.Text = TinhTongTienHoaDonChiTiet(int.Parse(lb_MaHoaDon.Text)).ToString("N0");
                 }
                 else
                 {
@@ -513,11 +512,15 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
             LoadGridHD(null, null);
             LoadGridGH(int.Parse(lb_MaHoaDon.Text), "Mã hóa đơn");
-
             lb_TongTienHang.Text = TinhTongTienHoaDonChiTiet(int.Parse(lb_MaHoaDon.Text)).ToString("N0");
             lb_TTHD.Text = TinhTongTienHoaDonChiTiet(int.Parse(lb_MaHoaDon.Text)).ToString("N0");
         }
         private void txt_TienNhan_TextChanged(object sender, EventArgs e)
+        {
+
+            TienNhan();
+        }
+        public void TienNhan()
         {
             if (string.IsNullOrEmpty(txt_TienNhan.Text))
             {
@@ -544,7 +547,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                                   $"Khách đưa: {soTienNhan:N0}, " +
                                   $"Trả lại khách: {traLai:N0}";
             }
-
         }
 
 
@@ -681,11 +683,11 @@ namespace A_Persentation_Layer.Frm.Frm_US
                             MessageBox.Show("Không tìm thấy hóa đơn");
                             return;
                         }
-
-
-                        // Lưu lại các thay đổi vào cơ sở dữ liệu
+                        if (!TruSanPham(maHoaDon))
+                        {
+                            return;
+                        }
                         var result = _Ser_HoaDon.Sua(maHoaDon, hoaDon_ThanhToan);
-
                         // Cập nhật các thuộc tính của hóa đơn trước khi lưu lại
                         hoaDon_ThanhToan.Makhachhang = int.Parse(lb_maKH.Text);
                         hoaDon_ThanhToan.Trangthai = true;
@@ -700,9 +702,10 @@ namespace A_Persentation_Layer.Frm.Frm_US
                         hoaDon_ThanhToan.Ghichu = txt_GhiChu.Text;
                         if (result)
                         {
-
+                            TruSanPham(maHoaDon);
                             MessageBox.Show("Thanh toán thành công");
                             LoadGridHD(null, null);
+                            LoadGridSP(null, null);
                             dgv_HoaDonChiTiet.Rows.Clear();
                             LamMoi_ThanhToan();
                         }
@@ -723,6 +726,48 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
         }
 
+        public bool TruSanPham(int maHoaDon)
+        {
+            try
+            {
+                var chiTietHoaDon = _Ser_HoaDon.GetHoadonchitietsById(maHoaDon);
+                foreach (var item in chiTietHoaDon)
+                {
+                    var giayChiTiet = _ser_GiayChiTiet.GetByID(item.Magiaychitiet);
+                    if (giayChiTiet != null)
+                    {
+                        if (giayChiTiet.Soluongton < item.Soluongmua)
+                        {
+                            MessageBox.Show($"Sản phẩm trong kho không đủ.");
+                            return false;
+                        }
+                    }
+                    else
+                    {
+                        MessageBox.Show($"Không tìm thấy sản phẩm với mã {item.Magiaychitiet}.");
+                        return false;
+                    }
+                }
+
+                // Nếu tất cả sản phẩm đều đủ số lượng, tiến hành trừ số lượng tồn
+                foreach (var item in chiTietHoaDon)
+                {
+                    var giayChiTiet = _ser_GiayChiTiet.GetByID(item.Magiaychitiet);
+                    if (giayChiTiet != null)
+                    {
+                        giayChiTiet.Soluongton -= item.Soluongmua;
+                        _ser_GiayChiTiet.Sua(giayChiTiet.Magiaychitiet, giayChiTiet);
+                    }
+                }
+
+                return true;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show($"Có lỗi xảy ra khi trừ sản phẩm: {ex.Message}");
+                return false;
+            }
+        }
 
         private void LamMoi_ThanhToan()
         {
@@ -791,12 +836,17 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
                     int soTienNhan = int.TryParse(txt_TienNhan.Text.Replace(",", ""), out int tienNhan) ? tienNhan : 0;
                     int traLai = tienNhan - amountAfterDiscount;
-                    lb_TienThieu.Text = traLai >= 0 ? traLai.ToString("N0") : "0";
+                    lb_TienThieu.Text = traLai <= 0 ? traLai.ToString("N0") : "0";
+                    lb_TraLai.Text = traLai.ToString("N0");
+                    txt_GhiChu.Text = $"Tổng tiền hóa đơn : {amountAfterDiscount:N0}, " +
+                                $"Khách đưa: {soTienNhan:N0}, " +
+                                $"Trả lại khách: {traLai:N0}" + $"Số tiền giảm : {totalPointsValue:N0}";
                 }
                 else
                 {
                     lb_TongTien.Text = lbTongTienHangText;
                     //lb_TienThieu.Text = lbTienThieu;
+                    TienNhan();
                 }
 
             }

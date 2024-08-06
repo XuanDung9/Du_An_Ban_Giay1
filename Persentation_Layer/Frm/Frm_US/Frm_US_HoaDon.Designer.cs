@@ -56,10 +56,10 @@
             groupBox1.Controls.Add(txtTimkiem);
             groupBox1.Dock = DockStyle.Top;
             groupBox1.Location = new Point(0, 0);
-            groupBox1.Margin = new Padding(4, 4, 4, 4);
+            groupBox1.Margin = new Padding(4);
             groupBox1.Name = "groupBox1";
-            groupBox1.Padding = new Padding(4, 4, 4, 4);
-            groupBox1.Size = new Size(1250, 156);
+            groupBox1.Padding = new Padding(4);
+            groupBox1.Size = new Size(1250, 152);
             groupBox1.TabIndex = 0;
             groupBox1.TabStop = false;
             groupBox1.Text = "Tìm kiếm";
@@ -120,7 +120,7 @@
             cmbloaitt.DropDownStyle = ComboBoxStyle.DropDownList;
             cmbloaitt.FormattingEnabled = true;
             cmbloaitt.Location = new Point(158, 107);
-            cmbloaitt.Margin = new Padding(4, 4, 4, 4);
+            cmbloaitt.Margin = new Padding(4);
             cmbloaitt.Name = "cmbloaitt";
             cmbloaitt.Size = new Size(171, 28);
             cmbloaitt.TabIndex = 12;
@@ -131,7 +131,7 @@
             txtTimkiem.BorderStyle = BorderStyle.FixedSingle;
             txtTimkiem.Font = new Font("Segoe UI", 9.75F, FontStyle.Regular, GraphicsUnit.Point);
             txtTimkiem.Location = new Point(119, 29);
-            txtTimkiem.Margin = new Padding(4, 4, 4, 4);
+            txtTimkiem.Margin = new Padding(4);
             txtTimkiem.Multiline = true;
             txtTimkiem.Name = "txtTimkiem";
             txtTimkiem.Size = new Size(434, 40);
@@ -142,11 +142,11 @@
             // 
             groupBox2.Controls.Add(dgvHDCT);
             groupBox2.Dock = DockStyle.Bottom;
-            groupBox2.Location = new Point(0, 531);
-            groupBox2.Margin = new Padding(4, 4, 4, 4);
+            groupBox2.Location = new Point(0, 477);
+            groupBox2.Margin = new Padding(4);
             groupBox2.Name = "groupBox2";
-            groupBox2.Padding = new Padding(4, 4, 4, 4);
-            groupBox2.Size = new Size(1250, 447);
+            groupBox2.Padding = new Padding(4);
+            groupBox2.Size = new Size(1250, 501);
             groupBox2.TabIndex = 1;
             groupBox2.TabStop = false;
             groupBox2.Text = "Hóa đơn chi tiết";
@@ -157,38 +157,40 @@
             dgvHDCT.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvHDCT.Dock = DockStyle.Fill;
             dgvHDCT.Location = new Point(4, 24);
-            dgvHDCT.Margin = new Padding(4, 4, 4, 4);
+            dgvHDCT.Margin = new Padding(4);
             dgvHDCT.Name = "dgvHDCT";
             dgvHDCT.RowHeadersWidth = 82;
             dgvHDCT.RowTemplate.Height = 25;
-            dgvHDCT.Size = new Size(1242, 419);
+            dgvHDCT.Size = new Size(1242, 473);
             dgvHDCT.TabIndex = 0;
-            dgvHDCT.CellContentClick += dgvHDCT_CellContentClick;
             // 
             // groupBox3
             // 
+            groupBox3.AutoSize = true;
             groupBox3.Controls.Add(dgvHD);
-            groupBox3.Dock = DockStyle.Fill;
-            groupBox3.Location = new Point(0, 156);
-            groupBox3.Margin = new Padding(4, 4, 4, 4);
+            groupBox3.Location = new Point(4, 160);
+            groupBox3.Margin = new Padding(4);
             groupBox3.Name = "groupBox3";
-            groupBox3.Padding = new Padding(4, 4, 4, 4);
-            groupBox3.Size = new Size(1250, 375);
+            groupBox3.Padding = new Padding(4);
+            groupBox3.Size = new Size(1250, 309);
             groupBox3.TabIndex = 2;
             groupBox3.TabStop = false;
             groupBox3.Text = "Hóa đơn";
             // 
             // dgvHD
             // 
-            dgvHD.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.DisplayedCells;
+            dgvHD.AllowUserToAddRows = false;
+            dgvHD.AllowUserToDeleteRows = false;
+            dgvHD.AutoSizeColumnsMode = DataGridViewAutoSizeColumnsMode.Fill;
             dgvHD.ColumnHeadersHeightSizeMode = DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             dgvHD.Dock = DockStyle.Fill;
             dgvHD.Location = new Point(4, 24);
-            dgvHD.Margin = new Padding(4, 4, 4, 4);
+            dgvHD.Margin = new Padding(4);
             dgvHD.Name = "dgvHD";
+            dgvHD.ReadOnly = true;
             dgvHD.RowHeadersWidth = 82;
             dgvHD.RowTemplate.Height = 25;
-            dgvHD.Size = new Size(1242, 347);
+            dgvHD.Size = new Size(1242, 281);
             dgvHD.TabIndex = 0;
             dgvHD.CellClick += dgvHD_CellClick;
             // 
@@ -199,9 +201,10 @@
             Controls.Add(groupBox3);
             Controls.Add(groupBox2);
             Controls.Add(groupBox1);
-            Margin = new Padding(4, 4, 4, 4);
+            Margin = new Padding(4);
             Name = "Frm_US_HoaDon";
             Size = new Size(1250, 978);
+            Load += Frm_US_HoaDon_Load;
             groupBox1.ResumeLayout(false);
             groupBox1.PerformLayout();
             groupBox2.ResumeLayout(false);
@@ -209,6 +212,7 @@
             groupBox3.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dgvHD).EndInit();
             ResumeLayout(false);
+            PerformLayout();
         }
 
         #endregion
@@ -221,8 +225,8 @@
         private ComboBox cmbloaitt;
         private TextBox txtTimkiem;
         private GroupBox groupBox2;
-        private GroupBox groupBox3;
         private DataGridView dgvHDCT;
+        private GroupBox groupBox3;
         private DataGridView dgvHD;
     }
 }

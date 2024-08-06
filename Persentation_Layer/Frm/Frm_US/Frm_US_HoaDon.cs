@@ -1,4 +1,5 @@
 ﻿using B_Bussiness_Layer.Services;
+
 using C_Data_Access_Layer.Models.ModelRefer;
 using OfficeOpenXml;
 using System;
@@ -15,7 +16,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
 {
     public partial class Frm_US_HoaDon : UserControl
     {
-       
+
         HoaDonService _service = new HoaDonService();
         int _idWhenclick;
         public Frm_US_HoaDon()
@@ -23,7 +24,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             InitializeComponent(); LoadGridHD(null, null);
             Loadcombobox();
         }
-        
+
 
 
         public void Loadcombobox()
@@ -47,8 +48,8 @@ namespace A_Persentation_Layer.Frm.Frm_US
             dgvHD.ColumnCount = 11;
             dgvHD.Columns[0].Name = "STT";
             dgvHD.Columns[1].Name = "Mã hoá đơn";
-            dgvHD.Columns[2].Name = "Tên khách";
-            dgvHD.Columns[3].Name = "SĐT khách";
+            dgvHD.Columns[2].Name = "Tên khách hàng";
+            dgvHD.Columns[3].Name = "SĐT khách hàng";
             dgvHD.Columns[4].Name = "Mã NV";
             dgvHD.Columns[5].Name = "Tên NV";
             dgvHD.Columns[6].Name = "Ngày tạo";
@@ -74,7 +75,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             dgvHDCT.Columns[1].Name = "Mã hoá đơn";
             dgvHDCT.Columns[2].Name = "Tên sản phẩm";
             dgvHDCT.Columns[3].Name = "Số lượng";
-            dgvHDCT.Columns[4].Name = "Giá bán";
+            dgvHDCT.Columns[4].Name = "Giá bán"; 
 
             dgvHDCT.Rows.Clear();
             foreach (var e in _service.GetHoadonchitietsById(hdctId))
@@ -96,7 +97,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     var hd = _service.GetHoadons(null).FirstOrDefault(x => x.Mahoadon == _idWhenclick);
 
                     loadgridHoadonchitiet(hd.Mahoadon);
-                }    
+                }
             }
         }
 
@@ -129,15 +130,19 @@ namespace A_Persentation_Layer.Frm.Frm_US
         private void btnXuatExcel_Click(object sender, EventArgs e)
 
         {
+            // ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
+
             using (ExcelPackage excelPackage = new ExcelPackage())
             {
                 ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
 
+                // Ghi tiêu đề cột
                 for (int i = 0; i < dgvHD.Columns.Count; i++)
                 {
                     worksheet.Cells[1, i + 1].Value = dgvHD.Columns[i].HeaderText;
                 }
 
+                // Ghi dữ liệu từ DataGridView
                 for (int i = 0; i < dgvHD.Rows.Count; i++)
                 {
                     for (int j = 0; j < dgvHD.Columns.Count; j++)
@@ -146,6 +151,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     }
                 }
 
+                // Mở hộp thoại lưu tệp
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -160,6 +166,12 @@ namespace A_Persentation_Layer.Frm.Frm_US
         private void dgvHDCT_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
 
+        }
+
+        private void Frm_US_HoaDon_Load(object sender, EventArgs e)
+        {
+            Loadcombobox(); 
+            LoadGridHD(null, null);
         }
     }
 }

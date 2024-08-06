@@ -272,6 +272,7 @@
             Controls.Add(groupBox1);
             Name = "Frm_US_UuDai";
             Size = new Size(1115, 728);
+            Load += Frm_US_UuDai_Load;
             groupBox1.ResumeLayout(false);
             ((System.ComponentModel.ISupportInitialize)dtgHienthi).EndInit();
             groupBox2.ResumeLayout(false);

@@ -49,7 +49,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             foreach (var x in _service.GetUudais(search))
             {
                 var idtk = _service.GetTaikhoan().FirstOrDefault(e => e.Mataikhoan == x.Mataikhoan);
-                dtgHienthi.Rows.Add(stt++, x.Mauudai, x.Tenuudai, x.Soluong,x.Phantram, x.Ngaybatdau, x.Ngayketthuc, MapTrangThai(x.Trangthai));
+                dtgHienthi.Rows.Add(stt++, x.Mauudai, x.Tenuudai, x.Soluong, x.Phantram, x.Ngaybatdau, x.Ngayketthuc, MapTrangThai(x.Trangthai));
             }
         }
         private void CapNhatTrangThaiUuDai()
@@ -98,12 +98,12 @@ namespace A_Persentation_Layer.Frm.Frm_US
         private void dtgHienthi_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int rowindex = e.RowIndex;
-            if (rowindex < 0 || rowindex > dtgHienthi.Rows.Count )
+            if (rowindex < 0 || rowindex > dtgHienthi.Rows.Count)
             {
                 txtTen.Text = "";
                 txtSoluong.Text = "";
                 txtPhanTram.Text = "";
-            }    
+            }
             else
             {
                 _idWhenhClick = int.Parse(dtgHienthi.Rows[rowindex].Cells[1].Value.ToString());
@@ -113,8 +113,8 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 txtPhanTram.Text = obj.Phantram.ToString();
                 datebatdau.Text = obj.Ngaybatdau.ToString();
                 dateketthuc.Text = obj.Ngayketthuc.ToString();
-            }    
-          
+            }
+
         }
 
         private void txtTimkiem_TextChanged(object sender, EventArgs e)
@@ -195,7 +195,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             uudai.Phantram = int.Parse(txtPhanTram.Text);
             uudai.Ngaybatdau = ngayBatDau;
             uudai.Ngayketthuc = ngayKetThuc;
-           
+
             uudai.Mataikhoan = XacThucDangNhap.Instance.IdTaiKhoan;
 
             DateTime now = DateTime.Now;
@@ -240,6 +240,13 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
             CapNhatTrangThaiUuDai();
             loadGird(null);
+        }
+
+        private void Frm_US_UuDai_Load(object sender, EventArgs e)
+        {
+            CapNhatTrangThaiUuDai();
+            loadGird(null);
+     
         }
     }
 }
