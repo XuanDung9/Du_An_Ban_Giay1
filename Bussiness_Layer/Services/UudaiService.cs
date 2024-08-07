@@ -48,6 +48,8 @@ namespace B_Bussiness_Layer.Services
             }
             else
             {
+                uudai.Trangthai = 0;
+                _repos.Trangthai(coler);
                 return "Sản phẩm đã kết thúc rồi";
             }
         }
@@ -65,6 +67,7 @@ namespace B_Bussiness_Layer.Services
                     coler.Mataikhoan = uudai.Mataikhoan;
                     coler.Tenuudai = uudai.Tenuudai;
                     coler.Soluong = uudai.Soluong;
+                    coler.Phantram = uudai.Phantram;
                     coler.Ngaybatdau = uudai.Ngaybatdau;
                     coler.Ngayketthuc = uudai.Ngayketthuc;
                     coler.Trangthai = uudai.Trangthai;

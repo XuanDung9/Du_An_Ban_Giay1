@@ -1,4 +1,5 @@
 ﻿using A_Persentation_Layer.Frm.Frm_Dialog;
+using B_Bussiness_Layer.IServies;
 using B_Bussiness_Layer.Services;
 using C_Data_Access_Layer.Models;
 using C_Data_Access_Layer.Models.ModelRefer;
@@ -30,6 +31,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
         UudaiService _service = new UudaiService();
         int _id;
         int _idWhenhClick;
+        bool checkTextbox;
         public void loadGird(string search)
         {
             int stt = 1;
@@ -116,7 +118,23 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
 
         }
+        private void CheckTextBox()
+        {
+            if (txtTen.Text == "")
+            {
+                MessageBox.Show("Vui lòng nhập tên ưu đãi!", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); checkTextbox = false;
+            }
+            else if (!int.TryParse(txtSoluong.Text, out int result))
+            {
+                MessageBox.Show("Vui lòng nhập số lượng ưu đãi", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); checkTextbox = false;
+            }
+            else if (!int.TryParse(txtPhanTram.Text, out int result1))
+            {
+                MessageBox.Show("Vui lòng nhập phần trăm ưu đãi", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error); checkTextbox = false;
+            }
 
+            else { checkTextbox = true; }
+        }
         private void txtTimkiem_TextChanged(object sender, EventArgs e)
         {
             loadGird(txtTimkiem.Text);
@@ -124,6 +142,23 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         private void btnThem_Click(object sender, EventArgs e)
         {
+            CheckTextBox();
+            if (int.TryParse(txtSoluong.Text, out int result))
+            {
+                if (result < 0)
+                {
+                    MessageBox.Show("Số lượng không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            if (int.TryParse(txtPhanTram.Text, out int percent))
+            {
+                if (percent < 0 || percent >100)
+                {
+                    MessageBox.Show("Phần trăm không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             DateTime ngayBatDau = datebatdau.Value;
             DateTime ngayKetThuc = dateketthuc.Value;
 
@@ -181,6 +216,23 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         private void btnSua_Click(object sender, EventArgs e)
         {
+            CheckTextBox();
+            if (int.TryParse(txtSoluong.Text, out int result))
+            {
+                if (result < 0)
+                {
+                    MessageBox.Show("Số lượng không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
+            if (int.TryParse(txtPhanTram.Text, out int percent))
+            {
+                if (percent < 0 || percent > 100)
+                {
+                    MessageBox.Show("Phần trăm không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+            }
             DateTime ngayBatDau = datebatdau.Value;
             DateTime ngayKetThuc = dateketthuc.Value;
             if (datebatdau.Value > dateketthuc.Value)
@@ -225,6 +277,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
             txtTen.Text = "";
             txtSoluong.Text = "";
+            txtPhanTram.Text = "";
             datebatdau.Value = DateTime.Now;
             dateketthuc.Value = DateTime.Now;
         }
@@ -236,7 +289,8 @@ namespace A_Persentation_Layer.Frm.Frm_US
             var relust = MessageBox.Show("Xác nhận dừng ưu đãi", "Xác nhận", MessageBoxButtons.YesNo);
             if (relust == DialogResult.Yes)
             {
-                MessageBox.Show(_service.Trangthai(uudai));
+                string result = _service.Trangthai(uudai);
+                MessageBox.Show(result, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
             CapNhatTrangThaiUuDai();
             loadGird(null);
