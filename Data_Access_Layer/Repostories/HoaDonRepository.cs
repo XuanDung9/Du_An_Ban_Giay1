@@ -95,7 +95,6 @@ namespace C_Data_Access_Layer.Repositories
         {
             return _db.Giaychitiets.ToList();
         }
-
         public bool Them(Hoadon hoadon)
         {
             try
@@ -231,7 +230,26 @@ namespace C_Data_Access_Layer.Repositories
         {
             return _db.Giays.ToList();
         }
-
+        public List<Thuonghieu> GetThuonghieus()
+        {
+            return _db.Thuonghieus.ToList();
+        }
+        public List<Chatlieu> GetChatlieus()
+        {
+            return _db.Chatlieus.ToList();
+        }
+        public List<Mausac> GetMausacs()
+        {
+            return _db.Mausacs.ToList();
+        }
+        public List<Kichco> GetKichcos()
+        {
+            return _db.Kichcos.ToList();
+        }
+        public List<Kieudang> GetKieudangs()
+        {
+            return _db.Kieudangs.ToList();
+        }
         public List<Hoadon> GetHoadons(string search)
         {
             return _db.Hoadons.ToList();

@@ -24,6 +24,11 @@ namespace C_Data_Access_Layer.IRepostories
         public List<Uudai> GetUudais();
         public List<Khachhang> GetKhachhangs();
         public List<Giay> GetGiays();
+        public List<Thuonghieu> GetThuonghieus();
+        public List<Mausac> GetMausacs();
+        public List<Chatlieu> GetChatlieus();
+        public List<Kichco> GetKichcos();
+        public List<Kieudang> GetKieudangs();
         public List<HoaDonNhe> hoaDonNhes(string searchText, string searchType);
 
 

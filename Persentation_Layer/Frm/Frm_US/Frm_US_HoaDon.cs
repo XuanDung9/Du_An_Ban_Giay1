@@ -48,6 +48,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             dgvHD.ColumnCount = 11;
             dgvHD.Columns[0].Name = "STT";
             dgvHD.Columns[1].Name = "Mã hoá đơn";
+            //dgvHD.Columns[1].ToolTipText = ;
             dgvHD.Columns[2].Name = "Tên khách hàng";
             dgvHD.Columns[3].Name = "SĐT khách hàng";
             dgvHD.Columns[4].Name = "Mã NV";
@@ -70,19 +71,30 @@ namespace A_Persentation_Layer.Frm.Frm_US
         public void loadgridHoadonchitiet(int hdctId)
         {
             int stt = 1;
-            dgvHDCT.ColumnCount = 5;
+            dgvHDCT.ColumnCount = 10;
             dgvHDCT.Columns[0].Name = "STT";
             dgvHDCT.Columns[1].Name = "Mã hoá đơn";
             dgvHDCT.Columns[2].Name = "Tên sản phẩm";
-            dgvHDCT.Columns[3].Name = "Số lượng";
-            dgvHDCT.Columns[4].Name = "Giá bán"; 
+            dgvHDCT.Columns[3].Name = "Tên thương hiệu";
+            dgvHDCT.Columns[4].Name = "Tên chất kiệu";
+            dgvHDCT.Columns[5].Name = "Tên màu sắc";
+            dgvHDCT.Columns[6].Name = "Tên kích cỡ";
+            dgvHDCT.Columns[7].Name = "Tên kiểu dáng";
+            dgvHDCT.Columns[8].Name = "Số lượng";
+            dgvHDCT.Columns[9].Name = "Giá bán"; 
 
             dgvHDCT.Rows.Clear();
             foreach (var e in _service.GetHoadonchitietsById(hdctId))
             {
-                var idspct = _service.GetGiaychitiets().FirstOrDefault(i => i.Magiaychitiet == e.Magiaychitiet);
+                var idspct = _service.GetGiaychitiets().FirstOrDefault(i => i.Magiaychitiet  == e.Magiaychitiet);
+                var idcl = _service.GetChatlieus().FirstOrDefault(x => x.Machatlieu == idspct.Machatlieu);
+                var idth = _service.GetThuonghieus().FirstOrDefault(x => x.Mathuonghieu == idspct.Mathuonghieu);
+                var idms = _service.GetMausacs().FirstOrDefault(x => x.Mamausac == idspct.Mamausac);
+                var idkc = _service.GetKichcos().FirstOrDefault(x => x.Makichco == idspct.Makichco);
+                var idkd = _service.GetKieudangs().FirstOrDefault(x => x.Makieudang == idspct.Makieudang);
                 var idsp = _service.GetGiays().FirstOrDefault(s => s.Magiay == idspct.Magiay);
-                dgvHDCT.Rows.Add(stt++, e.Mahoadon, idsp.Tengiay, e.Soluongmua, e.Tongtien);
+
+                dgvHDCT.Rows.Add(stt++, e.Mahoadon, idsp.Tengiay,idth.Tenthuonghieu, idcl.Tenchatlieu,  idms.Tenmausac, idkc.Tenkichco, idkd.Tenkieudang, e.Soluongmua, e.Tongtien);
             }
         }
         private void dgvHD_CellClick(object sender, DataGridViewCellEventArgs e)
@@ -95,8 +107,24 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 {
                     _idWhenclick = int.Parse(dgvHD.Rows[index].Cells[1].Value.ToString());
                     var hd = _service.GetHoadons(null).FirstOrDefault(x => x.Mahoadon == _idWhenclick);
-
-                    loadgridHoadonchitiet(hd.Mahoadon);
+                    if (hd != null)
+                    {
+                        var kh = _service.GetKhachhangs().FirstOrDefault(x => x.Makhachhang == hd.Makhachhang);
+                        var nv = _service.GetTaikhoans().FirstOrDefault(x => x.Mataikhoan == hd.Mataikhoan);
+                        var httt = _service.GetHinhthucthanhtoans().FirstOrDefault(x => x.Mahinhthucthanhtoan == hd.Mahinhthucthanhtoan);
+                        txt_maHD.Text = hd.Mahoadon.ToString();
+                        txt_tenKH.Text = kh.Tenkhachhang.ToString();
+                        txt_SDT.Text = kh.Sdt.ToString();
+                        txt_maNV.Text = hd.Mataikhoan.ToString();
+                        txt_tenNV.Text = nv.Hoten.ToString();
+                        txt_ngaytao.Text = hd.Ngaytao.ToString();
+                        txt_loaithanhtoan.Text = httt.Tenhinhthuc.ToString();
+                        txt_tongtien.Text = hd.Tongtien.ToString();
+                        txt_ghichu.Text = hd.Ghichu.ToString();
+                        txt_trangthai.Text = hd.Trangthai == false ? "Chưa thanh toán" : "Đã thanh toán".ToString();
+                        loadgridHoadonchitiet(hd.Mahoadon);
+                    }
+                    
                 }
             }
         }
@@ -106,7 +134,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             LoadGridHD(txtTimkiem.Text, cmbTimkiem.Text);
         }
 
-        private void cmbloaitt_SelectedIndexChanged_1(object sender, EventArgs e)
+        private void cmbloaitt_SelectedIndexChanged(object sender, EventArgs e)
         {
             string hinhThucThanhToanDuocChon = cmbloaitt.SelectedItem.ToString();
             string loaiThanhToan = (hinhThucThanhToanDuocChon == "Tất cả") ? null : hinhThucThanhToanDuocChon;
@@ -127,7 +155,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             LoadGridHD(txtTimkiem.Text, cmbTimkiem.Text);
         }
 
-        private void btnXuatExcel_Click(object sender, EventArgs e)
+        private void btnExcel_Click(object sender, EventArgs e)
 
         {
             using (ExcelPackage excelPackage = new ExcelPackage())
@@ -155,11 +183,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 }
             }
             MessageBox.Show("Dữ liệu đã được xuất thành công!", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void dgvHDCT_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
         }
 
         private void Frm_US_HoaDon_Load(object sender, EventArgs e)

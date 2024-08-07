@@ -25,7 +25,6 @@ namespace B_Bussiness_Layer.Services
         {
             return _Rep.GetGiaychitiets();
         }
-
         public Hoadon GetByID(int id)
         {
             return _Rep.GetByID(id);
@@ -65,7 +64,26 @@ namespace B_Bussiness_Layer.Services
         {
             return _Rep.GetGiays();
         }
-
+        public List<Thuonghieu> GetThuonghieus()
+        {
+            return _Rep.GetThuonghieus();
+        }
+        public List<Chatlieu> GetChatlieus()
+        {
+            return _Rep.GetChatlieus();
+        }
+        public List<Mausac> GetMausacs()
+        {
+            return _Rep.GetMausacs();
+        }
+        public List<Kichco> GetKichcos()
+        {
+            return _Rep.GetKichcos();
+        }
+        public List<Kieudang> GetKieudangs()
+        {
+            return _Rep.GetKieudangs();
+        }
         public List<Hoadon> GetHoadons(string search)
         {
             return _Rep.GetHoadons(search);
