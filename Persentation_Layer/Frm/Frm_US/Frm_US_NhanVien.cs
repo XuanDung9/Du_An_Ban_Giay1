@@ -77,10 +77,13 @@ namespace A_Persentation_Layer.Frm.Frm_US
             {
                 var addr = new System.Net.Mail.MailAddress(email);
                 return addr.Address == email;
+
+               
             }
-            catch
+            catch 
             {
-                return false;
+                return Regex.IsMatch(email, @"^([\w\.\-]+)@([\w\-]+)((\.(\w){2,3})+)$");
+                //return false;
             }
         }
         private bool checkusername(string username)
@@ -170,14 +173,28 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 MessageBox.Show("Số điện thoại 0 hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-
-            else if(email != @"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+            if (!IsValidEmail( email))
             {
-
-                
-                MessageBox.Show("Email chưa đúng định dạng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                MessageBox.Show("Email 0 hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+
+            //else if (email != @"^[^@\s]+@[^@\s]+\.[^@\s]+$" )
+            //{
+
+               
+
+            //    MessageBox.Show("Email chưa đúng định dạng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return false;
+            //}
+
+           
+
+
+
+
+
+
 
             //if (!checkngaysinh(ngaysinh))
             //{
