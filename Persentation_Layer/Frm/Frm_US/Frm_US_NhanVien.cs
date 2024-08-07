@@ -8,6 +8,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -69,35 +70,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
 
 
-        public bool Checkrong(string soDienThoai, string email, string username)
-        {
-            if (string.IsNullOrEmpty(txtTaikhoan.Text)
-                || string.IsNullOrEmpty(txtMatkhau.Text)
-                || string.IsNullOrEmpty(txtTen.Text)
-                || string.IsNullOrEmpty(txtSDT.Text)
-                || string.IsNullOrEmpty(txtDiachi.Text)
-                || string.IsNullOrEmpty(txtEmail.Text))
-            {
-                MessageBox.Show("Vui lòng nhập đủ dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            else if (soDienThoai.Length != 10 && soDienThoai[0] != '0' && !soDienThoai.All(char.IsDigit) || !int.TryParse(soDienThoai, out _))
-            {
-                MessageBox.Show("Số điện thoại 0 hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (!IsValidEmail(email))
-            {
-                MessageBox.Show("Email không hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            if (!checkusername(username))
-            {
-                MessageBox.Show("Username tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return false;
-            }
-            return true;
-        }
+
         private bool IsValidEmail(string email)
         {
             try
@@ -148,6 +121,18 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 return false;
             }
         }
+
+        //private  bool checkngaysinh(DateTime? ngaysinh)
+        //{
+             
+        //    DateTime ngaySinh = ngaysinh.Value;
+        //    if (ngaySinh == DateTime.Now)
+        //    {
+              
+        //        return false;
+        //    }
+        //    return true;
+        //}
         private void dgvHienThi_CellBeginEdit(object sender, DataGridViewCellCancelEventArgs e)
         {
             if (e.ColumnIndex == dgvHienThi.ColumnCount - 1)
@@ -162,6 +147,52 @@ namespace A_Persentation_Layer.Frm.Frm_US
             LoadGird(txtTimKiem.Text);
         }
 
+        public bool Checkrong(string soDienThoai, string email, string username/*, DateTime? ngaysinh*/)
+        {
+
+
+            if (string.IsNullOrEmpty(txtTaikhoan.Text)
+                || string.IsNullOrEmpty(txtMatkhau.Text)
+                || string.IsNullOrEmpty(txtTen.Text)
+                || string.IsNullOrEmpty(txtSDT.Text)
+                || string.IsNullOrEmpty(txtDiachi.Text)
+                || string.IsNullOrEmpty(txtEmail.Text)
+                || string.IsNullOrEmpty(dateSinh.Text)
+
+                )
+
+            {
+                MessageBox.Show("Vui lòng nhập đủ dữ liệu.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            else if (soDienThoai.Length != 10 && soDienThoai[0] != '0' && !soDienThoai.All(char.IsDigit) || !int.TryParse(soDienThoai, out _))
+            {
+                MessageBox.Show("Số điện thoại 0 hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            else if(email != @"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+            {
+
+                
+                MessageBox.Show("Email chưa đúng định dạng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+
+            //if (!checkngaysinh(ngaysinh))
+            //{
+            //    MessageBox.Show("Ngày sinh khoong hơpj lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            //    return false;
+            //}
+
+            if (!checkusername(username))
+            {
+                MessageBox.Show("Username tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return false;
+            }
+            return true;
+        }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (!checksdt(txtSDT.Text))
@@ -169,7 +200,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 MessageBox.Show("Số điện thoại tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return;
             }
-            if (Checkrong(txtSDT.Text, txtEmail.Text, txtTaikhoan.Text))
+            if (Checkrong(txtSDT.Text, txtEmail.Text, txtTaikhoan.Text/*, dateSinh.Value*/))
             {
                 Taikhoan taikhoan = new Taikhoan();
                 taikhoan.Username = txtTaikhoan.Text;
@@ -191,10 +222,15 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 LoadGird(null);
             }
         }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
-            if (Checkrong(txtSDT.Text, txtEmail.Text, null))
+
+            if (IsValidEmail(txtEmail.Text))
+            {
+                MessageBox.Show("Email tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (Checkrong(txtSDT.Text, txtEmail.Text/*,dateSinh.Text*/, null))
             {
                 Taikhoan taikhoan = new Taikhoan();
                 taikhoan.Mataikhoan = _idWhenclick;
@@ -284,15 +320,15 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     dateSinh.Text = nhanvien.Ngaysinh.ToString();
                     cmbChucvu.SelectedIndex = _list.FindIndex(x => x == nhanvien.Machucvu);
                 }
-            }    
-           
+            }
+
         }
 
         private void btnExcel_Click_1(object sender, EventArgs e)
         {
             using (ExcelPackage excelPackage = new ExcelPackage())
             {
-               
+
                 ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
 
                 for (int i = 0; i < dgvHienThi.Columns.Count; i++)
