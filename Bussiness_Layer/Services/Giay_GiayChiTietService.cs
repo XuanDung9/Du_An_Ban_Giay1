@@ -9,7 +9,7 @@ using System.Threading.Tasks;
 
 namespace B_Bussiness_Layer.Services
 {
-    public class Giay_GiayChiTietService: IGiay_GiayChiTietService
+    public class Giay_GiayChiTietService : IGiay_GiayChiTietService
     {
         Giay_ChiTietGiayRepostory _Rep;
         public Giay_GiayChiTietService()
@@ -23,7 +23,6 @@ namespace B_Bussiness_Layer.Services
         public Giay_ChiTietGiay GetById(int? id)
         {
             return _Rep.GetById(id);
-
         }
     }
 }

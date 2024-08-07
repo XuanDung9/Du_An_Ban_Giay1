@@ -58,8 +58,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
         }
 
-
-
         public void LoadHoaDon(int khachHangId)
         {
             int stt = 1;
@@ -78,6 +76,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 dgvHD.Rows.Add(stt++, e.Mahoadon, e.Ngaytao, idtt.Tenhinhthuc, e.Tongtien);
             }
         }
+
         private void btnThem_Click(object sender, EventArgs e)
         {
             if (string.IsNullOrEmpty(txtSDT.Text) || string.IsNullOrEmpty(txtHoVaTen.Text) || string.IsNullOrEmpty(txtDiemKH.Text))
@@ -125,6 +124,12 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 return;
             }
 
+            if (!checksdt(sdt))
+            {
+                MessageBox.Show("Số điện thoại đã tồn tại.", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
             if (checkdulieu(txtSDT.Text, txtDiemKH.Text))
             {
                 Khachhang khachhang = new Khachhang
@@ -144,22 +149,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
         }
 
-
-        //public void btnKhoa_MoKhoa_Click(object sender, EventArgs e)
-        //{
-        //    Khachhang khachhang = new Khachhang
-        //    {
-        //        Makhachhang = idWhenClick
-        //    };
-
-        //    var result = MessageBox.Show("Xác nhận muốn Khoá/Mở khoá", "Xác nhận", MessageBoxButtons.YesNo);
-        //    if (result == DialogResult.Yes)
-        //    {
-        //        MessageBox.Show(_service.Khoa_MoKhoa(khachhang));
-        //    }
-        //    LoadGrid(null, "Tên");
-        //}
-
         private void dgvKH_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
@@ -176,7 +165,12 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     LoadHoaDon(khach.Makhachhang);
                 }
             }
+            else
+            {
+                ClearTextBoxes();
+            }
         }
+
         private void txtTimKiem_KhachHang_TextChanged(object sender, EventArgs e)
         {
             string search = txtTimKiem_KhachHang.Text;
@@ -188,6 +182,12 @@ namespace A_Persentation_Layer.Frm.Frm_US
         {
             return !_service.GetAllKhachhang(null).Any(khachhang => khachhang.Sdt == sodienthoai);
         }
+
+        public bool checkUniqueSdtForUpdate(int sodienthoai, int currentId)
+        {
+            return !_service.GetAllKhachhang(null).Any(khachhang => khachhang.Sdt == sodienthoai && khachhang.Makhachhang != currentId);
+        }
+
         public bool checkdulieu(string sodienthoai, string diem)
         {
             if (string.IsNullOrEmpty(sodienthoai) || string.IsNullOrEmpty(txtHoVaTen.Text) || string.IsNullOrEmpty(diem))
@@ -207,28 +207,34 @@ namespace A_Persentation_Layer.Frm.Frm_US
             }
             return true;
         }
+
         public void btnLamMoi_Click(object sender, EventArgs e)
         {
-            txtMaKhachHang.Text = string.Empty;
-            txtHoVaTen.Text = string.Empty;
-            txtSDT.Text = string.Empty;
-            txtDiemKH.Text = string.Empty;
+            ClearTextBoxes();
         }
 
         private void btnLamMoi_Click_1(object sender, EventArgs e)
         {
+            ClearTextBoxes();
+        }
+
+        private void dgvHD_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+        }
+
+        private void label3_Click(object sender, EventArgs e)
+        {
+        }
+
+        private void ClearTextBoxes()
+        {
             txtMaKhachHang.Text = string.Empty;
             txtHoVaTen.Text = string.Empty;
             txtSDT.Text = string.Empty;
             txtDiemKH.Text = string.Empty;
         }
 
-        private void dgvHD_CellContentClick(object sender, DataGridViewCellEventArgs e)
-        {
-
-        }
-
-        private void label3_Click(object sender, EventArgs e)
+        private void txtSDT_TextChanged(object sender, EventArgs e)
         {
 
         }
