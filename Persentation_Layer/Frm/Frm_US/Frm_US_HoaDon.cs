@@ -130,13 +130,9 @@ namespace A_Persentation_Layer.Frm.Frm_US
         private void btnXuatExcel_Click(object sender, EventArgs e)
 
         {
-            // ExcelPackage.LicenseContext = LicenseContext.NonCommercial;
-
             using (ExcelPackage excelPackage = new ExcelPackage())
             {
                 ExcelWorksheet worksheet = excelPackage.Workbook.Worksheets.Add("Sheet1");
-
-                // Ghi tiêu đề cột
                 for (int i = 0; i < dgvHD.Columns.Count; i++)
                 {
                     worksheet.Cells[1, i + 1].Value = dgvHD.Columns[i].HeaderText;
@@ -150,8 +146,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                         worksheet.Cells[i + 2, j + 1].Value = dgvHD.Rows[i].Cells[j].Value?.ToString();
                     }
                 }
-
-                // Mở hộp thoại lưu tệp
                 SaveFileDialog saveFileDialog = new SaveFileDialog();
                 saveFileDialog.Filter = "Excel files (*.xlsx)|*.xlsx|All files (*.*)|*.*";
                 if (saveFileDialog.ShowDialog() == DialogResult.OK)
@@ -170,7 +164,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         private void Frm_US_HoaDon_Load(object sender, EventArgs e)
         {
-            Loadcombobox(); 
+            Loadcombobox();     
             LoadGridHD(null, null);
         }
     }

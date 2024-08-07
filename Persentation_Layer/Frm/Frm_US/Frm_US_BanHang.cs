@@ -43,7 +43,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
         DateTime dateTime = DateTime.Now;
         int idSanPham_Clicked;
         int idHoaDon_Clicked;
-
         private void LoadGridHD(string? txtSearch, string? SearchType) // hóa đơn 
         {
             int stt = 1;
@@ -166,7 +165,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 Console.WriteLine($"Thông tin chi tiết: {ex}");
             }
         }
-
         public int TinhTongTien_HoaDon(DataGridView dataGridView)
         {
             int tongTien = 0;
@@ -207,7 +205,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             _lstHoadonChiTiet = _Ser_HoaDonChiTiet.GetAll(idHoaDOn.ToString(), SearchType);
             foreach (var e in _lstHoadonChiTiet)
             {
-                dgv_HoaDonChiTiet.Rows.Add(stt++, e.Hoadonchitiet.Mahoadon, e.tenGiay,e.Hoadonchitiet.Magiaychitiet, e.tenThuongHieu, e.tenKichCo, e.tenMauSac, e.tenChatLieu, e.tenKieuDang, e.Hoadonchitiet.Soluongmua, e.Hoadonchitiet.Tongtien, e.Hoadonchitiet.Mahoadonchitiet);
+                dgv_HoaDonChiTiet.Rows.Add(stt++, e.Hoadonchitiet.Mahoadon, e.tenGiay, e.Hoadonchitiet.Magiaychitiet, e.tenThuongHieu, e.tenKichCo, e.tenMauSac, e.tenChatLieu, e.tenKieuDang, e.Hoadonchitiet.Soluongmua, e.Hoadonchitiet.Tongtien, e.Hoadonchitiet.Mahoadonchitiet);
             }
             DataGridViewCheckBoxColumn ChooseObj = new DataGridViewCheckBoxColumn();
             ChooseObj.HeaderText = "Chọn";
@@ -244,8 +242,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 dgv_sanPham.Rows.Add(stt++, item.tenGiay, item.tenThuongHieu, item.tenKichCo, item.tenMauSac, item.tenChatLieu, item.tenKieuDang, item.soLuongCon, item.gia);
             }
         }
-
-
         private void dgvSP_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             try
@@ -333,9 +329,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 .Where(item => item.Hoadonchitiet.Mahoadon == maHoaDon)
                 .Sum(item => item.Hoadonchitiet.Tongtien ?? 0);
         }
-
-
-
         private void dgv_HoaDon_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             int index = e.RowIndex;
@@ -361,6 +354,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     txt_TienNhan.Text = "";
                     lb_TraLai.Text = "0";
                     lb_TienThieu.Text = "0";
+                    lb_TongTien.Text = "#";
                     lb_TongTienHang.Text = TinhTongTienHoaDonChiTiet(int.Parse(lb_MaHoaDon.Text)).ToString("N0");
                     lb_TTHD.Text = TinhTongTienHoaDonChiTiet(int.Parse(lb_MaHoaDon.Text)).ToString("N0");
                 }
@@ -386,8 +380,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
             cbb_HinhThucThanhToan.SelectedIndex = 3;
 
         }
-
-
         private void btn_TimKhachHang_Click(object sender, EventArgs e)
         {
             if (lb_MaHoaDon.Text == "#")
@@ -434,8 +426,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             lb_TongTienHang.Text = tongTien.ToString("N0");
             lb_TTHD.Text = tongTien.ToString("N0");
         }
-
-         public void LoadKhachHang(int? id)
+        public void LoadKhachHang(int? id)
         {
             var Obj = _Ser_KhachHang.GetAllKhachhang(null).FirstOrDefault(x => x.Makhachhang == id);
             if (Obj == null)
@@ -446,7 +437,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
             lb_TenKH.Text = Obj.Tenkhachhang == null ? "N/A" : Obj.Tenkhachhang.ToString();
             txt_DiemKH.Text = Obj.Diemkhachhang == null ? "0 điểm" : Obj.Diemkhachhang.ToString() + " điểm";
         }
-
         private void btn_XoaSanPham_Click(object sender, EventArgs e)
         {
             if (idHoaDonChiTiet_Clicked.Count == 0)
@@ -541,15 +531,13 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 // Cập nhật các label
                 lb_TienThieu.Text = tienThieu >= 0 ? tienThieu.ToString("N0") : "0";
                 lb_TraLai.Text = traLai >= 0 ? traLai.ToString("N0") : "0";
-
+                lb_TongTien.Text = tongTienHoaDon.ToString("N0");
                 // Cập nhật ghi chú
                 txt_GhiChu.Text = $"Tổng tiền hóa đơn: {tongTienHoaDon:N0}, " +
                                   $"Khách đưa: {soTienNhan:N0}, " +
                                   $"Trả lại khách: {traLai:N0}";
             }
         }
-
-
         private void txt_DiemKH_TextChanged(object sender, EventArgs e)
         {
             if (txt_DiemKH.Text == "" || txt_DiemKH.Text == null)
@@ -561,12 +549,10 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 cb_SuDungDiem.Enabled = true;
             }
         }
-
         private void btn_TimKiem_Click(object sender, EventArgs e)
         {
 
         }
-
         private void dgv_HoaDonChiTiet_CellClick(object sender, DataGridViewCellEventArgs e)
         {
             if (e.ColumnIndex == dgv_HoaDonChiTiet.Columns["Chon"].Index && e.RowIndex >= 0)
@@ -596,7 +582,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 txt_HoaDonChiTiet.Text = danhSachIdText;
             }
         }
-
         private void Frm_US_BanHang_Load_1(object sender, EventArgs e)
         {
             LoadGridHD(null, null);
@@ -604,11 +589,9 @@ namespace A_Persentation_Layer.Frm.Frm_US
             txt_HoaDonChiTiet.BorderStyle = BorderStyle.FixedSingle;
             LoadHinhThucThanhToan();
         }
-
-
         private void cbb_HinhThucThanhToan_SelectedIndexChanged(object sender, EventArgs e)
         {
-            int idHD = int.TryParse(lb_MaHoaDon.Text, out int idH) ? idH : 0;   
+            int idHD = int.TryParse(lb_MaHoaDon.Text, out int idH) ? idH : 0;
             var hoaDon = _Ser_HoaDon.GetByID(idHD);
             if (hoaDon != null)
             {
@@ -631,7 +614,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 }
             }
         }
-
         private void btn_ThanhToan_Click(object sender, EventArgs e)
         {
             if (cbb_HinhThucThanhToan.SelectedIndex == 3)
@@ -702,6 +684,22 @@ namespace A_Persentation_Layer.Frm.Frm_US
                         hoaDon_ThanhToan.Ghichu = txt_GhiChu.Text;
                         if (result)
                         {
+                            TimKiemKhachHHang frm_KH = new TimKiemKhachHHang();
+                            DuAnBanGiay1Context _context = new DuAnBanGiay1Context();
+                            var objKH = _context.Khachhangs.FirstOrDefault(x => x.Makhachhang == int.Parse(lb_maKH.Text));
+                            if (cb_SuDungDiem.Checked == true)
+                            {
+                                objKH.Diemkhachhang = 0;
+                                _Ser_KhachHang.UpdateKhachHang(objKH);
+                            }
+                            int? soLuongMua = 0;
+                            foreach (var item in _lstHoadonChiTiet)
+                            {
+                                soLuongMua += item.Hoadonchitiet.Soluongmua; // cộng điểm cho khách
+                            }
+                            objKH.Diemkhachhang += soLuongMua;
+                            _Ser_KhachHang.UpdateKhachHang(objKH);
+
                             TruSanPham(maHoaDon);
                             MessageBox.Show("Thanh toán thành công");
                             LoadGridHD(null, null);
@@ -771,7 +769,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         private void LamMoi_ThanhToan()
         {
-            //txtMaKhachhang.Text = "1";
             lb_TenKH.Text = "#";
             lb_MaHoaDon.Text = "#";
             lb_MaHoaDon.Text = "#";
@@ -787,17 +784,19 @@ namespace A_Persentation_Layer.Frm.Frm_US
             txt_TienNhan.Text = "";
             txt_GhiChu.Text = "#";
         }
-        private int originalTongTienHang = 0;
-        private int originalTongTien = 0;
-        private int originalTTGH = 0;
-        private int originalTraLai = 0;
+
         private void cb_SuDungDiem_CheckedChanged(object sender, EventArgs e)
         {
 
             try
             {
+                int originalTongTienHang = 0;
+                int originalTongTien = 0;
+                int originalTTGH = 0;
+                int originalTraLai = 0;
+
                 int loyaltyPoints = int.TryParse(txt_DiemKH.Text, out int points) ? points : 0;
-                int pointsValue = 100; // Mỗi điểm tương ứng với 100 đồng
+                int pointsValue = 1000; // Mỗi điểm tương ứng với 100 đồng
                 int totalPointsValue = loyaltyPoints * pointsValue;
 
                 // Lấy tổng tiền hiện tại từ lb_TongTienHang và loại bỏ các ký tự không mong muốn
@@ -840,7 +839,8 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     lb_TraLai.Text = traLai.ToString("N0");
                     txt_GhiChu.Text = $"Tổng tiền hóa đơn : {amountAfterDiscount:N0}, " +
                                 $"Khách đưa: {soTienNhan:N0}, " +
-                                $"Trả lại khách: {traLai:N0}" + $"Số tiền giảm : {totalPointsValue:N0}";
+                                $"Trả lại khách: {traLai:N0} ," +
+                                $"Số tiền giảm : {totalPointsValue:N0}";
                 }
                 else
                 {
@@ -854,6 +854,11 @@ namespace A_Persentation_Layer.Frm.Frm_US
             {
                 MessageBox.Show($"Có lỗi xảy ra: {ex.Message}");
             }
+        }
+
+        private void txtGiamGia_TextChanged(object sender, EventArgs e)
+        {
+
         }
     }
 }
