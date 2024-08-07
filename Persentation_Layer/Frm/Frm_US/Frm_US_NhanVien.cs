@@ -173,22 +173,19 @@ namespace A_Persentation_Layer.Frm.Frm_US
                 MessageBox.Show("Số điện thoại 0 hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
-            if (!IsValidEmail( email))
+            if (IsValidEmail(email))
             {
-                MessageBox.Show("Email 0 hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                //MessageBox.Show("Email 0 hợp lệ", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return true;
+            }
+            else if (!IsValidEmail(email))
+            {
+                MessageBox.Show("Email chưa đúng định dạng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 return false;
             }
+            
 
-            //else if (email != @"^[^@\s]+@[^@\s]+\.[^@\s]+$" )
-            //{
 
-               
-
-            //    MessageBox.Show("Email chưa đúng định dạng", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-            //    return false;
-            //}
-
-           
 
 
 
@@ -242,12 +239,13 @@ namespace A_Persentation_Layer.Frm.Frm_US
         private void btnSua_Click(object sender, EventArgs e)
         {
 
-            if (IsValidEmail(txtEmail.Text))
-            {
-                MessageBox.Show("Email tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
-                return;
-            }
-            if (Checkrong(txtSDT.Text, txtEmail.Text/*,dateSinh.Text*/, null))
+            //if (IsValidEmail(txtEmail.Text))
+            //{
+            //    //MessageBox.Show("Email tồn tại", "Lỗi", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
+            //}
+
+            if (Checkrong(txtSDT.Text, txtEmail.Text/*,dateSinh.Text*/,null))
             {
                 Taikhoan taikhoan = new Taikhoan();
                 taikhoan.Mataikhoan = _idWhenclick;
