@@ -19,6 +19,8 @@ public partial class Uudai
 
     public int Mataikhoan { get; set; }
 
+    public int? Phantram { get; set; }
+
     public virtual ICollection<Hoadon> Hoadons { get; set; } = new List<Hoadon>();
 
     public virtual Taikhoan MataikhoanNavigation { get; set; } = null!;

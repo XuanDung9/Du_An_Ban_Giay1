@@ -36,6 +36,7 @@
             txt_taiKhoan = new TextBox();
             txt_matKhau = new TextBox();
             btn_dangNhap = new Button();
+            button1 = new Button();
             ((System.ComponentModel.ISupportInitialize)pictureBox1).BeginInit();
             SuspendLayout();
             // 
@@ -109,12 +110,23 @@
             btn_dangNhap.UseVisualStyleBackColor = true;
             btn_dangNhap.Click += btn_dangNhap_Click;
             // 
+            // button1
+            // 
+            button1.Location = new Point(585, 316);
+            button1.Name = "button1";
+            button1.Size = new Size(126, 31);
+            button1.TabIndex = 8;
+            button1.Text = "Quên mật khẩu";
+            button1.UseVisualStyleBackColor = true;
+            button1.Click += button1_Click;
+            // 
             // DangNhap_form
             // 
             AutoScaleDimensions = new SizeF(8F, 20F);
             AutoScaleMode = AutoScaleMode.Font;
             BackColor = SystemColors.GradientInactiveCaption;
             ClientSize = new Size(800, 450);
+            Controls.Add(button1);
             Controls.Add(btn_dangNhap);
             Controls.Add(txt_matKhau);
             Controls.Add(txt_taiKhoan);
@@ -139,5 +151,6 @@
         private TextBox txt_taiKhoan;
         private TextBox txt_matKhau;
         private Button btn_dangNhap;
+        private Button button1;
     }
 }

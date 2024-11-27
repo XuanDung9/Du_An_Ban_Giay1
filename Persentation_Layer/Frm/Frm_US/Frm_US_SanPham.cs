@@ -142,17 +142,17 @@ namespace A_Persentation_Layer.Frm.Frm_US
         public void LoadCBB_TimKiem()
         {
             cbbTimKiem.Items.Clear();
-            cbbTimKiem.Items.Add(SearchType.All);
-            cbbTimKiem.Items.Add(SearchType.maGiay);
-            cbbTimKiem.Items.Add(SearchType.maChatLieu);
-            cbbTimKiem.Items.Add(SearchType.maMauSac);
-            cbbTimKiem.Items.Add(SearchType.maKichCo);
-            cbbTimKiem.Items.Add(SearchType.maThuongHieu);
-            cbbTimKiem.Items.Add(SearchType.maKieuDang);
+            cbbTimKiem.Items.Add(SearchType.tenGiay);
+            cbbTimKiem.Items.Add(SearchType.tenChatLieu);
+            cbbTimKiem.Items.Add(SearchType.tenMauSac);
+            cbbTimKiem.Items.Add(SearchType.tenKichCo);
+            cbbTimKiem.Items.Add(SearchType.tenThuongHieu);
+            cbbTimKiem.Items.Add(SearchType.tenKieuDang);
             cbbTimKiem.Items.Add(SearchType.moTa_GiayChiTiet);
             cbbTimKiem.Items.Add(SearchType.trangThai_GiayChiTiet);
             cbbTimKiem.SelectedIndex = 0;
         }
+
         public void LoadCBB_Giay(int? idClicked)
         {
             _lstGiay = _Ser_Giay.GetAll("true", "Trạng thái Giày");
@@ -196,13 +196,13 @@ namespace A_Persentation_Layer.Frm.Frm_US
             cbbTenKichCo.DisplayMember = "TENKICHCO";
             cbbTenKichCo.ValueMember = "MAKICHCO";
         }
-        public void LoadDataGridView(string? txtTimKiem, string? SearchType)
+        public void LoadDataGridView(string? search, string? searchType)
         {
             dgvSP.Rows.Clear();
             dgvSP.ColumnCount = 19;
             dgvSP.Columns[0].Name = "Mã giày chi tiết";
             dgvSP.Columns[1].Name = "Mã giày";
-            dgvSP.Columns[2].Name = "Tên giày ";
+            dgvSP.Columns[2].Name = "Tên giày";
             dgvSP.Columns[3].Name = "Chất liệu";
             dgvSP.Columns[4].Name = "Màu sắc";
             dgvSP.Columns[5].Name = "Kích cỡ";
@@ -212,50 +212,80 @@ namespace A_Persentation_Layer.Frm.Frm_US
             dgvSP.Columns[9].Name = "Ngày sửa";
             dgvSP.Columns[10].Name = "Giá";
             dgvSP.Columns[11].Name = "Mô tả";
-            dgvSP.Columns[12].Name = "Số lượng trong kho";
-            dgvSP.Columns[13].Name = " Mã chất liệu";
+            dgvSP.Columns[12].Name = "Số lượng tồn";
+            dgvSP.Columns[13].Name = "Mã chất liệu";
             dgvSP.Columns[14].Name = "Mã màu sắc";
             dgvSP.Columns[15].Name = "Mã kích cỡ";
-            dgvSP.Columns[16].Name = "mã thương hiệu";
+            dgvSP.Columns[16].Name = "Mã thương hiệu";
             dgvSP.Columns[17].Name = "Mã kiểu dáng";
             dgvSP.Columns[18].Name = "Trạng thái";
 
-            var giayChiTietList = from giaychitiet in _context.Giaychitiets
-                                  join giay in _context.Giays on giaychitiet.Magiay equals giay.Magiay
-                                  join chatlieu in _context.Chatlieus on giaychitiet.Machatlieu equals chatlieu.Machatlieu
-                                  join mausac in _context.Mausacs on giaychitiet.Mamausac equals mausac.Mamausac
-                                  join kichco in _context.Kichcos on giaychitiet.Makichco equals kichco.Makichco
-                                  join thuonghieu in _context.Thuonghieus on giaychitiet.Mathuonghieu equals thuonghieu.Mathuonghieu
-                                  join kieudang in _context.Kieudangs on giaychitiet.Makieudang equals kieudang.Makieudang
-                                  select new GiayChiTietDTO
-                                  {
-                                      Magiay = giaychitiet.Magiay,
-                                      TenGiay = giay.Tengiay,
-                                      Magiaychitiet = giaychitiet.Magiaychitiet,
-                                      TenChatLieu = chatlieu.Tenchatlieu,
-                                      TenMauSac = mausac.Tenmausac,
-                                      TenKichCo = kichco.Tenkichco,
-                                      TenThuongHieu = thuonghieu.Tenthuonghieu,
-                                      TenKieuDang = kieudang.Tenkieudang,
-                                      Ngaytao = giaychitiet.Ngaytao,
-                                      Ngaysua = giaychitiet.Ngaysua,
-                                      Gia = giaychitiet.Gia ?? 0,
-                                      Mota = giaychitiet.Mota,
-                                      Soluongton = giaychitiet.Soluongton ?? 0,
-                                      Trangthai = giaychitiet.Trangthai ?? false,
-                                      Machatlieu = giaychitiet.Machatlieu,
-                                      Mamausac = giaychitiet.Mamausac,
-                                      Makichco = giaychitiet.Makichco,
-                                      Mathuonghieu = giaychitiet.Mathuonghieu,
-                                      Makieudang = giaychitiet.Makieudang
-                                  };
-            _lst_GiayDTO = giayChiTietList.ToList();
-            var resultList = giayChiTietList.ToList();
-            _lstGiayChiTiet = _Ser_ChiTietGiay.GetAll(txtTimKiem,SearchType);
+            var query = from giaychitiet in _context.Giaychitiets
+                        join giay in _context.Giays on giaychitiet.Magiay equals giay.Magiay
+                        join chatlieu in _context.Chatlieus on giaychitiet.Machatlieu equals chatlieu.Machatlieu
+                        join mausac in _context.Mausacs on giaychitiet.Mamausac equals mausac.Mamausac
+                        join kichco in _context.Kichcos on giaychitiet.Makichco equals kichco.Makichco
+                        join thuonghieu in _context.Thuonghieus on giaychitiet.Mathuonghieu equals thuonghieu.Mathuonghieu
+                        join kieudang in _context.Kieudangs on giaychitiet.Makieudang equals kieudang.Makieudang
+                        select new GiayChiTietDTO
+                        {
+                            Magiay = giaychitiet.Magiay,
+                            TenGiay = giay.Tengiay,
+                            Magiaychitiet = giaychitiet.Magiaychitiet,
+                            TenChatLieu = chatlieu.Tenchatlieu,
+                            TenMauSac = mausac.Tenmausac,
+                            TenKichCo = kichco.Tenkichco,
+                            TenThuongHieu = thuonghieu.Tenthuonghieu,
+                            TenKieuDang = kieudang.Tenkieudang,
+                            Ngaytao = giaychitiet.Ngaytao,
+                            Ngaysua = giaychitiet.Ngaysua,
+                            Gia = giaychitiet.Gia ?? 0,
+                            Mota = giaychitiet.Mota,
+                            Soluongton = giaychitiet.Soluongton ?? 0,
+                            Trangthai = giaychitiet.Trangthai ?? false,
+                            Machatlieu = giaychitiet.Machatlieu,
+                            Mamausac = giaychitiet.Mamausac,
+                            Makichco = giaychitiet.Makichco,
+                            Mathuonghieu = giaychitiet.Mathuonghieu,
+                            Makieudang = giaychitiet.Makieudang
+                        };
+
+            if (!string.IsNullOrEmpty(search))
+            {
+                switch (searchType)
+                {
+                    case "Tên giày":
+                        query = query.Where(x => x.TenGiay.Contains(search));
+                        break;
+                    case "Tên chất liệu":
+                        query = query.Where(x => x.TenChatLieu.Contains(search));
+                        break;
+                    case "Tên màu sắc":
+                        query = query.Where(x => x.TenMauSac.Contains(search));
+                        break;
+                    case "Tên kích cỡ":
+                        query = query.Where(x => x.TenKichCo.Contains(search));
+                        break;
+                    case "Tên thương hiệu":
+                        query = query.Where(x => x.TenThuongHieu.Contains(search));
+                        break;
+                    case "Tên kiểu dáng":
+                        query = query.Where(x => x.TenKieuDang.Contains(search));
+                        break;
+                    case "Mô tả":
+                        query = query.Where(x => x.Mota.Contains(search));
+                        break;
+                    case "Trạng thái":
+                        query = query.Where(x => x.Trangthai.ToString().Contains(search));
+                        break;
+                    default:
+                        break;
+                }
+            }
+
+            var resultList = query.ToList();
             foreach (var item in resultList)
             {
-                int stt = _lst_GiayDTO.IndexOf(item) + 1;
-
                 dgvSP.Rows.Add(
                     item.Magiaychitiet,
                     item.Magiay,
@@ -278,6 +308,10 @@ namespace A_Persentation_Layer.Frm.Frm_US
                     item.Trangthai ? "Đang kinh doanh" : "Ngừng kinh doanh");
             }
         }
+
+
+
+
 
         private void btnThem_Click_1(object sender, EventArgs e)
         {
@@ -444,10 +478,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
             ClearTextBox();
         }
 
-        private void btnTimKiem_Click_1(object sender, EventArgs e)
-        {
-            LoadDataGridView(txtTimKiem.Text, cbbTimKiem.Text);
-        }
 
         private void dgvSP_CellContentClick_1(object sender, DataGridViewCellEventArgs e)
         {
@@ -456,42 +486,68 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
         private void dgvSP_CellClick(object sender, DataGridViewCellEventArgs e)
         {
-            int index = e.RowIndex;
-
-            if (index < 0 || index >= _lst_GiayDTO.Count)
+            if (e.RowIndex < 0 || e.RowIndex >= dgvSP.Rows.Count)
             {
                 ClearTextBox();
                 return;
             }
 
-            var objCellClick = _lst_GiayDTO[index];
-            if (objCellClick == null)
+            // Lấy hàng được click
+            var row = dgvSP.Rows[e.RowIndex];
+
+            // Hiển thị thông tin sản phẩm và gán giá trị vào các controls
+            MessageBox.Show($"Tên sản phẩm: {row.Cells["Tên giày"].Value.ToString()}\nID sản phẩm: {row.Cells["Mã giày chi tiết"].Value.ToString()}");
+
+            idClicked = Convert.ToInt32(row.Cells["Mã giày chi tiết"].Value);
+            cbbTenGiay.SelectedValue = Convert.ToInt32(row.Cells["Mã giày"].Value);
+            txtGia.Text = row.Cells["Giá"].Value.ToString();
+            txtSoLuong.Text = row.Cells["Số lượng tồn"].Value.ToString();
+            txtMoTa.Text = row.Cells["Mô tả"].Value.ToString();
+
+            try
             {
-                MessageBox.Show("Dữ liệu không hợp lệ!");
-                ClearTextBox();
-                return;
+                cbbTenThuongHieu.SelectedValue = Convert.ToInt32(row.Cells["Mã thương hiệu"].Value);
+                cbbTenKieuDang.SelectedValue = Convert.ToInt32(row.Cells["Mã kiểu dáng"].Value);
+                cbbTenChatLieu.SelectedValue = Convert.ToInt32(row.Cells["Mã chất liệu"].Value);
+                cbbTenMauSac.SelectedValue = Convert.ToInt32(row.Cells["Mã màu sắc"].Value);
+                cbbTenKichCo.SelectedValue = Convert.ToInt32(row.Cells["Mã kích cỡ"].Value);
             }
-
-            MessageBox.Show($" Tên sản phẩm: {objCellClick.TenGiay}\nID sản phẩm: {objCellClick.Magiaychitiet}");
-            idClicked = objCellClick.Magiaychitiet;
-            cbbTenGiay.SelectedValue = objCellClick.Magiay;
-            txtGia.Text = objCellClick.Gia.ToString();
-            txtSoLuong.Text = objCellClick.Soluongton.ToString();
-            txtMoTa.Text = objCellClick.Mota;
-
-            cbbTenThuongHieu.SelectedValue = objCellClick.Mathuonghieu;
-            cbbTenKieuDang.SelectedValue = objCellClick.Makieudang;
-            cbbTenChatLieu.SelectedValue = objCellClick.Machatlieu;
-            cbbTenMauSac.SelectedValue = objCellClick.Mamausac;
-            cbbTenKichCo.SelectedValue = objCellClick.Makichco;
+            catch (ArgumentException ex)
+            {
+                MessageBox.Show($"Lỗi: {ex.Message}");
+            }
 
             cbbTenGiay.Enabled = false;
             cbbTenThuongHieu.Enabled = false;
         }
 
+
+
+
+
         private void txtTimKiem_TextChanged(object sender, EventArgs e)
         {
 
+        }
+
+        private void cbbTimKiem_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            string searchType = cbbTimKiem.SelectedItem.ToString();
+            LoadDataGridView(txtTimKiem.Text, searchType);
+        }
+
+        private void btnTimKiem_Click(object sender, EventArgs e)
+        {
+            string search = txtTimKiem.Text;
+            string searchType = cbbTimKiem.SelectedItem.ToString();
+            LoadDataGridView(search, searchType);
+        }
+
+        private void btnTimKiem_Click_1(object sender, EventArgs e)
+        {
+            string search = txtTimKiem.Text;
+            string searchType = cbbTimKiem.SelectedItem.ToString();
+            LoadDataGridView(search, searchType);
         }
     }
 }

@@ -12,10 +12,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class KieuDangRepostory:IKieuDangRepostory
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public KieuDangRepostory()
         {
-            _db = new DBContext();
+            _db = new DuAnBanGiay1Context();
         }
         public List<Kieudang> GetAll(string? txtSearch, string? searchType)
         {
@@ -30,10 +30,6 @@ namespace C_Data_Access_Layer.Repostories
             if (string.Equals(searchType, SearchType.moTaKieuDang))
             {
                 return _db.Kieudangs.Where(c => c.Mota.Contains(txtSearch)).ToList();
-            }
-            if (string.Equals(searchType, SearchType.trangThaiKieuDang))
-            {
-                return _db.Kieudangs.Where(c => c.Trangthai.ToString().Contains(txtSearch)).ToList();
             }
 
             return _db.Kieudangs.ToList();

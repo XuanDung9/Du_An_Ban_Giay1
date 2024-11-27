@@ -12,10 +12,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class GiayRepostory :IGiayRepostory
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public GiayRepostory()
         {
-             _db = new DBContext();
+             _db = new DuAnBanGiay1Context();
         }
         public List<Giay> GetAll(string? txtSearch, string? searchType)
         {

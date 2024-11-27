@@ -11,11 +11,11 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class KhachHangRepos : IKhachHangRepos
     {
-        DBContext dbContext;
+        DuAnBanGiay1Context dbContext;
 
         public KhachHangRepos()
         {
-            dbContext = new DBContext();
+            dbContext = new DuAnBanGiay1Context();
         }
         public bool AddKhachHang(Khachhang khachhang)
         {
@@ -51,6 +51,10 @@ namespace C_Data_Access_Layer.Repostories
             dbContext.Update(khachhang);
             dbContext.SaveChanges();
             return true;
+        }
+        public List<Hoadon> GetHoadonsByKhachHangId(int khachHangId)
+        {
+            return dbContext.Hoadons.Where(h => h.Makhachhang == khachHangId).ToList();
         }
     }
 }

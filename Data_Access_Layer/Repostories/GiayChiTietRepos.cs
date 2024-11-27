@@ -13,11 +13,11 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class GiayChiTietRepos : IGiayChiTietRepos
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
 
         public GiayChiTietRepos()
         {
-            _db = new DBContext();
+            _db = new DuAnBanGiay1Context();
         }
 
         public List<Giaychitiet> GetAll(string? txtSearch, string? searchType)

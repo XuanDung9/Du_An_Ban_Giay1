@@ -40,7 +40,6 @@
             btn_sanPham = new Button();
             btn_banHang = new Button();
             panel3 = new Panel();
-            label2 = new Label();
             pictureBox1 = new PictureBox();
             pn_main = new Panel();
             pn_menu.SuspendLayout();
@@ -52,7 +51,7 @@
             // 
             txt_tenTaiKhoan.AutoSize = true;
             txt_tenTaiKhoan.Font = new Font("Segoe UI", 10.8F, FontStyle.Bold, GraphicsUnit.Point);
-            txt_tenTaiKhoan.Location = new Point(85, 10);
+            txt_tenTaiKhoan.Location = new Point(3, 10);
             txt_tenTaiKhoan.Name = "txt_tenTaiKhoan";
             txt_tenTaiKhoan.Size = new Size(23, 25);
             txt_tenTaiKhoan.TabIndex = 0;
@@ -167,22 +166,11 @@
             // 
             // panel3
             // 
-            panel3.Controls.Add(label2);
             panel3.Controls.Add(txt_tenTaiKhoan);
             panel3.Location = new Point(3, 230);
             panel3.Name = "panel3";
             panel3.Size = new Size(243, 46);
             panel3.TabIndex = 2;
-            // 
-            // label2
-            // 
-            label2.AutoSize = true;
-            label2.Font = new Font("Segoe UI Semibold", 9F, FontStyle.Bold, GraphicsUnit.Point);
-            label2.Location = new Point(3, 10);
-            label2.Name = "label2";
-            label2.Size = new Size(76, 20);
-            label2.TabIndex = 1;
-            label2.Text = "Xin chào :";
             // 
             // pictureBox1
             // 
@@ -233,6 +221,5 @@
         private Panel panel3;
         private PictureBox pictureBox1;
         private Panel pn_main;
-        private Label label2;
     }
 }

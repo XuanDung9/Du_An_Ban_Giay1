@@ -13,25 +13,21 @@ namespace C_Data_Access_Layer.Models.ModelRefer
         public const string tenChatLieu = "Tên chất liệu";
         public const string moTaChatLieu = "Mô tả chất liệu";
         public const string trangThaiChatLieu = "Trạng thái Chất liệu";
-        public const string idNguoiThemChatLieu = "ID Người thêm chất liệu";
 
         public const string maMauSac = "Mã màu sắc";
         public const string tenMauSac = "Tên màu sắc";
         public const string moTaMauSac = "Mô tả màu sắc";
         public const string trangThaiMauSac = "Trạng thái Màu sắc";
-        public const string idNguoiThemMauSac = "ID Người thêm Màu sắc";
 
         public const string maKichCo = "Mã kích cỡ";
         public const string tenKichCo = "Tên kích cỡ";
         public const string moTaKichCo = "Mô tả kích cỡ";
         public const string trangThaiKichCo = "Trạng thái Kích cỡ";
-        public const string idNguoiThemKichCo = "ID Người thêm kích cỡ";
 
         public const string maThuongHieu = "Mã thương hiệu";
         public const string tenThuongHieu = "Tên thương hiệu";
         public const string moTaThuongHieu = "Mô tả thương hiệu";
         public const string trangThaiThuongHieu = "Trạng thái Thương hiệu";
-        public const string idNguoiThemThuongHieu = "ID Người thêm thương hiệu";
 
         public const string maGiay = "Mã giày";
         public const string maGiayChiTiet = "Mã giày chi tiết";
@@ -43,20 +39,16 @@ namespace C_Data_Access_Layer.Models.ModelRefer
         public const string tenKhachHang = "Tên khách hàng";
         public const string sdtKhachHang = "SĐT khách hàng";
         public const string diemKhachHang = "Điểm khách hàng";
-        public const string trangThaiKhachHang = "Trạng thái Khách hàng";
 
         public const string maHoaDon = "Mã hóa đơn";
-        public const string ngayTaoHoaDon = "Ngày tạo hóa đơn";
         public const string tongTienHoaDon = "Tổng tiền hóa đơn";
         public const string trangThaiHoaDon = "Trạng thái hóa đơn";
         public const string ghiChuHoaDon = "Ghi chú hóa đơn";
         public const string maHinhThucThanhToan = "Mã hình thức thanh toán";
         public const string tenHinhThucThanhToan = "Tên hình thức thanh toán";
-        public const string moTaHinhThucThanhToan = "Mô tả hình thức thanh toán";
 
         public const string maChucVu = "Mã chức vụ";
         public const string tenChucVu = "Tên chức vụ";
-        public const string moTaChucVu = "Mô tả chức vụ";
 
         public const string maTaiKhoan = "Mã tài khoản";
         public const string userNameTaiKhoan = "Tên đăng nhập";
@@ -72,16 +64,11 @@ namespace C_Data_Access_Layer.Models.ModelRefer
 
         public const string maUuDai = "Mã Ưu đãi";
         public const string tenUuDai = "Tên Ưu đãi";
-        public const string ngayBatDauUuDai = "Ngày bắt đầu Ưu đãi";
-        public const string ngayKetThucUuDai = "Ngày kết thúc Ưu đãi";
         public const string phanTramUuDai = "Phần trăm giảm giá";
-        public const string trangThaiUuDai = "Trạng thái Ưu đãi";
-        public const string soLuongUuDai = "Số lượng Ưu đãi còn";
 
         public const string maKieuDang = "Mã kiểu dáng";
         public const string tenKieuDang = "Tên kiểu dáng";
         public const string moTaKieuDang = "Mô tả kiểu dáng";
-        public const string trangThaiKieuDang = "Trạng thái Kiểu dáng";
         public const string moTa_GiayChiTiet = "Mô tả";
         public const string trangThai_GiayChiTiet = "Trạng thái Giày";
 
@@ -92,6 +79,6 @@ namespace C_Data_Access_Layer.Models.ModelRefer
         public const string hinhthucthanhtoan = "Hình thức thanh toán";
         public const string SDTkhach = "Số điện thoại khách";
         public const string TenTaikhoan = "Tên nhân viên";
-        public const string tenkhach = "Tên khach";
+        public const string tenkhach = "Tên khách";
     }
 }

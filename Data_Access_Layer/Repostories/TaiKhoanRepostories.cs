@@ -11,10 +11,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class TaiKhoanRepostories: ITaiKhoanRepostories
     {
-        DBContext _context;
+        DuAnBanGiay1Context _context;
         public TaiKhoanRepostories()
         {
-            _context = new DBContext();
+            _context = new DuAnBanGiay1Context();
         }
         public List<Taikhoan> GetAll(string? serchText , string? searchType)
         {

@@ -86,7 +86,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
             bool result;
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'THÊM' giày không?", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận THÊM", "Xác nhận", MessageBoxButtons.OKCancel);
 
                 if (confirmResult == DialogResult.OK)
                 {
@@ -110,7 +110,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
 
                     if (result)
                     {
-                        MessageBox.Show("Đã 'THÊM' thành công 1 giày mới");
+                        MessageBox.Show("THÊM thành công");
 
                         LoadData(null, null);
                     }
@@ -136,7 +136,7 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
             if (CheckData())
             {
-                var confirmResult = MessageBox.Show("Xác nhận 'SỬA' giày này không?", "Xác nhận", MessageBoxButtons.OKCancel);
+                var confirmResult = MessageBox.Show("Xác nhận SỬA", "Xác nhận", MessageBoxButtons.OKCancel);
 
                 if (confirmResult == DialogResult.OK)
                 {
@@ -147,18 +147,16 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
 
                     if (result)
                     {
-                        MessageBox.Show(" 'SỬA' thành công");
-
                         LoadData(null, null);
                     }
                     else
                     {
-                        MessageBox.Show("'SỬA' thất bại");
+                        MessageBox.Show("SỬA thất bại");
                     }
                 }
                 else
                 {
-                    MessageBox.Show("Đã hủy 'sửa'");
+                    MessageBox.Show("Đã hủy SỬA");
                 }
                 ClearTextBox();
 

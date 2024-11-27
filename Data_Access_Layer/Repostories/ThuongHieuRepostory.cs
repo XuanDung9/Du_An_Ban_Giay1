@@ -12,10 +12,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class ThuongHieuRepostory:IThuongHieuRepostory
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public ThuongHieuRepostory()
         {
-            _db = new DBContext();  
+            _db = new DuAnBanGiay1Context();  
         }
         public List<Thuonghieu> GetAll(string? txtSearch, string? searchType)
         {
@@ -26,10 +26,6 @@ namespace C_Data_Access_Layer.Repostories
             if (string.Equals(searchType, SearchType.tenThuongHieu))
             {
                 return _db.Thuonghieus.Where(c => c.Tenthuonghieu.Contains(txtSearch)).ToList();
-            }
-            if (string.Equals(searchType, SearchType.idNguoiThemThuongHieu))
-            {
-                return _db.Thuonghieus.Where(c => c.Mataikhoan.ToString().Contains(txtSearch)).ToList();
             }
             if (string.Equals(searchType, SearchType.trangThaiThuongHieu))
             {

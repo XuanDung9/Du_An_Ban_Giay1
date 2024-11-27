@@ -82,5 +82,10 @@ namespace A_Persentation_Layer.Frm.Frm_Dialog
         {
 
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            MessageBox.Show("Vui lòng liên hệ với người quản lý qua số 0567206766");
+        }
     }
 }

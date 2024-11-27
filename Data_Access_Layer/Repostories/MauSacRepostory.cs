@@ -12,10 +12,10 @@ namespace C_Data_Access_Layer.Repostories
 {
     public class MauSacRepostory: IMauSacRepostory
     {
-        DBContext _db;
+        DuAnBanGiay1Context _db;
         public MauSacRepostory()
         {
-            _db = new DBContext();
+            _db = new DuAnBanGiay1Context();
         }
         public List<Mausac> GetAll(string? txtSearch, string? searchType)
         {
@@ -34,10 +34,6 @@ namespace C_Data_Access_Layer.Repostories
             if (string.Equals(searchType, SearchType.trangThaiMauSac))
             {
                 return _db.Mausacs.Where(c => c.Trangthai.ToString().Contains(txtSearch)).ToList();
-            }
-            if (string.Equals(searchType, SearchType.idNguoiThemMauSac))
-            {
-                return _db.Mausacs.Where(c => c.Mataikhoan.ToString().Contains(txtSearch)).ToList();
             }
             return _db.Mausacs.ToList();
         }
