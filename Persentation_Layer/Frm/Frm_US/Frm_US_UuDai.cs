@@ -20,6 +20,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
     {
         public Frm_US_UuDai()
         {
+
             InitializeComponent();
             datebatdau.Format = DateTimePickerFormat.Custom;
             datebatdau.CustomFormat = "dd/MM/yyyy HH:mm";
@@ -46,7 +47,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
             dtgHienthi.Columns[6].Name = "Ngày kết thúc";
             dtgHienthi.Columns[6].DefaultCellStyle.Format = "dd/MM/yyyy HH:mm";
             dtgHienthi.Columns[7].Name = "Trạng thái";
-
             dtgHienthi.Rows.Clear();
             foreach (var x in _service.GetUudais(search))
             {
@@ -213,7 +213,6 @@ namespace A_Persentation_Layer.Frm.Frm_US
 
             return obj != null;
         }
-
         private void btnSua_Click(object sender, EventArgs e)
         {
             CheckTextBox();
@@ -301,6 +300,7 @@ namespace A_Persentation_Layer.Frm.Frm_US
             CapNhatTrangThaiUuDai();
             loadGird(null);
      
+
         }
     }
 }
